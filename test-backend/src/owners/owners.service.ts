@@ -23,25 +23,25 @@ export class OwnersService {
     });
   }
 
-  async findOne(id: number): Promise<Owner> {
-    const owner = await this.ownersRepository.findOne({
+  async findById(id: number): Promise<Owner> {
+    const existingOwner = await this.ownersRepository.findOne({
       where: { id },
       relations: ['animals'],
     });
-    if (!owner) {
+    if (!existingOwner) {
       throw new Error(`Owner #${id} not found`);
     }
-    return owner;
+    return existingOwner;
   }
 
   async update(id: number, input: UpdateOwnerInput): Promise<Owner> {
-    const owner = await this.findOne(id);
-    Object.assign(owner, input);
-    return await this.ownersRepository.save(owner);
+    const ownerToUpdate = await this.findById(id);
+    Object.assign(ownerToUpdate, input);
+    return await this.ownersRepository.save(ownerToUpdate);
   }
 
   async remove(id: number): Promise<Owner> {
-    const owner = await this.findOne(id);
-    return await this.ownersRepository.remove(owner);
+    const ownerToRemove = await this.findById(id);
+    return await this.ownersRepository.remove(ownerToRemove);
   }
 }
