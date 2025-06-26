@@ -25,6 +25,21 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Dependencies
+
+### GraphQL + Apollo Server
+
+```bash
+npm install -g @nestjs/cli
+npm install --save @nestjs/graphql graphql apollo-server-express
+```
+
+### TypeORM + MySQL
+
+```bash
+npm install --save @nestjs/typeorm typeorm mysql2
+```
+
 ## Project setup
 
 ```bash
