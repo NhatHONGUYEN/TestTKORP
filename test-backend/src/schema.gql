@@ -1,0 +1,80 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Animal {
+  id: Int!
+  name: String!
+  dateOfBirth: String!
+  species: String!
+  breed: String!
+  color: String!
+  weight: Float!
+  owner: Owner!
+}
+
+type Owner {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phoneNumber: String
+  animals: [Animal!]
+}
+
+type Query {
+  owners: [Owner!]!
+  findOwnerById(id: Int!): Owner!
+  animals: [Animal!]!
+  findAnimalById(id: Int!): Animal!
+}
+
+type Mutation {
+  createOwner(input: CreateOwnerInput!): Owner!
+  updateOwner(id: Int!, input: UpdateOwnerInput!): Owner!
+  removeOwner(id: Int!): Boolean!
+  createAnimal(input: CreateAnimalInput!): Animal!
+  updateAnimal(id: Int!, input: UpdateAnimalInput!): Animal!
+  removeAnimal(id: Int!): Boolean!
+}
+
+input CreateOwnerInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  phoneNumber: String!
+}
+
+input UpdateOwnerInput {
+  firstName: String
+  lastName: String
+  email: String
+  phoneNumber: String
+  id: Int!
+}
+
+input CreateAnimalInput {
+  name: String!
+  dateOfBirth: DateTime!
+  species: String!
+  breed: String!
+  color: String!
+  weight: Float!
+  ownerId: Int!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input UpdateAnimalInput {
+  name: String
+  dateOfBirth: DateTime
+  species: String
+  breed: String
+  color: String
+  weight: Float
+  ownerId: Int
+  id: Int!
+}

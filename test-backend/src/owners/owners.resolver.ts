@@ -33,10 +33,10 @@ export class OwnersResolver {
     return await this.ownersService.update(id, input);
   }
 
-  @Mutation(() => Owner)
+  @Mutation(() => Boolean)
   async removeOwner(
     @Args('id', { type: () => Int }) id: number,
-  ): Promise<Owner> {
+  ): Promise<boolean> {
     return await this.ownersService.remove(id);
   }
 }
