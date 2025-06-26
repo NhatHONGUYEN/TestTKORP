@@ -40,6 +40,22 @@ npm install --save @nestjs/graphql graphql apollo-server-express
 npm install --save @nestjs/typeorm typeorm mysql2
 ```
 
+### Generate NestJS Components
+
+```bash
+# Modules
+nest g module owners
+nest g module animals
+
+# Services
+nest g service owners
+nest g service animals
+
+# Resolvers GraphQL
+nest g resolver owners
+nest g resolver animals
+```
+
 ## Project setup
 
 ```bash
