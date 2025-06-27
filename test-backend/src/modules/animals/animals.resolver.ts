@@ -3,7 +3,7 @@ import { AnimalsService } from './animals.service';
 import { Animal } from './entities/animal.entity';
 import { CreateAnimalInput } from './dto/create-animal.input';
 import { UpdateAnimalInput } from './dto/update-animal.input';
-import { PaginationArgs } from '../common/dto/pagination.args';
+import { PaginationArgs } from 'src/common/dto/pagination.args';
 
 @Resolver(() => Animal)
 export class AnimalsResolver {

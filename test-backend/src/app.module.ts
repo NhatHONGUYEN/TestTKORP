@@ -3,10 +3,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { OwnersModule } from './owners/owners.module';
-import { AnimalsModule } from './animals/animals.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
+import { WeightAnalyticsModule } from './common/weight-analytics/weight-analytics.module';
+import { OwnersModule } from './modules/owners/owners.module';
+import { AnimalsModule } from './modules/animals/animals.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { join } from 'path';
     }),
     OwnersModule,
     AnimalsModule,
+    WeightAnalyticsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

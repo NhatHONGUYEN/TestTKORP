@@ -7,7 +7,7 @@ import { PaginationArgs } from 'src/common/dto/pagination.args';
 import {
   OwnerAnimalsCount,
   OwnerCatsCount,
-} from '../common/types/statistics.types';
+} from 'src/common/types/statistics.types';
 
 @Resolver(() => Owner)
 export class OwnersResolver {

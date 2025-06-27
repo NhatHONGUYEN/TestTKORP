@@ -8,7 +8,7 @@ import { ApiError } from 'src/common/exceptions';
 import {
   OwnerAnimalsCount,
   OwnerCatsCount,
-} from '../common/types/statistics.types';
+} from 'src/common/types/statistics.types';
 
 @Injectable()
 export class OwnersService {
