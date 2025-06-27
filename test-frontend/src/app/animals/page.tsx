@@ -3,6 +3,7 @@
 import { useGetAnimals } from "@/hooks/api/animals/useGetAnimals";
 import { Pagination } from "@/components/common/Pagination";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function AnimalsPage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,9 +18,13 @@ export default function AnimalsPage() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">Liste des Animaux</h1>
 
-      <div className="grid gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {animals.map((animal) => (
-          <div key={animal.id} className="bg-white p-6 rounded-lg shadow-md">
+          <Link
+            href={`/animals/${animal.id}`}
+            key={animal.id}
+            className="block bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+          >
             <h2 className="text-xl font-semibold">{animal.name}</h2>
             <p className="text-gray-600">
               {animal.species} - {animal.breed}
@@ -29,7 +34,7 @@ export default function AnimalsPage() {
             <p className="text-gray-600">
               Propriétaire: {animal.owner.firstName} {animal.owner.lastName}
             </p>
-          </div>
+          </Link>
         ))}
       </div>
 
