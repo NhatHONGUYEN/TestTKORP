@@ -1,9 +1,10 @@
 import { useQuery } from "@apollo/client";
 import { GET_OWNERS } from "@/graphql/queries/owners.queries";
 import { Owner } from "@/types/owner.type";
+import { PaginatedResponse } from "@/types/pagination.type";
 
 interface GetOwnersResponse {
-  owners: Owner[];
+  owners: PaginatedResponse<Owner>;
 }
 
 interface UseGetOwnersProps {
@@ -23,7 +24,8 @@ export const useGetOwners = ({
   );
 
   return {
-    owners: data?.owners || [],
+    owners: data?.owners.items || [],
+    meta: data?.owners.meta,
     isLoading: loading,
     error,
     refetch,

@@ -1,9 +1,10 @@
 import { useQuery } from "@apollo/client";
 import { GET_ANIMALS } from "@/graphql/queries/animals.queries";
 import { Animal } from "@/types/animal.type";
+import { PaginatedResponse } from "@/types/pagination.type";
 
 interface GetAnimalsResponse {
-  animals: Animal[];
+  animals: PaginatedResponse<Animal>;
 }
 
 interface UseGetAnimalsProps {
@@ -23,7 +24,8 @@ export const useGetAnimals = ({
   );
 
   return {
-    animals: data?.animals || [],
+    animals: data?.animals.items || [],
+    meta: data?.animals.meta,
     isLoading: loading,
     error,
     refetch,

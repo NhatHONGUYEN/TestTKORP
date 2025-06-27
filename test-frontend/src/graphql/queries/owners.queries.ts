@@ -3,16 +3,23 @@ import { gql } from "@apollo/client";
 export const GET_OWNERS = gql`
   query GetOwners($page: Int = 1, $limit: Int = 10) {
     owners(page: $page, limit: $limit) {
-      id
-      firstName
-      lastName
-      email
-      phoneNumber
-      animals {
+      items {
         id
-        name
-        species
-        breed
+        firstName
+        lastName
+        email
+        animals {
+          id
+          name
+          species
+          breed
+        }
+      }
+      meta {
+        totalItems
+        itemsPerPage
+        totalPages
+        currentPage
       }
     }
   }
