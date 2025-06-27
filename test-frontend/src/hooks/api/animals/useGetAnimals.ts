@@ -14,7 +14,7 @@ interface UseGetAnimalsProps {
 
 export const useGetAnimals = ({
   page = 1,
-  limit = 10,
+  limit = 4,
 }: UseGetAnimalsProps = {}) => {
   const { data, loading, error, refetch } = useQuery<GetAnimalsResponse>(
     GET_ANIMALS,

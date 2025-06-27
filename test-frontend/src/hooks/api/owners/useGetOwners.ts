@@ -14,7 +14,7 @@ interface UseGetOwnersProps {
 
 export const useGetOwners = ({
   page = 1,
-  limit = 10,
+  limit = 4,
 }: UseGetOwnersProps = {}) => {
   const { data, loading, error, refetch } = useQuery<GetOwnersResponse>(
     GET_OWNERS,
