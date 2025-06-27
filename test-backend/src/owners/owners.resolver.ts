@@ -3,6 +3,7 @@ import { OwnersService } from './owners.service';
 import { Owner } from './entities/owner.entity';
 import { CreateOwnerInput } from './dto/create-owner.input';
 import { UpdateOwnerInput } from './dto/update-owner.input';
+import { PaginationArgs } from 'src/animals/dto/pagination.args';
 
 @Resolver(() => Owner)
 export class OwnersResolver {
@@ -14,8 +15,8 @@ export class OwnersResolver {
   }
 
   @Query(() => [Owner])
-  async owners(): Promise<Owner[]> {
-    return await this.ownersService.findAll();
+  async owners(@Args() { page, limit }: PaginationArgs): Promise<Owner[]> {
+    return await this.ownersService.findAll(page, limit);
   }
 
   @Query(() => Owner)

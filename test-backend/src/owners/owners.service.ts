@@ -29,10 +29,15 @@ export class OwnersService {
     }
   }
 
-  async findAll(): Promise<Owner[]> {
+  async findAll(page: number = 1, limit: number = 10): Promise<Owner[]> {
     try {
       return await this.ownersRepository.find({
         relations: ['animals'],
+        skip: (page - 1) * limit,
+        take: limit,
+        order: {
+          id: 'ASC',
+        },
       });
     } catch (error: unknown) {
       this.handleError(

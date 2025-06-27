@@ -23,7 +23,7 @@ type Owner {
 }
 
 type Query {
-  owners: [Owner!]!
+  owners(page: Int! = 1, limit: Int! = 10): [Owner!]!
   findOwnerById(id: Int!): Owner!
   animals: [Animal!]!
   findAnimalById(id: Int!): Animal!
