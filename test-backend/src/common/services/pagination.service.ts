@@ -4,6 +4,7 @@ import { PaginationMeta } from '../types/pagination.types';
 
 interface HasId {
   id: number;
+  createdAt?: Date;
 }
 
 export class PaginationService {
@@ -12,12 +13,13 @@ export class PaginationService {
     page: number = 1,
     limit: number = 10,
     relations: string[] = [],
+    orderBy: { [key: string]: 'ASC' | 'DESC' } = { id: 'DESC' },
   ): Promise<{ items: T[]; meta: PaginationMeta }> {
     const [items, total] = await repository.findAndCount({
       relations,
       skip: (page - 1) * limit,
       take: limit,
-      order: { id: 'ASC' } as FindOptionsOrder<T>,
+      order: orderBy as FindOptionsOrder<T>,
     });
 
     return {

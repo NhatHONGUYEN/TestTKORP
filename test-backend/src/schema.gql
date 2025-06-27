@@ -19,8 +19,14 @@ type Owner {
   lastName: String!
   email: String!
   phoneNumber: String
+  createdAt: DateTime!
   animals: [Animal!]
 }
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 type OwnerAnimalsCount {
   owner: Owner!
@@ -103,11 +109,6 @@ input CreateAnimalInput {
   weight: Float!
   ownerId: Int!
 }
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
 
 input UpdateAnimalInput {
   name: String
