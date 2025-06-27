@@ -1,4 +1,11 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  Int,
+  ObjectType,
+} from '@nestjs/graphql';
 import { OwnersService } from './owners.service';
 import { Owner } from './entities/owner.entity';
 import { CreateOwnerInput } from './dto/create-owner.input';
@@ -8,6 +15,10 @@ import {
   OwnerAnimalsCount,
   OwnerCatsCount,
 } from 'src/common/types/statistics.types';
+import { Paginated } from 'src/common/types/pagination.types';
+
+@ObjectType()
+class PaginatedOwner extends Paginated(Owner) {}
 
 @Resolver(() => Owner)
 export class OwnersResolver {
@@ -18,8 +29,8 @@ export class OwnersResolver {
     return await this.ownersService.create(input);
   }
 
-  @Query(() => [Owner])
-  async owners(@Args() { page, limit }: PaginationArgs): Promise<Owner[]> {
+  @Query(() => PaginatedOwner)
+  async owners(@Args() { page, limit }: PaginationArgs) {
     return await this.ownersService.findAll(page, limit);
   }
 

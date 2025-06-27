@@ -1,9 +1,20 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  Int,
+  ObjectType,
+} from '@nestjs/graphql';
 import { AnimalsService } from './animals.service';
 import { Animal } from './entities/animal.entity';
 import { CreateAnimalInput } from './dto/create-animal.input';
 import { UpdateAnimalInput } from './dto/update-animal.input';
 import { PaginationArgs } from 'src/common/dto/pagination.args';
+import { Paginated } from 'src/common/types/pagination.types';
+
+@ObjectType()
+class PaginatedAnimal extends Paginated(Animal) {}
 
 @Resolver(() => Animal)
 export class AnimalsResolver {
@@ -14,8 +25,8 @@ export class AnimalsResolver {
     return await this.animalsService.create(input);
   }
 
-  @Query(() => [Animal])
-  async animals(@Args() { page, limit }: PaginationArgs): Promise<Animal[]> {
+  @Query(() => PaginatedAnimal)
+  async animals(@Args() { page, limit }: PaginationArgs) {
     return await this.animalsService.findAll(page, limit);
   }
 

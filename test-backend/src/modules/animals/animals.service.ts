@@ -11,6 +11,7 @@ import {
   SpeciesCountRaw,
 } from 'src/common/types/statistics.types';
 import { format } from 'date-fns';
+import { PaginationService } from 'src/common/services/pagination.service';
 
 @Injectable()
 export class AnimalsService {
@@ -48,14 +49,14 @@ export class AnimalsService {
     }
   }
 
-  async findAll(page: number = 1, limit: number = 10): Promise<Animal[]> {
+  async findAll(page: number = 1, limit: number = 10) {
     try {
-      return await this.animalsRepository.find({
-        relations: ['owner'],
-        skip: (page - 1) * limit,
-        take: limit,
-        order: { id: 'ASC' },
-      });
+      return await PaginationService.paginate(
+        this.animalsRepository,
+        page,
+        limit,
+        ['owner'],
+      );
     } catch (error: unknown) {
       this.handleError(
         error as Error,

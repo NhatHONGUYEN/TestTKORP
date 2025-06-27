@@ -2,15 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Owner {
-  id: Int!
-  firstName: String!
-  lastName: String!
-  email: String!
-  phoneNumber: String
-  animals: [Animal!]
-}
-
 type Animal {
   id: Int!
   name: String!
@@ -20,6 +11,15 @@ type Animal {
   color: String!
   weight: Float!
   owner: Owner!
+}
+
+type Owner {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phoneNumber: String
+  animals: [Animal!]
 }
 
 type OwnerAnimalsCount {
@@ -42,12 +42,29 @@ type OwnerAnimalsWeight {
   totalWeight: Float!
 }
 
+type PaginationMeta {
+  totalItems: Int!
+  itemsPerPage: Int!
+  totalPages: Int!
+  currentPage: Int!
+}
+
+type PaginatedOwner {
+  items: [Owner!]!
+  meta: PaginationMeta!
+}
+
+type PaginatedAnimal {
+  items: [Animal!]!
+  meta: PaginationMeta!
+}
+
 type Query {
-  owners(page: Int! = 1, limit: Int! = 10): [Owner!]!
+  owners(page: Int! = 1, limit: Int! = 10): PaginatedOwner!
   findOwnerById(id: Int!): Owner!
   ownerWithMostAnimals: OwnerAnimalsCount!
   ownerWithMostCats: OwnerCatsCount!
-  animals(page: Int! = 1, limit: Int! = 10): [Animal!]!
+  animals(page: Int! = 1, limit: Int! = 10): PaginatedAnimal!
   findAnimalById(id: Int!): Animal!
   ownerWithHeaviestAnimal: OwnerHeaviestAnimal!
   ownerWithHeaviestAnimalsGroup: OwnerAnimalsWeight!
