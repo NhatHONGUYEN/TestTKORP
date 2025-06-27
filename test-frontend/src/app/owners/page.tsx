@@ -4,7 +4,6 @@ import { useGetOwners } from "@/hooks/api/owners/useGetOwners";
 import { Pagination } from "@/components/common/Pagination";
 import { useState } from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
 export default function OwnersPage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,14 +16,7 @@ export default function OwnersPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">Liste des Propriétaires</h1>
-        <Link href="/owners/create">
-          <Button className="bg-blue-500 hover:bg-blue-600 text-white">
-            Créer un propriétaire
-          </Button>
-        </Link>
-      </div>
+      <h1 className="text-3xl font-bold mb-8">Liste des Propriétaires</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {owners.map((owner) => (
