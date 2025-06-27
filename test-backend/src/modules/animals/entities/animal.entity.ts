@@ -15,7 +15,7 @@ export class Animal {
 
   @Field()
   @Column('date')
-  dateOfBirth: string; // ou Date, selon votre usage
+  dateOfBirth: string;
 
   @Field()
   @Column()
