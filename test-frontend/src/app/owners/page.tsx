@@ -1,6 +1,7 @@
 "use client";
 
 import { useGetOwners } from "@/hooks/api/owners/useGetOwners";
+import Link from "next/link";
 
 export default function OwnersPage() {
   const { owners, isLoading, error } = useGetOwners({ page: 1 });
@@ -13,7 +14,11 @@ export default function OwnersPage() {
       <h1 className="text-3xl font-bold mb-8">Liste des Propriétaires</h1>
       <div className="space-y-6">
         {owners.map((owner) => (
-          <div key={owner.id} className="bg-white p-6 rounded-lg shadow-md">
+          <Link
+            href={`/owners/${owner.id}`}
+            key={owner.id}
+            className="block bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
             <div>
               <h2 className="text-xl font-semibold">
                 {owner.firstName} {owner.lastName}
@@ -41,7 +46,7 @@ export default function OwnersPage() {
                 <p className="text-gray-500 italic">Aucun animal</p>
               )}
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
