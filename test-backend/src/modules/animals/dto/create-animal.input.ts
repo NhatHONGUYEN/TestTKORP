@@ -13,14 +13,14 @@ import {
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import {
-  ANIMAL_SPECIES,
   ANIMAL_COLORS,
+  ANIMAL_SPECIES,
+  AnimalColor,
+  AnimalSpecies,
   VALIDATION_LIMITS,
   VALIDATION_MESSAGES,
   VALIDATION_PATTERNS,
-  AnimalSpecies,
-  AnimalColor,
-} from '../../../common/types/validation.constants';
+} from 'src/common/types/validation';
 
 @InputType()
 export class CreateAnimalInput {

@@ -9,10 +9,10 @@ import { CreateAnimalInput } from './create-animal.input';
 import { IsOptional, IsInt, IsPositive } from 'class-validator';
 import { Type } from 'class-transformer';
 import {
-  AnimalSpecies,
   AnimalColor,
+  AnimalSpecies,
   VALIDATION_MESSAGES,
-} from '../../../common/types/validation.constants';
+} from 'src/common/types/validation';
 
 @InputType()
 export class UpdateAnimalInput extends PartialType(CreateAnimalInput) {
