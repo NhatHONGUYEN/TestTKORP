@@ -10,6 +10,7 @@ import {
   SpeciesCount,
   SpeciesCountRaw,
 } from 'src/common/types/statistics.types';
+import { format } from 'date-fns';
 
 @Injectable()
 export class AnimalsService {
@@ -35,7 +36,7 @@ export class AnimalsService {
 
       const newAnimal = this.animalsRepository.create({
         ...input,
-        dateOfBirth: input.dateOfBirth.toISOString(),
+        dateOfBirth: format(input.dateOfBirth, 'yyyy-MM-dd'),
         owner,
       });
       return await this.animalsRepository.save(newAnimal);

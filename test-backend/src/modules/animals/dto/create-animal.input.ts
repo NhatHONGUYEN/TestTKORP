@@ -1,11 +1,17 @@
-import { InputType, Field, Int, Float } from '@nestjs/graphql';
+import {
+  InputType,
+  Field,
+  Int,
+  Float,
+  GraphQLISODateTime,
+} from '@nestjs/graphql';
 
 @InputType()
 export class CreateAnimalInput {
   @Field()
   name: string;
 
-  @Field()
+  @Field(() => GraphQLISODateTime)
   dateOfBirth: Date;
 
   @Field()
