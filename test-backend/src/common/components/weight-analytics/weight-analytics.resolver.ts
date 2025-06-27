@@ -3,7 +3,7 @@ import { WeightAnalyticsService } from './weight-analytics.service';
 import {
   OwnerHeaviestAnimal,
   OwnerAnimalsWeight,
-} from '../types/statistics.types';
+} from 'src/common/types/statistics.types';
 
 @Resolver()
 export class WeightAnalyticsResolver {

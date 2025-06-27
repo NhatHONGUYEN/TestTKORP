@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { ApiError } from '../exceptions';
+import { Animal } from 'src/modules/animals/entities/animal.entity';
+import { Owner } from 'src/modules/owners/entities/owner.entity';
+import { ApiError } from 'src/common/exceptions';
 import {
   OwnerHeaviestAnimal,
   OwnerAnimalsWeight,
-} from '../types/statistics.types';
-import { Animal } from 'src/modules/animals/entities/animal.entity';
-import { Owner } from 'src/modules/owners/entities/owner.entity';
+} from 'src/common/types/statistics.types';
 
 @Injectable()
 export class WeightAnalyticsService {

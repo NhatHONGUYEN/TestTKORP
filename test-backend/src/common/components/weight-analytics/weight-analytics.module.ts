@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Animal } from '../../modules/animals/entities/animal.entity';
-import { Owner } from '../../modules/owners/entities/owner.entity';
 import { WeightAnalyticsService } from './weight-analytics.service';
 import { WeightAnalyticsResolver } from './weight-analytics.resolver';
+import { Animal } from 'src/modules/animals/entities/animal.entity';
+import { Owner } from 'src/modules/owners/entities/owner.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Animal, Owner])],

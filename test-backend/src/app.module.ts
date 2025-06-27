@@ -5,9 +5,9 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
-import { WeightAnalyticsModule } from './common/weight-analytics/weight-analytics.module';
 import { OwnersModule } from './modules/owners/owners.module';
 import { AnimalsModule } from './modules/animals/animals.module';
+import { WeightAnalyticsModule } from './common/components/weight-analytics/weight-analytics.module';
 
 @Module({
   imports: [
