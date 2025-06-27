@@ -4,6 +4,10 @@ import { Owner } from './entities/owner.entity';
 import { CreateOwnerInput } from './dto/create-owner.input';
 import { UpdateOwnerInput } from './dto/update-owner.input';
 import { PaginationArgs } from 'src/common/dto/pagination.args';
+import {
+  OwnerAnimalsCount,
+  OwnerCatsCount,
+} from '../common/types/statistics.types';
 
 @Resolver(() => Owner)
 export class OwnersResolver {
@@ -39,5 +43,15 @@ export class OwnersResolver {
     @Args('id', { type: () => Int }) id: number,
   ): Promise<boolean> {
     return await this.ownersService.remove(id);
+  }
+
+  @Query(() => OwnerAnimalsCount)
+  async ownerWithMostAnimals(): Promise<OwnerAnimalsCount> {
+    return await this.ownersService.findOwnerWithMostAnimals();
+  }
+
+  @Query(() => OwnerCatsCount)
+  async ownerWithMostCats(): Promise<OwnerCatsCount> {
+    return await this.ownersService.findOwnerWithMostCats();
   }
 }

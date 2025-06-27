@@ -22,9 +22,21 @@ type Owner {
   animals: [Animal!]
 }
 
+type OwnerAnimalsCount {
+  owner: Owner!
+  animalCount: Int!
+}
+
+type OwnerCatsCount {
+  owner: Owner!
+  catCount: Int!
+}
+
 type Query {
   owners(page: Int! = 1, limit: Int! = 10): [Owner!]!
   findOwnerById(id: Int!): Owner!
+  ownerWithMostAnimals: OwnerAnimalsCount!
+  ownerWithMostCats: OwnerCatsCount!
   animals(page: Int! = 1, limit: Int! = 10): [Animal!]!
   findAnimalById(id: Int!): Animal!
 }

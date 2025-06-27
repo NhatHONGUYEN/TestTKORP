@@ -5,6 +5,10 @@ import { Owner } from './entities/owner.entity';
 import { CreateOwnerInput } from './dto/create-owner.input';
 import { UpdateOwnerInput } from './dto/update-owner.input';
 import { ApiError } from 'src/common/exceptions';
+import {
+  OwnerAnimalsCount,
+  OwnerCatsCount,
+} from '../common/types/statistics.types';
 
 @Injectable()
 export class OwnersService {
@@ -86,6 +90,59 @@ export class OwnersService {
       this.handleError(
         error as Error,
         'Erreur lors de la suppression du propriétaire',
+      );
+    }
+  }
+
+  async findOwnerWithMostAnimals(): Promise<OwnerAnimalsCount> {
+    try {
+      const result = await this.ownersRepository
+        .createQueryBuilder('owner')
+        .leftJoinAndSelect('owner.animals', 'animals')
+        .addSelect('COUNT(animals.id)', 'animalCount')
+        .groupBy('owner.id')
+        .orderBy('animalCount', 'DESC')
+        .getOne();
+
+      if (!result) {
+        throw ApiError.notFound('Aucun propriétaire trouvé');
+      }
+
+      return {
+        owner: result,
+        animalCount: result.animals?.length ?? 0,
+      };
+    } catch (error: unknown) {
+      this.handleError(
+        error as Error,
+        "Erreur lors de la recherche du propriétaire avec le plus d'animaux",
+      );
+    }
+  }
+
+  async findOwnerWithMostCats(): Promise<OwnerCatsCount> {
+    try {
+      const result = await this.ownersRepository
+        .createQueryBuilder('owner')
+        .leftJoinAndSelect('owner.animals', 'animals')
+        .where('animals.species = :species', { species: 'Chat' })
+        .addSelect('COUNT(animals.id)', 'catCount')
+        .groupBy('owner.id')
+        .orderBy('catCount', 'DESC')
+        .getOne();
+
+      if (!result) {
+        throw ApiError.notFound('Aucun propriétaire de chat trouvé');
+      }
+
+      return {
+        owner: result,
+        catCount: result.animals?.length ?? 0,
+      };
+    } catch (error: unknown) {
+      this.handleError(
+        error as Error,
+        'Erreur lors de la recherche du propriétaire avec le plus de chats',
       );
     }
   }
