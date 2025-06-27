@@ -10,8 +10,14 @@ type Animal {
   breed: String!
   color: String!
   weight: Float!
+  createdAt: DateTime!
   owner: Owner!
 }
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 type Owner {
   id: Int!
@@ -22,11 +28,6 @@ type Owner {
   createdAt: DateTime!
   animals: [Animal!]
 }
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
 
 type OwnerAnimalsCount {
   owner: Owner!

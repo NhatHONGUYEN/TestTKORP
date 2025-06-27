@@ -56,6 +56,7 @@ export class AnimalsService {
         page,
         limit,
         ['owner'],
+        { createdAt: 'DESC' },
       );
     } catch (error: unknown) {
       this.handleError(

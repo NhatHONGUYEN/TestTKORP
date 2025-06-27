@@ -1,6 +1,12 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Owner } from 'src/modules/owners/entities/owner.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+} from 'typeorm';
 
 @ObjectType()
 @Entity('animal')
@@ -32,6 +38,10 @@ export class Animal {
   @Field()
   @Column('float')
   weight: number;
+
+  @Field(() => Date)
+  @CreateDateColumn()
+  createdAt: Date;
 
   @Field(() => Owner)
   @ManyToOne(() => Owner, (owner) => owner.animals, { onDelete: 'RESTRICT' })
