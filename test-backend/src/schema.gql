@@ -2,6 +2,15 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Owner {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phoneNumber: String
+  animals: [Animal!]
+}
+
 type Animal {
   id: Int!
   name: String!
@@ -11,15 +20,6 @@ type Animal {
   color: String!
   weight: Float!
   owner: Owner!
-}
-
-type Owner {
-  id: Int!
-  firstName: String!
-  lastName: String!
-  email: String!
-  phoneNumber: String
-  animals: [Animal!]
 }
 
 type OwnerAnimalsCount {
@@ -32,6 +32,16 @@ type OwnerCatsCount {
   catCount: Int!
 }
 
+type OwnerHeaviestAnimal {
+  owner: Owner!
+  animal: Animal!
+}
+
+type OwnerAnimalsWeight {
+  owner: Owner!
+  totalWeight: Float!
+}
+
 type Query {
   owners(page: Int! = 1, limit: Int! = 10): [Owner!]!
   findOwnerById(id: Int!): Owner!
@@ -39,6 +49,8 @@ type Query {
   ownerWithMostCats: OwnerCatsCount!
   animals(page: Int! = 1, limit: Int! = 10): [Animal!]!
   findAnimalById(id: Int!): Animal!
+  ownerWithHeaviestAnimal: OwnerHeaviestAnimal!
+  ownerWithHeaviestAnimalsGroup: OwnerAnimalsWeight!
 }
 
 type Mutation {
