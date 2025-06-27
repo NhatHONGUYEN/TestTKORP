@@ -24,6 +24,7 @@ import {
 
 @InputType()
 export class CreateAnimalInput {
+  // ==================== NOM ====================
   @Field()
   @IsNotEmpty({ message: VALIDATION_MESSAGES.REQUIRED('nom') })
   @IsString()
@@ -42,12 +43,14 @@ export class CreateAnimalInput {
   })
   name: string;
 
+  // ==================== DATE DE NAISSANCE ====================
   @Field(() => GraphQLISODateTime)
   @Type(() => Date)
   @IsDate({ message: VALIDATION_MESSAGES.DATE_INVALID })
   @IsNotEmpty({ message: VALIDATION_MESSAGES.REQUIRED('date de naissance') })
   dateOfBirth: Date;
 
+  // ==================== ESPÈCE ====================
   @Field()
   @IsNotEmpty({ message: VALIDATION_MESSAGES.REQUIRED('espèce') })
   @IsEnum(ANIMAL_SPECIES, {
@@ -55,6 +58,7 @@ export class CreateAnimalInput {
   })
   species: AnimalSpecies;
 
+  // ==================== RACE ====================
   @Field()
   @IsNotEmpty({ message: VALIDATION_MESSAGES.REQUIRED('race') })
   @IsString()
@@ -73,6 +77,7 @@ export class CreateAnimalInput {
   })
   breed: string;
 
+  // ==================== COULEUR ====================
   @Field()
   @IsNotEmpty({ message: VALIDATION_MESSAGES.REQUIRED('couleur') })
   @IsEnum(ANIMAL_COLORS, {
@@ -80,6 +85,7 @@ export class CreateAnimalInput {
   })
   color: AnimalColor;
 
+  // ==================== POIDS ====================
   @Field(() => Int)
   @Type(() => Number)
   @IsInt({ message: VALIDATION_MESSAGES.INVALID_FORMAT('poids') })
@@ -92,6 +98,7 @@ export class CreateAnimalInput {
   })
   weight: number;
 
+  // ==================== ID DU PROPRIÉTAIRE ====================
   @Field(() => Int)
   @Type(() => Number)
   @IsInt({ message: VALIDATION_MESSAGES.INVALID_FORMAT('ID du propriétaire') })

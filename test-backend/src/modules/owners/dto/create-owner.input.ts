@@ -9,6 +9,7 @@ import {
 
 @InputType()
 export class CreateOwnerInput {
+  // ==================== PRÉNOM ====================
   @Field()
   @IsNotEmpty({ message: 'Le prénom est requis' })
   @IsString({ message: 'Le prénom doit être une chaîne de caractères' })
@@ -21,6 +22,7 @@ export class CreateOwnerInput {
   })
   firstName: string;
 
+  // ==================== NOM ====================
   @Field()
   @IsNotEmpty({ message: 'Le nom est requis' })
   @IsString({ message: 'Le nom doit être une chaîne de caractères' })
@@ -33,6 +35,7 @@ export class CreateOwnerInput {
   })
   lastName: string;
 
+  // ==================== EMAIL ====================
   @Field()
   @IsNotEmpty({ message: "L'email est requis" })
   @IsEmail({}, { message: "Format d'email invalide" })
@@ -41,6 +44,7 @@ export class CreateOwnerInput {
   })
   email: string;
 
+  // ==================== TÉLÉPHONE ====================
   @Field()
   @IsNotEmpty({ message: 'Le numéro de téléphone est requis' })
   @IsString({

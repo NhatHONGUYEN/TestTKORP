@@ -16,38 +16,44 @@ import {
 
 @InputType()
 export class UpdateAnimalInput extends PartialType(CreateAnimalInput) {
+  // ==================== ID ====================
   @Field(() => Int)
   @Type(() => Number)
   @IsInt({ message: VALIDATION_MESSAGES.ID_INVALID })
   @IsPositive({ message: VALIDATION_MESSAGES.ID_INVALID })
   id: number;
 
-  // Les champs suivants sont automatiquement optionnels grâce à PartialType
-  // et héritent de toutes les validations de CreateAnimalInput
+  // ==================== NOM (OPTIONNEL) ====================
   @Field({ nullable: true })
   @IsOptional()
   name?: string;
 
+  // ==================== DATE DE NAISSANCE (OPTIONNEL) ====================
   @Field(() => GraphQLISODateTime, { nullable: true })
   @IsOptional()
   dateOfBirth?: Date;
 
+  // ==================== ESPÈCE (OPTIONNEL) ====================
   @Field({ nullable: true })
   @IsOptional()
   species?: AnimalSpecies;
 
+  // ==================== RACE (OPTIONNEL) ====================
   @Field({ nullable: true })
   @IsOptional()
   breed?: string;
 
+  // ==================== COULEUR (OPTIONNEL) ====================
   @Field({ nullable: true })
   @IsOptional()
   color?: AnimalColor;
 
+  // ==================== POIDS (OPTIONNEL) ====================
   @Field(() => Int, { nullable: true })
   @IsOptional()
   weight?: number;
 
+  // ==================== ID DU PROPRIÉTAIRE (OPTIONNEL) ====================
   @Field(() => Int, { nullable: true })
   @IsOptional()
   ownerId?: number;
