@@ -6,6 +6,10 @@ import { Owner } from '../owners/entities/owner.entity';
 import { CreateAnimalInput } from './dto/create-animal.input';
 import { UpdateAnimalInput } from './dto/update-animal.input';
 import { ApiError } from 'src/common/exceptions';
+import {
+  SpeciesCount,
+  SpeciesCountRaw,
+} from 'src/common/types/statistics.types';
 
 @Injectable()
 export class AnimalsService {
@@ -109,6 +113,50 @@ export class AnimalsService {
       this.handleError(
         error as Error,
         "Erreur lors de la suppression de l'animal",
+      );
+    }
+  }
+
+  async findOldestAnimal(): Promise<Animal> {
+    try {
+      const oldestAnimal = await this.animalsRepository.findOne({
+        relations: ['owner'],
+        order: { dateOfBirth: 'ASC' },
+      });
+      if (!oldestAnimal) {
+        throw ApiError.notFound('Aucun animal trouvé');
+      }
+      return oldestAnimal;
+    } catch (error: unknown) {
+      this.handleError(
+        error as Error,
+        'Erreur lors de la recherche du plus vieil animal',
+      );
+    }
+  }
+
+  async findMostCommonSpecies(): Promise<SpeciesCount> {
+    try {
+      const result = await this.animalsRepository
+        .createQueryBuilder('animal')
+        .select('animal.species', 'species')
+        .addSelect('COUNT(*)', 'count')
+        .groupBy('animal.species')
+        .orderBy('count', 'DESC')
+        .getRawOne<SpeciesCountRaw>();
+
+      if (!result) {
+        throw ApiError.notFound('Aucune espèce trouvée');
+      }
+
+      return {
+        species: result.species,
+        count: parseInt(result.count, 10),
+      };
+    } catch (error: unknown) {
+      this.handleError(
+        error as Error,
+        "Erreur lors de la recherche de l'espèce la plus commune",
       );
     }
   }
