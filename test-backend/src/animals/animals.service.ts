@@ -43,10 +43,13 @@ export class AnimalsService {
     }
   }
 
-  async findAll(): Promise<Animal[]> {
+  async findAll(page: number = 1, limit: number = 10): Promise<Animal[]> {
     try {
       return await this.animalsRepository.find({
         relations: ['owner'],
+        skip: (page - 1) * limit,
+        take: limit,
+        order: { id: 'ASC' },
       });
     } catch (error: unknown) {
       this.handleError(

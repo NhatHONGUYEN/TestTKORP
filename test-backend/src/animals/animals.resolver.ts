@@ -3,6 +3,7 @@ import { AnimalsService } from './animals.service';
 import { Animal } from './entities/animal.entity';
 import { CreateAnimalInput } from './dto/create-animal.input';
 import { UpdateAnimalInput } from './dto/update-animal.input';
+import { PaginationArgs } from '../common/dto/pagination.args';
 
 @Resolver(() => Animal)
 export class AnimalsResolver {
@@ -14,8 +15,8 @@ export class AnimalsResolver {
   }
 
   @Query(() => [Animal])
-  async animals(): Promise<Animal[]> {
-    return await this.animalsService.findAll();
+  async animals(@Args() { page, limit }: PaginationArgs): Promise<Animal[]> {
+    return await this.animalsService.findAll(page, limit);
   }
 
   @Query(() => Animal)

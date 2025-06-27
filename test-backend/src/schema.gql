@@ -25,7 +25,7 @@ type Owner {
 type Query {
   owners(page: Int! = 1, limit: Int! = 10): [Owner!]!
   findOwnerById(id: Int!): Owner!
-  animals: [Animal!]!
+  animals(page: Int! = 1, limit: Int! = 10): [Animal!]!
   findAnimalById(id: Int!): Animal!
 }
 
