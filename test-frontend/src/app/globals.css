@@ -8,6 +8,12 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-pet-primary: var(--pet-primary);
+  --color-pet-secondary: var(--pet-secondary);
+  --color-pet-accent: var(--pet-accent);
+  --color-animal-card: var(--animal-card);
+  --color-owner-card: var(--owner-card);
+  --color-paw-print: var(--paw-print);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -44,25 +50,43 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
+  --radius: 0.75rem;
+
+  /* Couleurs principales - Thème animalier */
+  --background: oklch(0.98 0.01 120); /* Vert très clair, naturel */
+  --foreground: oklch(0.15 0.02 285);
+
+  /* Cartes et conteneurs */
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.141 0.005 285.823);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.21 0.006 285.885);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.967 0.001 286.375);
-  --secondary-foreground: oklch(0.21 0.006 285.885);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.21 0.006 285.885);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.705 0.015 286.067);
+  --card-foreground: oklch(0.15 0.02 285);
+
+  /* Couleurs spécifiques aux animaux */
+  --pet-primary: oklch(0.55 0.15 150); /* Vert nature pour les animaux */
+  --pet-secondary: oklch(0.65 0.12 45); /* Orange doux pour les propriétaires */
+  --pet-accent: oklch(0.45 0.18 200); /* Bleu pour les accents */
+
+  /* Cartes spécialisées */
+  --animal-card: oklch(0.95 0.02 150); /* Fond vert très clair pour animaux */
+  --owner-card: oklch(
+    0.95 0.02 45
+  ); /* Fond orange très clair pour propriétaires */
+
+  /* Couleur signature "patte" */
+  --paw-print: oklch(0.4 0.2 30); /* Marron pour les pattes */
+
+  /* Couleurs système */
+  --primary: var(--pet-primary);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.94 0.02 150);
+  --secondary-foreground: oklch(0.2 0.02 285);
+  --muted: oklch(0.96 0.01 120);
+  --muted-foreground: oklch(0.5 0.02 285);
+  --accent: var(--pet-accent);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.6 0.2 25);
+  --border: oklch(0.9 0.02 150);
+  --input: oklch(0.95 0.01 120);
+  --ring: var(--pet-primary);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -79,24 +103,31 @@
 }
 
 .dark {
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.92 0.004 286.32);
-  --primary-foreground: oklch(0.21 0.006 285.885);
-  --secondary: oklch(0.274 0.006 286.033);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.552 0.016 285.938);
+  --background: oklch(0.08 0.01 285);
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.12 0.02 285);
+  --card-foreground: oklch(0.95 0 0);
+
+  /* Couleurs sombres pour animaux */
+  --pet-primary: oklch(0.6 0.15 150);
+  --pet-secondary: oklch(0.7 0.12 45);
+  --pet-accent: oklch(0.5 0.18 200);
+
+  --animal-card: oklch(0.15 0.02 150);
+  --owner-card: oklch(0.15 0.02 45);
+  --paw-print: oklch(0.7 0.15 30);
+
+  --primary: var(--pet-primary);
+  --primary-foreground: oklch(0.08 0 0);
+  --secondary: oklch(0.2 0.02 285);
+  --secondary-foreground: oklch(0.95 0 0);
+  --muted: oklch(0.15 0.02 285);
+  --muted-foreground: oklch(0.65 0.02 285);
+  --accent: var(--pet-accent);
+  --accent-foreground: oklch(0.08 0 0);
+  --border: oklch(0.25 0.02 285);
+  --input: oklch(0.18 0.02 285);
+  --ring: var(--pet-primary);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -118,5 +149,52 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
   }
+
+  /* Classes utilitaires pour votre thème */
+  .pet-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.55 0.15 150),
+      oklch(0.45 0.18 200)
+    );
+  }
+
+  .animal-card {
+    @apply bg-[oklch(var(--animal-card))] border-[oklch(var(--pet-primary)/0.2)];
+  }
+
+  .owner-card {
+    @apply bg-[oklch(var(--owner-card))] border-[oklch(var(--pet-secondary)/0.2)];
+  }
+
+  .paw-accent {
+    color: oklch(var(--paw-print));
+  }
+}
+
+/* Animations pour les cartes d'animaux */
+@keyframes paw-bounce {
+  0%,
+  20%,
+  53%,
+  80%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%,
+  43% {
+    transform: translate3d(0, -8px, 0);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+.paw-bounce:hover {
+  animation: paw-bounce 1s ease-in-out;
 }
