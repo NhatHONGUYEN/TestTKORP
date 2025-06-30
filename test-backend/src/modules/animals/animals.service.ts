@@ -38,7 +38,7 @@ export class AnimalsService {
       });
       return await this.animalsRepository.save(newAnimal);
     } catch (error: unknown) {
-      throw ApiError.databaseError("Erreur lors de la création de l'animal", {
+      throw ApiError.databaseError('Error while creating the animal', {
         error: (error as Error).message,
       });
     }
@@ -54,12 +54,9 @@ export class AnimalsService {
         { createdAt: 'DESC' },
       );
     } catch (error: unknown) {
-      throw ApiError.databaseError(
-        'Erreur lors de la récupération des animaux',
-        {
-          error: (error as Error).message,
-        },
-      );
+      throw ApiError.databaseError('Error while retrieving animals', {
+        error: (error as Error).message,
+      });
     }
   }
 
@@ -74,12 +71,9 @@ export class AnimalsService {
       }
       return existingAnimal;
     } catch (error: unknown) {
-      throw ApiError.databaseError(
-        "Erreur lors de la récupération de l'animal",
-        {
-          error: (error as Error).message,
-        },
-      );
+      throw ApiError.databaseError('Error while retrieving the animal', {
+        error: (error as Error).message,
+      });
     }
   }
 
@@ -100,12 +94,9 @@ export class AnimalsService {
       Object.assign(animalToUpdate, input);
       return await this.animalsRepository.save(animalToUpdate);
     } catch (error: unknown) {
-      throw ApiError.databaseError(
-        "Erreur lors de la mise à jour de l'animal",
-        {
-          error: (error as Error).message,
-        },
-      );
+      throw ApiError.databaseError('Error while updating the animal', {
+        error: (error as Error).message,
+      });
     }
   }
 
@@ -114,12 +105,9 @@ export class AnimalsService {
       const result = await this.animalsRepository.delete(id);
       return (result.affected ?? 0) > 0;
     } catch (error: unknown) {
-      throw ApiError.databaseError(
-        "Erreur lors de la suppression de l'animal",
-        {
-          error: (error as Error).message,
-        },
-      );
+      throw ApiError.databaseError('Error while deleting the animal', {
+        error: (error as Error).message,
+      });
     }
   }
 
@@ -135,7 +123,7 @@ export class AnimalsService {
       return oldestAnimal;
     } catch (error: unknown) {
       throw ApiError.databaseError(
-        'Erreur lors de la recherche du plus vieil animal',
+        'Error while searching for the oldest animal',
         {
           error: (error as Error).message,
         },
@@ -154,7 +142,7 @@ export class AnimalsService {
         .getRawOne<SpeciesCountRaw>();
 
       if (!result) {
-        throw ApiError.notFound('Aucune espèce trouvée');
+        throw ApiError.notFound('No species found');
       }
 
       return {
@@ -163,7 +151,7 @@ export class AnimalsService {
       };
     } catch (error: unknown) {
       throw ApiError.databaseError(
-        "Erreur lors de la recherche de l'espèce la plus commune",
+        'Error while searching for the most common species',
         {
           error: (error as Error).message,
         },

@@ -16,37 +16,37 @@ export class UpdateAnimalInput extends PartialType(CreateAnimalInput) {
   @IsPositive()
   id: number;
 
-  // ==================== NOM (OPTIONNEL) ====================
+  // ==================== NAME (OPTIONAL) ====================
   @Field({ nullable: true })
   @IsOptional()
   name?: string;
 
-  // ==================== DATE DE NAISSANCE (OPTIONNEL) ====================
+  // ==================== DATE OF BIRTH (OPTIONAL) ====================
   @Field(() => GraphQLISODateTime, { nullable: true })
   @IsOptional()
   dateOfBirth?: Date;
 
-  // ==================== ESPÈCE (OPTIONNEL) ====================
+  // ==================== SPECIES (OPTIONAL) ====================
   @Field({ nullable: true })
   @IsOptional()
   species?: string;
 
-  // ==================== RACE (OPTIONNEL) ====================
+  // ==================== BREED (OPTIONAL) ====================
   @Field({ nullable: true })
   @IsOptional()
   breed?: string;
 
-  // ==================== COULEUR (OPTIONNEL) ====================
+  // ==================== COLOR (OPTIONAL) ====================
   @Field({ nullable: true })
   @IsOptional()
   color?: string;
 
-  // ==================== POIDS (OPTIONNEL) ====================
+  // ==================== WEIGHT (OPTIONAL) ====================
   @Field(() => Int, { nullable: true })
   @IsOptional()
   weight?: number;
 
-  // ==================== ID DU PROPRIÉTAIRE (OPTIONNEL) ====================
+  // ==================== OWNER ID (OPTIONAL) ====================
   @Field(() => Int, { nullable: true })
   @IsOptional()
   ownerId?: number;
