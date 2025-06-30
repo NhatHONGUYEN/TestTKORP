@@ -5,19 +5,15 @@ import { notFound } from "next/navigation";
 import { use } from "react";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
+import { Palette, Scale, Calendar } from "lucide-react";
 import {
-  PawPrint,
-  Scale,
-  Palette,
-  Calendar,
-  User,
-  Mail,
-  ArrowLeft,
-} from "lucide-react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import { getAnimalAvatar, getOwnerAvatar } from "@/lib/avatars";
+  AnimalDetailHeader,
+  AnimalDetailAvatar,
+  AnimalDetailInfoCard,
+  AnimalDetailGeneralInfo,
+} from "@/components/animal";
+import { OwnerDetailInfoCard } from "@/components/owner";
+import { BackButton } from "@/components/common";
 
 export default function AnimalDetailPage({
   params,
@@ -37,132 +33,44 @@ export default function AnimalDetailPage({
     <section className="py-32 max-w-4xl mx-auto">
       <div className="container mx-auto px-4">
         {/* Bouton retour */}
-
-        <Button asChild className="mb-8">
-          <Link href="/animals" className="inline-flex items-center gap-2">
-            <ArrowLeft className="size-4" />
-            Retour aux animaux
-          </Link>
-        </Button>
+        <BackButton href="/animals">Retour aux animaux</BackButton>
 
         {/* En-tête */}
-        <div className="mb-12">
-          <h1 className="my-6 text-2xl font-bold text-pretty lg:text-4xl">
-            {animal.name}
-          </h1>
-          <p className="text-muted-foreground lg:text-xl">
-            {animal.species} • {animal.breed}
-          </p>
-        </div>
+        <AnimalDetailHeader animal={animal} />
 
         {/* Contenu principal */}
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Avatar */}
-          <div className="lg:w-1/3">
-            <div className="aspect-square w-full rounded-lg overflow-hidden">
-              <Image
-                src={getAnimalAvatar(animal.id)}
-                alt={animal.name}
-                width={400}
-                height={400}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+          <AnimalDetailAvatar animalId={animal.id} animalName={animal.name} />
 
           {/* Informations à droite */}
           <div className="lg:w-2/3 space-y-8">
             {/* Informations de base */}
             <div className="space-y-4">
-              <div className="flex items-center gap-3 p-3 bg-background/50 rounded-lg border border-border/50">
-                <Palette className="size-5 text-primary" />
-                <div>
-                  <p className="font-medium">Couleur</p>
-                  <p className="text-sm text-muted-foreground">
-                    {animal.color}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 p-3 bg-background/50 rounded-lg border border-border/50">
-                <Scale className="size-5 text-primary" />
-                <div>
-                  <p className="font-medium">Poids</p>
-                  <p className="text-sm text-muted-foreground">
-                    {animal.weight} kg
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 p-3 bg-background/50 rounded-lg border border-border/50">
-                <Calendar className="size-5 text-primary" />
-                <div>
-                  <p className="font-medium">Date de naissance</p>
-                  <p className="text-sm text-muted-foreground">
-                    {format(new Date(animal.dateOfBirth), "dd MMMM yyyy", {
-                      locale: fr,
-                    })}
-                  </p>
-                </div>
-              </div>
+              <AnimalDetailInfoCard
+                icon={Palette}
+                title="Couleur"
+                value={animal.color}
+              />
+              <AnimalDetailInfoCard
+                icon={Scale}
+                title="Poids"
+                value={`${animal.weight} kg`}
+              />
+              <AnimalDetailInfoCard
+                icon={Calendar}
+                title="Date de naissance"
+                value={format(new Date(animal.dateOfBirth), "dd MMMM yyyy", {
+                  locale: fr,
+                })}
+              />
             </div>
 
             {/* Informations générales */}
-            <div>
-              <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                <PawPrint className="size-5 text-primary" />
-                Informations générales
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-4 bg-accent/30 rounded-lg">
-                  <p className="font-medium text-sm text-muted-foreground">
-                    Espèce
-                  </p>
-                  <p className="font-semibold">{animal.species}</p>
-                </div>
-                <div className="p-4 bg-accent/30 rounded-lg">
-                  <p className="font-medium text-sm text-muted-foreground">
-                    Race
-                  </p>
-                  <p className="font-semibold">{animal.breed}</p>
-                </div>
-              </div>
-            </div>
+            <AnimalDetailGeneralInfo animal={animal} />
 
             {/* Propriétaire */}
-            <div>
-              <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                <User className="size-5 text-primary" />
-                Propriétaire
-              </h2>
-              <Link
-                href={`/owners/${animal.owner.id}`}
-                className="block group hover:bg-accent/50 p-4 rounded-lg transition-all duration-200 border border-border/50 hover:border-primary/20"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="size-16 rounded-lg overflow-hidden">
-                    <Image
-                      src={getOwnerAvatar(animal.owner.id)}
-                      alt={`${animal.owner.firstName} ${animal.owner.lastName}`}
-                      width={64}
-                      height={64}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg group-hover:text-primary transition-colors">
-                      {animal.owner.firstName} {animal.owner.lastName}
-                    </h3>
-                    {animal.owner.email && (
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
-                        <Mail className="size-4" />
-                        <span>{animal.owner.email}</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </Link>
-            </div>
+            <OwnerDetailInfoCard owner={animal.owner} />
           </div>
         </div>
       </div>

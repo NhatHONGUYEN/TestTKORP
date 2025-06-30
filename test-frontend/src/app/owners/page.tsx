@@ -2,7 +2,7 @@
 
 import { useGetOwners } from "@/hooks/api/owners/useGetOwners";
 import { Pagination } from "@/components/common/Pagination";
-import { OwnerCard } from "@/features/owners";
+import { OwnerCard } from "@/components/owner";
 import { useState } from "react";
 
 export default function OwnersPage() {
