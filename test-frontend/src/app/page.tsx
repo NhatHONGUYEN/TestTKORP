@@ -4,21 +4,21 @@ export default function Home() {
   return (
     <Hero
       badge="PetKeeper"
-      heading="Gérez vos animaux facilement"
-      description="Plateforme de gestion pour propriétaires d'animaux et leurs compagnons."
+      heading="Manage your pets easily"
+      description="Management platform for pet owners and their companions."
       buttons={{
         primary: {
-          text: "Voir les animaux",
+          text: "See animals",
           url: "/animals",
         },
         secondary: {
-          text: "Voir les propriétaires",
+          text: "See owners",
           url: "/owners",
         },
       }}
       image={{
         src: "/images/HeroPicture.png",
-        alt: "Interface de gestion des animaux de compagnie",
+        alt: "Pet management interface",
       }}
     />
   );

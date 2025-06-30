@@ -26,9 +26,9 @@ export default function AnimalNotFound() {
         </div>
 
         {/* Titre et description */}
-        <h1 className="text-3xl font-bold mb-4">Animal introuvable</h1>
+        <h1 className="text-3xl font-bold mb-4">Animal not found</h1>
         <p className="text-muted-foreground mb-8 text-lg">
-          Désolé, cet animal n&apos;existe pas ou a été supprimé.
+          Sorry, this animal does not exist or has been deleted.
         </p>
 
         {/* Boutons d'action */}
@@ -36,14 +36,14 @@ export default function AnimalNotFound() {
           <Button asChild>
             <Link href="/animals">
               <ArrowLeft className="size-4 mr-2" />
-              Retour aux animaux
+              Back to animals
             </Link>
           </Button>
 
           <Button variant="outline" asChild>
             <Link href="/">
               <Home className="size-4 mr-2" />
-              Accueil
+              Home
             </Link>
           </Button>
         </div>

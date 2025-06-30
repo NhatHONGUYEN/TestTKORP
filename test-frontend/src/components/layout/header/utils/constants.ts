@@ -7,6 +7,6 @@ export const NAV_LOGO: LogoConfig = {
 
 export const NAV_ITEMS: NavItem[] = [
   { name: "Accueil", link: "/" },
-  { name: "Propriétaires", link: "/owners" },
-  { name: "Animaux", link: "/animals" },
+  { name: "Owners", link: "/owners" },
+  { name: "Animals", link: "/animals" },
 ];

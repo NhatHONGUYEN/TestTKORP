@@ -35,7 +35,7 @@ export default function OwnerDetailPage({
     <section className="py-32 max-w-4xl mx-auto">
       <div className="container mx-auto px-4">
         {/* Bouton retour */}
-        <BackButton href="/owners">Retour aux propriétaires</BackButton>
+        <BackButton href="/owners">Back to owners</BackButton>
 
         {/* En-tête */}
         <OwnerDetailHeader owner={owner} />

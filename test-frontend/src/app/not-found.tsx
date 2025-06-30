@@ -14,26 +14,26 @@ export default function NotFound() {
             {/* Titre */}
             <div className="space-y-2">
               <h1 className="text-2xl font-bold text-gray-900">
-                Page introuvable
+                Page not found
               </h1>
               <p className="text-gray-600">
-                Désolé, la page que vous recherchez n&apos;existe pas ou a été
-                déplacée.
+                Sorry, the page you are looking for does not exist or has been
+                moved.
               </p>
             </div>
 
             {/* Actions */}
             <div className="flex flex-col lg:flex-row gap-3 justify-center">
               <Button asChild>
-                <Link href="/">Retour à l&apos;accueil</Link>
+                <Link href="/">Back to home</Link>
               </Button>
 
               <Button variant="outline" asChild>
-                <Link href="/animals">Voir les animaux</Link>
+                <Link href="/animals">See animals</Link>
               </Button>
 
               <Button variant="outline" asChild>
-                <Link href="/owners">Voir les propriétaires</Link>
+                <Link href="/owners">See owners</Link>
               </Button>
             </div>
           </div>

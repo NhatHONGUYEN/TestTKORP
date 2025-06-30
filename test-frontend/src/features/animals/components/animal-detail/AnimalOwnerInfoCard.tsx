@@ -19,7 +19,7 @@ export default function AnimalOwnerInfoCard({
     <div>
       <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
         <User className="size-5 text-primary" />
-        Propriétaire
+        Owner
       </h2>
       <Link
         href={`/owners/${owner.id}`}

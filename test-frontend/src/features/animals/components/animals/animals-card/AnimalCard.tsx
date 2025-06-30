@@ -36,16 +36,16 @@ export default function AnimalCard({ animal }: AnimalCardProps) {
         <div className="w-full py-3 space-y-2">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Palette className="size-4 text-primary" />
-            <span>Couleur: {animal.color}</span>
+            <span>Color: {animal.color}</span>
           </div>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Scale className="size-4 text-primary" />
-            <span>Poids: {animal.weight} kg</span>
+            <span>Weight: {animal.weight} kg</span>
           </div>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <User className="size-4 text-primary" />
             <span>
-              Propriétaire: {animal.owner.firstName} {animal.owner.lastName}
+              Owner: {animal.owner.firstName} {animal.owner.lastName}
             </span>
           </div>
         </div>

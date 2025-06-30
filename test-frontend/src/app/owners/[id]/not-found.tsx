@@ -26,9 +26,9 @@ export default function OwnerNotFound() {
         </div>
 
         {/* Titre et description */}
-        <h1 className="text-3xl font-bold mb-4">Propriétaire introuvable</h1>
-        <p className="text-muted-foreground mb-8 text-lg">
-          Désolé, ce propriétaire n&apos;existe pas ou a été supprimé.
+        <h1 className="text-3xl font-bold mb-4">Owner not found</h1>
+        <p className="text-gray-600 mb-8">
+          Sorry, this owner does not exist or has been deleted.
         </p>
 
         {/* Boutons d'action */}

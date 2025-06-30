@@ -26,17 +26,17 @@ export default function OwnersNotFound() {
             </div>
           </div>
 
-          <h1 className="text-4xl font-bold mb-4">Propriétaire introuvable</h1>
-          <p className="text-muted-foreground text-lg mb-8 max-w-md">
-            Désolé, le propriétaire que vous recherchez n&apos;existe pas ou a
-            été supprimé de notre base de données.
+          <h1 className="text-4xl font-bold mb-4">Owner not found</h1>
+          <p className="text-muted-foreground mb-8 text-lg">
+            Sorry, the owner you are looking for does not exist or has been
+            deleted.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Button asChild>
               <Link href="/owners">
                 <ArrowLeft className="size-4 mr-2" />
-                Retour aux propriétaires
+                Back to owners
               </Link>
             </Button>
 

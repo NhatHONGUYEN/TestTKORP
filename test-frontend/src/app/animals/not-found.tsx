@@ -28,15 +28,15 @@ export default function AnimalsNotFound() {
 
           <h1 className="text-4xl font-bold mb-4">Animal introuvable</h1>
           <p className="text-muted-foreground text-lg mb-8 max-w-md">
-            Désolé, l&apos;animal que vous recherchez n&apos;existe pas ou a été
-            supprimé de notre base de données.
+            Sorry, the animal you are looking for does not exist or has been
+            removed from our database.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Button asChild>
               <Link href="/animals">
                 <ArrowLeft className="size-4 mr-2" />
-                Retour aux animaux
+                Back to animals
               </Link>
             </Button>
 

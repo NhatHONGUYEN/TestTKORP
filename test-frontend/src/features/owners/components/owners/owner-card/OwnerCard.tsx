@@ -38,7 +38,7 @@ export default function OwnerCard({ owner }: OwnerCardProps) {
           <div className="flex items-center gap-2 mb-2">
             <PawPrint className="size-4 text-primary" />
             <span className="font-medium">
-              Animaux ({owner.animals.length})
+              Animals ({owner.animals.length})
             </span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">

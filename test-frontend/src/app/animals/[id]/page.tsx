@@ -39,7 +39,7 @@ export default function AnimalDetailPage({
     <section className="py-32 max-w-4xl mx-auto">
       <div className="container mx-auto px-4">
         {/* Bouton retour */}
-        <BackButton href="/animals">Retour aux animaux</BackButton>
+        <BackButton href="/animals">Back to animals</BackButton>
 
         {/* En-tête */}
         <AnimalDetailHeader animal={animal} />
@@ -55,17 +55,17 @@ export default function AnimalDetailPage({
             <div className="space-y-4">
               <AnimalDetailInfoCard
                 icon={Palette}
-                title="Couleur"
+                title="Color"
                 value={animal.color}
               />
               <AnimalDetailInfoCard
                 icon={Scale}
-                title="Poids"
+                title="Weight"
                 value={`${animal.weight} kg`}
               />
               <AnimalDetailInfoCard
                 icon={Calendar}
-                title="Date de naissance"
+                title="Birth date"
                 value={format(new Date(animal.dateOfBirth), "dd MMMM yyyy", {
                   locale: fr,
                 })}
