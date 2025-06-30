@@ -13,6 +13,3 @@ export {
 
 // Animals Components
 export { AnimalsHeader, AnimalsListSection } from "./components/animals";
-
-// Common Components
-export { BackButton } from "./components/common";
