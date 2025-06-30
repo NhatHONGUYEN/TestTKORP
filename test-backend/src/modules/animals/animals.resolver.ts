@@ -26,8 +26,19 @@ export class AnimalsResolver {
   }
 
   @Query(() => PaginatedAnimal)
-  async animals(@Args() { page, limit }: PaginationArgs) {
-    return await this.animalsService.findAll(page, limit);
+  async animals(
+    @Args('page', { type: () => Int, defaultValue: 1 }) page: number,
+    @Args('limit', { type: () => Int, defaultValue: 10 }) limit: number,
+  ) {
+    console.log('🎯 Animals Resolver received:', { page, limit });
+    const result = await this.animalsService.findAll(page, limit);
+    console.log('📦 Animals Resolver sending:', {
+      page: result.meta.currentPage,
+      totalPages: result.meta.totalPages,
+      firstItemId: result.items[0]?.id,
+      lastItemId: result.items[result.items.length - 1]?.id,
+    });
+    return result;
   }
 
   @Query(() => Animal)

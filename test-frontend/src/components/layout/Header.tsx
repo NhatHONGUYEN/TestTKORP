@@ -4,7 +4,6 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 
-import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -101,20 +100,8 @@ export const Header = () => {
             </NavigationMenuList>
           </NavigationMenu>
 
-          {/* Menu mobile et bouton de recherche */}
+          {/* Menu mobile */}
           <div className="flex items-center gap-4">
-            {/* Bouton de recherche - Desktop */}
-            <div className="hidden md:flex">
-              <Button
-                variant="outline"
-                size="sm"
-                className="h-10 py-2.5 text-sm font-normal bg-background hover:bg-accent text-primary hover:text-accent-foreground"
-              >
-                RECHERCHER
-              </Button>
-            </div>
-
-            {/* Menu Mobile */}
             <MobileNav activeItem={activeItem} setActiveItem={setActiveItem} />
           </div>
         </div>
@@ -183,11 +170,6 @@ const MobileNav = ({
                 </Link>
               </li>
             ))}
-            <li className="flex flex-col px-7 py-2">
-              <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                RECHERCHER
-              </Button>
-            </li>
           </ul>
         </PopoverContent>
       </Popover>

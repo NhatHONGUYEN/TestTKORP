@@ -1,24 +1,38 @@
 "use client";
+
 import {
   ApolloClient,
-  ApolloProvider,
   InMemoryCache,
   HttpLink,
+  ApolloProvider,
 } from "@apollo/client";
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: process.env.NEXT_PUBLIC_GRAPHQL_URL || "http://localhost:4000/graphql",
+    uri: "http://localhost:4000/graphql",
   }),
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          owners: {
+            keyArgs: false,
+            merge: false,
+          },
+          animals: {
+            keyArgs: false,
+            merge: false,
+          },
+        },
+      },
+    },
+  }),
   defaultOptions: {
     watchQuery: {
-      fetchPolicy: "network-only",
-      errorPolicy: "all",
+      fetchPolicy: "no-cache",
     },
     query: {
-      fetchPolicy: "network-only",
-      errorPolicy: "all",
+      fetchPolicy: "no-cache",
     },
   },
 });

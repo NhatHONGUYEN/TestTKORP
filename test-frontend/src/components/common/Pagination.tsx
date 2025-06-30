@@ -22,6 +22,10 @@ export function Pagination({
   totalPages,
   onPageChange,
 }: PaginationProps) {
+  const handlePageChange = (newPage: number) => {
+    onPageChange(newPage);
+  };
+
   return (
     <UIPagination className="mt-4">
       <PaginationContent>
@@ -30,7 +34,7 @@ export function Pagination({
             href="#"
             onClick={(e) => {
               e.preventDefault();
-              if (currentPage > 1) onPageChange(currentPage - 1);
+              if (currentPage > 1) handlePageChange(currentPage - 1);
             }}
           />
         </PaginationItem>
@@ -50,7 +54,7 @@ export function Pagination({
                   isActive={page === currentPage}
                   onClick={(e) => {
                     e.preventDefault();
-                    onPageChange(page);
+                    handlePageChange(page);
                   }}
                 >
                   {page}
@@ -72,7 +76,7 @@ export function Pagination({
             href="#"
             onClick={(e) => {
               e.preventDefault();
-              if (currentPage < totalPages) onPageChange(currentPage + 1);
+              if (currentPage < totalPages) handlePageChange(currentPage + 1);
             }}
           />
         </PaginationItem>

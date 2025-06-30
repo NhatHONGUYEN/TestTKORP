@@ -3,8 +3,8 @@ import { ArgsType, Field, Int } from '@nestjs/graphql';
 @ArgsType()
 export class PaginationArgs {
   @Field(() => Int, { defaultValue: 1 })
-  page: number;
+  page: number = 1;
 
   @Field(() => Int, { defaultValue: 10 })
-  limit: number;
+  limit: number = 10;
 }

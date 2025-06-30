@@ -32,14 +32,17 @@ export class OwnersService {
 
   async findAll(page: number = 1, limit: number = 10) {
     try {
+      const pageNum = Number(page);
+      const limitNum = Number(limit);
+
       return await PaginationService.paginate(
         this.ownersRepository,
-        page,
-        limit,
+        pageNum,
+        limitNum,
         ['animals'],
-        { createdAt: 'DESC' },
+        { id: 'ASC' },
       );
-    } catch (error: unknown) {
+    } catch (error) {
       throw ApiError.databaseError(
         'Erreur lors de la récupération des propriétaires',
         { error: (error as Error).message },

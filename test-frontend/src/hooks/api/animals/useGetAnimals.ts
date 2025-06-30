@@ -14,14 +14,25 @@ interface UseGetAnimalsProps {
 
 export const useGetAnimals = ({
   page = 1,
-  limit = 4,
+  limit = 10,
 }: UseGetAnimalsProps = {}) => {
+  console.log("🔍 useGetAnimals called with:", { page, limit });
+
   const { data, loading, error, refetch } = useQuery<GetAnimalsResponse>(
     GET_ANIMALS,
     {
       variables: { page, limit },
+      fetchPolicy: "network-only",
+      notifyOnNetworkStatusChange: true,
     }
   );
+
+  console.log("📊 useGetAnimals data:", {
+    items: data?.animals.items?.length,
+    meta: data?.animals.meta,
+    loading,
+    error: error?.message,
+  });
 
   return {
     animals: data?.animals.items || [],

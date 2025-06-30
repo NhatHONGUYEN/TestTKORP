@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const GET_OWNERS = gql`
-  query GetOwners($page: Int = 1, $limit: Int = 10) {
+  query GetOwners($page: Int!, $limit: Int!) {
     owners(page: $page, limit: $limit) {
       items {
         id

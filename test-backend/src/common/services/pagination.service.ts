@@ -13,11 +13,14 @@ export class PaginationService {
     page: number = 1,
     limit: number = 10,
     relations: string[] = [],
-    orderBy: { [key: string]: 'ASC' | 'DESC' } = { id: 'DESC' },
+    orderBy: { [key: string]: 'ASC' | 'DESC' } = { id: 'ASC' },
   ): Promise<{ items: T[]; meta: PaginationMeta }> {
+    const currentPage = Math.max(1, page);
+    const skip = (currentPage - 1) * limit;
+
     const [items, total] = await repository.findAndCount({
       relations,
-      skip: (page - 1) * limit,
+      skip,
       take: limit,
       order: orderBy as FindOptionsOrder<T>,
     });
@@ -28,7 +31,7 @@ export class PaginationService {
         totalItems: total,
         itemsPerPage: limit,
         totalPages: Math.ceil(total / limit),
-        currentPage: page,
+        currentPage: currentPage,
       },
     };
   }

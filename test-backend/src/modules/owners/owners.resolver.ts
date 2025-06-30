@@ -10,7 +10,6 @@ import { OwnersService } from './owners.service';
 import { Owner } from './entities/owner.entity';
 import { CreateOwnerInput } from './dto/create-owner.input';
 import { UpdateOwnerInput } from './dto/update-owner.input';
-import { PaginationArgs } from 'src/common/dto/pagination.args';
 import { Paginated } from 'src/common/graphql/pagination.graphql';
 import {
   OwnerAnimalsCount,
@@ -30,7 +29,10 @@ export class OwnersResolver {
   }
 
   @Query(() => PaginatedOwner)
-  async owners(@Args() { page, limit }: PaginationArgs) {
+  async owners(
+    @Args('page', { type: () => Int, defaultValue: 1 }) page: number,
+    @Args('limit', { type: () => Int, defaultValue: 10 }) limit: number,
+  ) {
     return await this.ownersService.findAll(page, limit);
   }
 
