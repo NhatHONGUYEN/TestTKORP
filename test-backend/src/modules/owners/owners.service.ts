@@ -5,11 +5,11 @@ import { Owner } from './entities/owner.entity';
 import { CreateOwnerInput } from './dto/create-owner.input';
 import { UpdateOwnerInput } from './dto/update-owner.input';
 import { ApiError } from 'src/common/exceptions';
+import { PaginationService } from 'src/common/services/pagination.service';
 import {
   OwnerAnimalsCount,
   OwnerCatsCount,
-} from 'src/common/types/statistics.types';
-import { PaginationService } from 'src/common/services/pagination.service';
+} from 'src/common/graphql/statistics.graphql';
 
 @Injectable()
 export class OwnersService {

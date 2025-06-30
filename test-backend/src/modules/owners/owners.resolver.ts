@@ -11,11 +11,11 @@ import { Owner } from './entities/owner.entity';
 import { CreateOwnerInput } from './dto/create-owner.input';
 import { UpdateOwnerInput } from './dto/update-owner.input';
 import { PaginationArgs } from 'src/common/dto/pagination.args';
+import { Paginated } from 'src/common/graphql/pagination.graphql';
 import {
   OwnerAnimalsCount,
   OwnerCatsCount,
-} from 'src/common/types/statistics.types';
-import { Paginated } from 'src/common/types/pagination.types';
+} from 'src/common/graphql/statistics.graphql';
 
 @ObjectType()
 class PaginatedOwner extends Paginated(Owner) {}

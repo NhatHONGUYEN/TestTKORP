@@ -29,14 +29,14 @@ services:
       - ./test-backend:/app
       - /app/node_modules
     environment:
-      - DB_HOST=mysql # ✅ CORRIGÉ : utilise le nom du service
+      - DB_HOST=mysql
       - DB_PORT=3306
-      - DB_USERNAME=MySQL80 # ✅ CORRIGÉ : utilise l'utilisateur créé
+      - DB_USERNAME=MySQL80
       - DB_PASSWORD=NestJs_2025!
       - DB_DATABASE=test_crud
     depends_on:
       mysql:
-        condition: service_healthy # ✅ Attend que MySQL soit prêt
+        condition: service_healthy
     networks:
       - app-network
 

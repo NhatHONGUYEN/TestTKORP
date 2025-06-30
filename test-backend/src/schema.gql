@@ -29,6 +29,13 @@ type Owner {
   animals: [Animal!]
 }
 
+type PaginationMeta {
+  totalItems: Int!
+  itemsPerPage: Int!
+  totalPages: Int!
+  currentPage: Int!
+}
+
 type OwnerAnimalsCount {
   owner: Owner!
   animalCount: Int!
@@ -47,13 +54,6 @@ type OwnerHeaviestAnimal {
 type OwnerAnimalsWeight {
   owner: Owner!
   totalWeight: Float!
-}
-
-type PaginationMeta {
-  totalItems: Int!
-  itemsPerPage: Int!
-  totalPages: Int!
-  currentPage: Int!
 }
 
 type PaginatedOwner {

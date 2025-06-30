@@ -2,6 +2,11 @@ import { ObjectType, Field, Int, Float } from '@nestjs/graphql';
 import { Animal } from 'src/modules/animals/entities/animal.entity';
 import { Owner } from 'src/modules/owners/entities/owner.entity';
 
+export interface SpeciesCountRaw {
+  species: string;
+  count: string;
+}
+
 @ObjectType()
 export class SpeciesCount {
   @Field()

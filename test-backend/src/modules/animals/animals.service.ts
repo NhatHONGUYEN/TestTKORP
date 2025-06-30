@@ -6,12 +6,12 @@ import { Owner } from '../owners/entities/owner.entity';
 import { CreateAnimalInput } from './dto/create-animal.input';
 import { UpdateAnimalInput } from './dto/update-animal.input';
 import { ApiError } from 'src/common/exceptions';
+import { format } from 'date-fns';
+import { PaginationService } from 'src/common/services/pagination.service';
 import {
   SpeciesCount,
   SpeciesCountRaw,
-} from 'src/common/types/statistics.types';
-import { format } from 'date-fns';
-import { PaginationService } from 'src/common/services/pagination.service';
+} from 'src/common/graphql/statistics.graphql';
 
 @Injectable()
 export class AnimalsService {

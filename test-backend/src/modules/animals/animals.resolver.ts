@@ -11,7 +11,7 @@ import { Animal } from './entities/animal.entity';
 import { CreateAnimalInput } from './dto/create-animal.input';
 import { UpdateAnimalInput } from './dto/update-animal.input';
 import { PaginationArgs } from 'src/common/dto/pagination.args';
-import { Paginated } from 'src/common/types/pagination.types';
+import { Paginated } from 'src/common/graphql/pagination.graphql';
 
 @ObjectType()
 class PaginatedAnimal extends Paginated(Animal) {}
