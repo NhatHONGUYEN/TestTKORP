@@ -6,14 +6,15 @@ import { use } from "react";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 import { Palette, Scale, Calendar } from "lucide-react";
+
+import { BackButton } from "@/components/common";
 import {
   AnimalDetailHeader,
   AnimalDetailAvatar,
   AnimalDetailInfoCard,
   AnimalDetailGeneralInfo,
   AnimalOwnerInfoCard,
-} from "@/components/animal";
-import { BackButton } from "@/components/common";
+} from "@/features/animals/components/animal-detail";
 
 export default function AnimalDetailPage({
   params,

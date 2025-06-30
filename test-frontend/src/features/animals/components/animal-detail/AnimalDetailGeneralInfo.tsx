@@ -1,11 +1,13 @@
 import { PawPrint } from "lucide-react";
 import { Animal } from "@/types/animal.type";
 
-interface AnimalGeneralInfoProps {
+interface AnimalDetailGeneralInfoProps {
   animal: Animal;
 }
 
-export default function AnimalGeneralInfo({ animal }: AnimalGeneralInfoProps) {
+export default function AnimalDetailGeneralInfo({
+  animal,
+}: AnimalDetailGeneralInfoProps) {
   return (
     <div>
       <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">

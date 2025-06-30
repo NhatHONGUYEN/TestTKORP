@@ -1,5 +1,5 @@
-export { default as AnimalHeader } from "./AnimalHeader";
-export { default as AnimalAvatar } from "./AnimalAvatar";
-export { default as AnimalInfoCard } from "./AnimalInfoCard";
-export { default as AnimalGeneralInfo } from "./AnimalGeneralInfo";
-export { default as OwnerInfoCard } from "./OwnerInfoCard";
+export { default as AnimalDetailHeader } from "./AnimalDetailHeader";
+export { default as AnimalDetailAvatar } from "./AnimalDetailAvatar";
+export { default as AnimalDetailInfoCard } from "./AnimalDetailInfoCard";
+export { default as AnimalDetailGeneralInfo } from "./AnimalDetailGeneralInfo";
+export { default as AnimalOwnerInfoCard } from "./AnimalOwnerInfoCard";

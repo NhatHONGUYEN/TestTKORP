@@ -4,11 +4,11 @@ export type { AnimalCardProps } from "./components/animals/animals-card";
 
 // Animal Detail Components
 export {
-  AnimalHeader,
-  AnimalAvatar,
-  AnimalInfoCard,
-  AnimalGeneralInfo,
-  OwnerInfoCard,
+  AnimalDetailHeader,
+  AnimalDetailAvatar,
+  AnimalDetailInfoCard,
+  AnimalDetailGeneralInfo,
+  AnimalOwnerInfoCard,
 } from "./components/animal-detail";
 
 // Animals Components

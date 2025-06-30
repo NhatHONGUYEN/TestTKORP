@@ -1,10 +1,12 @@
 import { Animal } from "@/types/animal.type";
 
-interface AnimalHeaderProps {
+interface AnimalDetailHeaderProps {
   animal: Animal;
 }
 
-export default function AnimalHeader({ animal }: AnimalHeaderProps) {
+export default function AnimalDetailHeader({
+  animal,
+}: AnimalDetailHeaderProps) {
   return (
     <div className="mb-12">
       <h1 className="my-6 text-2xl font-bold text-pretty lg:text-4xl">
