@@ -2,7 +2,7 @@
 
 import { useGetAnimals } from "@/hooks/api/animals/useGetAnimals";
 import { Pagination } from "@/components/common/Pagination";
-import AnimalCard from "@/features/animals/components/animal-card/AnimalCard";
+import AnimalCard from "@/features/animals/components/animals/animals-card/AnimalCard";
 import { useState } from "react";
 
 export default function AnimalsListSection() {

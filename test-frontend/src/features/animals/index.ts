@@ -1,6 +1,6 @@
-// Animal Card
-export { default as AnimalCard } from "./components/animal-card";
-export type { AnimalCardProps } from "./components/animal-card";
+// Animals Card
+export { default as AnimalCard } from "./components/animals/animals-card";
+export type { AnimalCardProps } from "./components/animals/animals-card";
 
 // Animal Detail Components
 export {

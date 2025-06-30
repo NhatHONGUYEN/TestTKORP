@@ -2,7 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { Scale, Palette, User } from "lucide-react";
 import { getAnimalAvatar } from "@/lib/avatars";
-import { AnimalCardProps } from "./animal-card.types";
+import { Animal } from "@/types/animal.type";
+
+export interface AnimalCardProps {
+  animal: Animal;
+}
 
 export default function AnimalCard({ animal }: AnimalCardProps) {
   return (
