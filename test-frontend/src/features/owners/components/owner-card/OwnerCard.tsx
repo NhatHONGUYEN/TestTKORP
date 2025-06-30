@@ -15,6 +15,7 @@ export default function OwnerCard({ owner }: OwnerCardProps) {
           src={getOwnerAvatar(owner.id)}
           alt={`${owner.firstName} ${owner.lastName}`}
           className="w-full h-full object-cover"
+          quality={100}
           width={192}
           height={192}
         />

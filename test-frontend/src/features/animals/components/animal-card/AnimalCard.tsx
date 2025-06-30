@@ -16,6 +16,7 @@ export default function AnimalCard({ animal }: AnimalCardProps) {
           alt={animal.name}
           width={192}
           height={192}
+          quality={100}
           className="w-full h-full object-cover"
         />
       </div>
