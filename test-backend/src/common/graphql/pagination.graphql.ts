@@ -1,7 +1,13 @@
 // src/common/graphql/pagination.graphql.ts
 import { Type } from '@nestjs/common';
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { IPaginationMeta } from '../types/pagination.types';
+
+export interface IPaginationMeta {
+  totalItems: number;
+  itemsPerPage: number;
+  totalPages: number;
+  currentPage: number;
+}
 
 @ObjectType()
 export class PaginationMeta implements IPaginationMeta {

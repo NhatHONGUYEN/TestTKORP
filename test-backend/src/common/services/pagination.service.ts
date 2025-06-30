@@ -1,6 +1,6 @@
 // src/common/services/pagination.service.ts
 import { Repository, FindOptionsOrder } from 'typeorm';
-import { PaginationMeta } from '../types/pagination.types';
+import { PaginationMeta } from '../graphql/pagination.graphql';
 
 interface HasId {
   id: number;

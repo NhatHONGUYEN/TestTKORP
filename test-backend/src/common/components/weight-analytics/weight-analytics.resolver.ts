@@ -1,9 +1,9 @@
 import { Resolver, Query } from '@nestjs/graphql';
 import { WeightAnalyticsService } from './weight-analytics.service';
 import {
-  OwnerHeaviestAnimal,
   OwnerAnimalsWeight,
-} from 'src/common/types/statistics.types';
+  OwnerHeaviestAnimal,
+} from 'src/common/graphql/statistics.graphql';
 
 @Resolver()
 export class WeightAnalyticsResolver {

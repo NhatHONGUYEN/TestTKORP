@@ -5,9 +5,9 @@ import { Animal } from 'src/modules/animals/entities/animal.entity';
 import { Owner } from 'src/modules/owners/entities/owner.entity';
 import { ApiError } from 'src/common/exceptions';
 import {
-  OwnerHeaviestAnimal,
   OwnerAnimalsWeight,
-} from 'src/common/types/statistics.types';
+  OwnerHeaviestAnimal,
+} from 'src/common/graphql/statistics.graphql';
 
 @Injectable()
 export class WeightAnalyticsService {
