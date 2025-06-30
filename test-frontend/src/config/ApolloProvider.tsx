@@ -16,12 +16,30 @@ const client = new ApolloClient({
       Query: {
         fields: {
           owners: {
-            keyArgs: false,
-            merge: false,
+            keyArgs: ["page", "limit"],
+            merge(existing, incoming, { args }) {
+              const merged = existing ? { ...existing } : {};
+              const key = `${args?.page || 1}-${args?.limit || 10}`;
+              merged[key] = incoming;
+              return merged;
+            },
+            read(existing, { args }) {
+              const key = `${args?.page || 1}-${args?.limit || 10}`;
+              return existing?.[key];
+            },
           },
           animals: {
-            keyArgs: false,
-            merge: false,
+            keyArgs: ["page", "limit"],
+            merge(existing, incoming, { args }) {
+              const merged = existing ? { ...existing } : {};
+              const key = `${args?.page || 1}-${args?.limit || 10}`;
+              merged[key] = incoming;
+              return merged;
+            },
+            read(existing, { args }) {
+              const key = `${args?.page || 1}-${args?.limit || 10}`;
+              return existing?.[key];
+            },
           },
         },
       },
@@ -29,10 +47,11 @@ const client = new ApolloClient({
   }),
   defaultOptions: {
     watchQuery: {
-      fetchPolicy: "no-cache",
+      fetchPolicy: "cache-first",
+      nextFetchPolicy: "cache-first",
     },
     query: {
-      fetchPolicy: "no-cache",
+      fetchPolicy: "cache-first",
     },
   },
 });

@@ -11,6 +11,8 @@ export const useGetOwnerById = (id: number) => {
     GET_OWNER_BY_ID,
     {
       variables: { id },
+      fetchPolicy: "cache-first",
+      nextFetchPolicy: "cache-first",
     }
   );
 

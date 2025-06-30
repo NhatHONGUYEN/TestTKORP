@@ -20,7 +20,8 @@ export const useGetAnimals = ({
     GET_ANIMALS,
     {
       variables: { page, limit },
-      fetchPolicy: "network-only",
+      fetchPolicy: "cache-first",
+      nextFetchPolicy: "cache-first",
       notifyOnNetworkStatusChange: true,
     }
   );

@@ -11,6 +11,8 @@ export const useGetAnimalById = (id: number) => {
     GET_ANIMAL_BY_ID,
     {
       variables: { id },
+      fetchPolicy: "cache-first",
+      nextFetchPolicy: "cache-first",
     }
   );
 

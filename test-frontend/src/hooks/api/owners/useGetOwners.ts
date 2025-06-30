@@ -21,8 +21,9 @@ export const useGetOwners = ({
     GET_OWNERS,
     {
       variables: { page, limit },
-      fetchPolicy: "network-only",
-      nextFetchPolicy: "network-only",
+      fetchPolicy: "cache-first",
+      nextFetchPolicy: "cache-first",
+      notifyOnNetworkStatusChange: true,
     }
   );
 
