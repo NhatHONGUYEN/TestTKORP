@@ -48,9 +48,9 @@ export default function OwnerDetailPage({
             ownerName={`${owner.firstName} ${owner.lastName}`}
           />
 
-          {/* Informations à droite */}
+          {/* Right information */}
           <div className="lg:w-2/3 space-y-8">
-            {/* Informations de contact */}
+            {/* Contact information */}
             <div className="space-y-4">
               <OwnerDetailInfoCard
                 icon={Mail}

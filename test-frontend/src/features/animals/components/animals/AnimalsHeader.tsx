@@ -1,7 +1,7 @@
 export default function AnimalsHeader() {
   return (
     <div className="container mx-auto flex flex-col items-start text-left">
-      <p className="semibold text-primary">Nos compagnons</p>
+      <p className="semibold text-primary">Our pets</p>
       <h1 className="my-6 text-2xl font-bold text-pretty lg:text-4xl">
         Discover our animals
       </h1>

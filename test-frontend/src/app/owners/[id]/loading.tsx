@@ -27,9 +27,9 @@ export default function OwnerDetailLoading() {
             </div>
           </div>
 
-          {/* Informations à droite */}
+          {/* Right information */}
           <div className="lg:w-2/3 space-y-8">
-            {/* Informations de contact skeleton */}
+            {/* Contact information skeleton */}
             <div className="space-y-4">
               <div className="flex items-center gap-3 p-3 bg-background/50 rounded-lg border border-border/50">
                 <Mail className="size-5 text-primary" />

@@ -49,9 +49,10 @@ export default function AnimalDetailPage({
           {/* Avatar */}
           <AnimalDetailAvatar animalId={animal.id} animalName={animal.name} />
 
-          {/* Informations à droite */}
+          {/* Right information */}
           <div className="lg:w-2/3 space-y-8">
-            {/* Informations de base */}
+            {/* Right information */}
+            {/* Basic information */}
             <div className="space-y-4">
               <AnimalDetailInfoCard
                 icon={Palette}
@@ -72,7 +73,7 @@ export default function AnimalDetailPage({
               />
             </div>
 
-            {/* Informations générales */}
+            {/* General information */}
             <AnimalDetailGeneralInfo animal={animal} />
 
             {/* Propriétaire */}

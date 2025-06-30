@@ -33,9 +33,9 @@ export default function AnimalDetailLoading() {
             </div>
           </div>
 
-          {/* Informations à droite */}
+          {/* Right information */}
           <div className="lg:w-2/3 space-y-8">
-            {/* Informations de base skeleton */}
+            {/* Basic information skeleton */}
             <div className="space-y-4">
               <div className="flex items-center gap-3 p-3 bg-background/50 rounded-lg border border-border/50">
                 <Palette className="size-5 text-primary" />
@@ -62,7 +62,7 @@ export default function AnimalDetailLoading() {
               </div>
             </div>
 
-            {/* Informations générales skeleton */}
+            {/* General information skeleton */}
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <PawPrint className="size-5 text-primary" />
