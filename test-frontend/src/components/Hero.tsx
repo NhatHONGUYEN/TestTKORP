@@ -45,7 +45,7 @@ export default function Hero({
 }: HeroProps) {
   return (
     <section className="min-h-[82vh] flex items-center mt-[8vh]">
-      <div className="container mx-auto">
+      <div className="container max-w-7xl mx-auto">
         <div className="grid items-center gap-8 lg:grid-cols-2">
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
             {badge && (
