@@ -16,8 +16,6 @@ export const useGetAnimals = ({
   page = 1,
   limit = 10,
 }: UseGetAnimalsProps = {}) => {
-  console.log("🔍 useGetAnimals called with:", { page, limit });
-
   const { data, loading, error, refetch } = useQuery<GetAnimalsResponse>(
     GET_ANIMALS,
     {
@@ -26,13 +24,6 @@ export const useGetAnimals = ({
       notifyOnNetworkStatusChange: true,
     }
   );
-
-  console.log("📊 useGetAnimals data:", {
-    items: data?.animals.items?.length,
-    meta: data?.animals.meta,
-    loading,
-    error: error?.message,
-  });
 
   return {
     animals: data?.animals.items || [],

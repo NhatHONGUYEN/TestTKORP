@@ -16,13 +16,6 @@ export default function OwnersPage() {
     refetch({ page: currentPage });
   }, [currentPage, refetch]);
 
-  console.log("🏠 OwnersPage render:", {
-    currentPage,
-    ownersCount: owners.length,
-    meta,
-    isLoading,
-  });
-
   const handlePageChange = async (page: number) => {
     setCurrentPage(page);
     try {

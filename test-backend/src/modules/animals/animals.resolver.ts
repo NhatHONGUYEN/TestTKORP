@@ -10,7 +10,6 @@ import { AnimalsService } from './animals.service';
 import { Animal } from './entities/animal.entity';
 import { CreateAnimalInput } from './dto/create-animal.input';
 import { UpdateAnimalInput } from './dto/update-animal.input';
-import { PaginationArgs } from 'src/common/dto/pagination.args';
 import { Paginated } from 'src/common/graphql/pagination.graphql';
 
 @ObjectType()
@@ -30,15 +29,7 @@ export class AnimalsResolver {
     @Args('page', { type: () => Int, defaultValue: 1 }) page: number,
     @Args('limit', { type: () => Int, defaultValue: 10 }) limit: number,
   ) {
-    console.log('🎯 Animals Resolver received:', { page, limit });
-    const result = await this.animalsService.findAll(page, limit);
-    console.log('📦 Animals Resolver sending:', {
-      page: result.meta.currentPage,
-      totalPages: result.meta.totalPages,
-      firstItemId: result.items[0]?.id,
-      lastItemId: result.items[result.items.length - 1]?.id,
-    });
-    return result;
+    return await this.animalsService.findAll(page, limit);
   }
 
   @Query(() => Animal)

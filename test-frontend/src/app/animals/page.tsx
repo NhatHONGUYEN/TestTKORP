@@ -12,15 +12,7 @@ export default function AnimalsPage() {
     page: currentPage,
   });
 
-  console.log("🐾 AnimalsPage render:", {
-    currentPage,
-    animalsCount: animals.length,
-    meta,
-    isLoading,
-  });
-
   const handlePageChange = (page: number) => {
-    console.log("📄 Page change requested:", { from: currentPage, to: page });
     setCurrentPage(page);
   };
 
