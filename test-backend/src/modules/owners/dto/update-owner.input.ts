@@ -1,15 +1,13 @@
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 import { CreateOwnerInput } from './create-owner.input';
 import { IsOptional, IsInt, IsPositive } from 'class-validator';
-import { Type } from 'class-transformer';
 
 @InputType()
 export class UpdateOwnerInput extends PartialType(CreateOwnerInput) {
   // ==================== ID ====================
   @Field(() => Int)
-  @Type(() => Number)
-  @IsInt({ message: "L'ID doit être un nombre entier" })
-  @IsPositive({ message: "L'ID doit être un nombre positif" })
+  @IsInt()
+  @IsPositive()
   id: number;
 
   // ==================== PRÉNOM (OPTIONNEL) ====================

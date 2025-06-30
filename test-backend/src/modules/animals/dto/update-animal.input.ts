@@ -7,20 +7,13 @@ import {
 } from '@nestjs/graphql';
 import { CreateAnimalInput } from './create-animal.input';
 import { IsOptional, IsInt, IsPositive } from 'class-validator';
-import { Type } from 'class-transformer';
-import {
-  AnimalColor,
-  AnimalSpecies,
-  VALIDATION_MESSAGES,
-} from 'src/common/types/validation';
 
 @InputType()
 export class UpdateAnimalInput extends PartialType(CreateAnimalInput) {
   // ==================== ID ====================
   @Field(() => Int)
-  @Type(() => Number)
-  @IsInt({ message: VALIDATION_MESSAGES.ID_INVALID })
-  @IsPositive({ message: VALIDATION_MESSAGES.ID_INVALID })
+  @IsInt()
+  @IsPositive()
   id: number;
 
   // ==================== NOM (OPTIONNEL) ====================
@@ -36,7 +29,7 @@ export class UpdateAnimalInput extends PartialType(CreateAnimalInput) {
   // ==================== ESPÈCE (OPTIONNEL) ====================
   @Field({ nullable: true })
   @IsOptional()
-  species?: AnimalSpecies;
+  species?: string;
 
   // ==================== RACE (OPTIONNEL) ====================
   @Field({ nullable: true })
@@ -46,7 +39,7 @@ export class UpdateAnimalInput extends PartialType(CreateAnimalInput) {
   // ==================== COULEUR (OPTIONNEL) ====================
   @Field({ nullable: true })
   @IsOptional()
-  color?: AnimalColor;
+  color?: string;
 
   // ==================== POIDS (OPTIONNEL) ====================
   @Field(() => Int, { nullable: true })
