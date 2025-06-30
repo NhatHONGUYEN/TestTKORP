@@ -2,7 +2,7 @@
 
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 
 import {
   NavigationMenu,
@@ -30,35 +30,16 @@ const NAV_ITEMS = [
 export const Header = () => {
   const [activeItem, setActiveItem] = useState(NAV_ITEMS[0].name);
 
-  const indicatorRef = useRef<HTMLDivElement>(null);
-  const menuRef = useRef<HTMLUListElement>(null);
-
-  useEffect(() => {
-    const updateIndicator = () => {
-      const activeEl = document.querySelector(
-        `[data-nav-item="${activeItem}"]`
-      ) as HTMLElement;
-
-      if (activeEl && indicatorRef.current && menuRef.current) {
-        const menuRect = menuRef.current.getBoundingClientRect();
-        const itemRect = activeEl.getBoundingClientRect();
-
-        indicatorRef.current.style.width = `${itemRect.width}px`;
-        indicatorRef.current.style.left = `${itemRect.left - menuRect.left}px`;
-      }
-    };
-    updateIndicator();
-    window.addEventListener("resize", updateIndicator);
-
-    return () => window.removeEventListener("resize", updateIndicator);
-  }, [activeItem]);
-
   return (
     <header className="bg-background border-b border-border h-[8vh] fixed w-full top-0 z-50">
       <nav className="h-full mx-auto max-w-7xl">
         <div className="flex h-full items-center justify-between">
           {/* Logo et nom de l'entreprise */}
-          <Link href={NAV_LOGO.url} className="flex items-center">
+          <Link
+            href={NAV_LOGO.url}
+            className="flex items-center"
+            onClick={() => setActiveItem("Accueil")}
+          >
             <span className="text-2xl font-bold text-primary tracking-tighter">
               {NAV_LOGO.title}
             </span>
@@ -66,10 +47,7 @@ export const Header = () => {
 
           {/* Navigation principale - Desktop */}
           <NavigationMenu className="hidden md:block">
-            <NavigationMenuList
-              ref={menuRef}
-              className="rounded-4xl flex items-center gap-6 px-8 py-3 relative"
-            >
+            <NavigationMenuList className="rounded-4xl flex items-center gap-6 px-8 py-3 relative">
               {NAV_ITEMS.map((item) => (
                 <React.Fragment key={item.name}>
                   <NavigationMenuItem>
@@ -90,13 +68,6 @@ export const Header = () => {
                   </NavigationMenuItem>
                 </React.Fragment>
               ))}
-              {/* Active Indicator */}
-              <div
-                ref={indicatorRef}
-                className="absolute bottom-2 flex h-1 items-center justify-center px-2 transition-all duration-300"
-              >
-                <div className="bg-primary h-0.5 w-full rounded-t-none transition-all duration-300" />
-              </div>
             </NavigationMenuList>
           </NavigationMenu>
 

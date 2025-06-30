@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { use } from "react";
 import { User, Mail, Phone, PawPrint, Heart, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function OwnerDetailPage({
   params,
@@ -24,13 +25,12 @@ export default function OwnerDetailPage({
     <section className="py-32 max-w-4xl mx-auto">
       <div className="container mx-auto px-4">
         {/* Bouton retour */}
-        <Link
-          href="/owners"
-          className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
-        >
-          <ArrowLeft className="size-4" />
-          Retour aux propriétaires
-        </Link>
+        <Button asChild className="mb-8">
+          <Link href="/owners" className="inline-flex items-center gap-2">
+            <ArrowLeft className="size-4" />
+            Retour aux propriétaires
+          </Link>
+        </Button>
 
         {/* En-tête */}
         <div className="mb-12">
