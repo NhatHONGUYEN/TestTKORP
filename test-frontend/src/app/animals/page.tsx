@@ -8,13 +8,20 @@ import { PawPrint, Scale, Palette, User } from "lucide-react";
 
 export default function AnimalsPage() {
   const [currentPage, setCurrentPage] = useState(1);
-  const { animals, meta, error } = useGetAnimals({
+  const { animals, meta, isLoading, error } = useGetAnimals({
     page: currentPage,
   });
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
+
+  if (isLoading)
+    return (
+      <div className="container mx-auto px-4 py-32 flex items-center justify-center">
+        <div className="text-xl text-muted-foreground">Chargement...</div>
+      </div>
+    );
 
   if (error)
     return (
@@ -25,7 +32,7 @@ export default function AnimalsPage() {
 
   return (
     <section className="py-32 max-w-7xl mx-auto">
-      <div className="container mx-auto flex flex-col items-start text-left">
+      <div className="container mx-auto  flex flex-col items-start text-left">
         <p className="semibold text-primary">Nos compagnons</p>
         <h1 className="my-6 text-2xl font-bold text-pretty lg:text-4xl">
           Découvrez nos animaux
@@ -37,7 +44,7 @@ export default function AnimalsPage() {
         </p>
       </div>
 
-      <div className="container mx-auto mt-16 grid gap-x-12 gap-y-8 lg:grid-cols-2">
+      <div className="container mx-auto  mt-16 grid gap-x-12 gap-y-8 lg:grid-cols-2">
         {animals.map((animal) => (
           <Link
             href={`/animals/${animal.id}`}
@@ -45,6 +52,7 @@ export default function AnimalsPage() {
             className="flex flex-col sm:flex-row group hover:bg-accent/50 p-4 rounded-lg transition-all duration-200"
           >
             <div className="mb-4 aspect-square w-full shrink-0 overflow-clip bg-accent sm:mr-5 sm:mb-0 sm:size-48 rounded-lg flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+              {/* Avatar placeholder avec patte */}
               <PawPrint className="size-16 text-primary/60" />
             </div>
 
@@ -78,7 +86,7 @@ export default function AnimalsPage() {
         ))}
       </div>
 
-      {meta && meta.totalPages > 1 && (
+      {meta && (
         <div className="container mx-auto px-4 mt-16">
           <Pagination
             currentPage={currentPage}

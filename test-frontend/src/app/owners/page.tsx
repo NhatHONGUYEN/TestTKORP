@@ -8,7 +8,7 @@ import { User, Mail, PawPrint, Heart } from "lucide-react";
 
 export default function OwnersPage() {
   const [currentPage, setCurrentPage] = useState(1);
-  const { owners, meta, isLoading, error, refetch } = useGetOwners({
+  const { owners, meta, error, refetch } = useGetOwners({
     page: currentPage,
   });
 
@@ -49,8 +49,8 @@ export default function OwnersPage() {
             key={owner.id}
             className="flex flex-col sm:flex-row group hover:bg-accent/50 p-4 rounded-lg transition-all duration-200"
           >
-            <div className="mb-4 aspect-square w-full shrink-0 overflow-clip bg-accent sm:mr-5 sm:mb-0 sm:size-48 rounded-lg flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-              <User className="size-16 text-primary/60" />
+            <div className="mb-4 aspect-square w-full shrink-0 overflow-clip sm:mr-5 sm:mb-0 sm:size-48 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-105 border border-border/50 bg-muted">
+              <User className="size-16 text-muted-foreground" />
             </div>
 
             <div className="flex flex-1 flex-col items-start">
