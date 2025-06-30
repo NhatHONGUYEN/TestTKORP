@@ -18,9 +18,14 @@ export default function OwnerDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const resolvedParams = use(params);
-  const { owner, isLoading, error } = useGetOwnerById(
-    parseInt(resolvedParams.id)
-  );
+  const id = parseInt(resolvedParams.id);
+
+  // Vérifier si l'ID est valide (nombre entre 1 et 1000)
+  if (isNaN(id) || id < 1 || id > 1000) {
+    notFound();
+  }
+
+  const { owner, isLoading, error } = useGetOwnerById(id);
 
   if (isLoading) return <div>Loading...</div>; // Déclenche loading.tsx
   if (error) throw error;

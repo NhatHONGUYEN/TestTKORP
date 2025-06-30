@@ -15,7 +15,7 @@ export default function AnimalNotFound() {
         {/* Titre et description */}
         <h1 className="text-3xl font-bold mb-4">Animal introuvable</h1>
         <p className="text-muted-foreground mb-8 text-lg">
-          Désolé, cet animal n'existe pas ou a été supprimé.
+          Désolé, cet animal n&apos;existe pas ou a été supprimé.
         </p>
 
         {/* Boutons d'action */}

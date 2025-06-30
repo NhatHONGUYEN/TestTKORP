@@ -22,9 +22,14 @@ export default function AnimalDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const resolvedParams = use(params);
-  const { animal, isLoading, error } = useGetAnimalById(
-    parseInt(resolvedParams.id)
-  );
+  const id = parseInt(resolvedParams.id);
+
+  // Vérifier si l'ID est valide (nombre entre 1 et 1000)
+  if (isNaN(id) || id < 1 || id > 1000) {
+    notFound();
+  }
+
+  const { animal, isLoading, error } = useGetAnimalById(id);
 
   if (isLoading) return <div>Loading...</div>; // Déclenche loading.tsx
   if (error) throw error;
