@@ -1,19 +1,19 @@
 import { ErrorDetails } from './api-error';
 
 export enum ApiErrorCode {
-  // Erreurs d'authentification/autorisation
+  // Authentication/Authorization errors
   UNAUTHORIZED = 'UNAUTHORIZED',
   FORBIDDEN = 'FORBIDDEN',
 
-  // Erreurs de données
+  // Data errors
   NOT_FOUND = 'NOT_FOUND',
   CONFLICT = 'CONFLICT',
   VALIDATION_ERROR = 'VALIDATION_ERROR',
 
-  // Erreurs métier
+  // Business errors
   BUSINESS_RULE_VIOLATION = 'BUSINESS_RULE_VIOLATION',
 
-  // Erreurs techniques
+  // Technical errors
   DATABASE_ERROR = 'DATABASE_ERROR',
   INTERNAL_ERROR = 'INTERNAL_ERROR',
 }

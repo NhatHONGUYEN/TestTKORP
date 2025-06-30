@@ -20,7 +20,7 @@ export class ApiError extends HttpException {
     return new ApiError({
       code: ApiErrorCode.NOT_FOUND,
       status: 404,
-      message: `${resource} ${id ? `#${id}` : ''} non trouvé`,
+      message: `${resource} ${id ? `#${id}` : ''} not found`,
     });
   }
 

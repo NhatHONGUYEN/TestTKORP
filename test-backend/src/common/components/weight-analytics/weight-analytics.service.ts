@@ -31,11 +31,11 @@ export class WeightAnalyticsService {
         .getOne();
 
       if (!heaviestAnimal) {
-        throw ApiError.notFound('Aucun animal trouvé');
+        throw ApiError.notFound('No animal found');
       }
 
       if (!heaviestAnimal.owner) {
-        throw ApiError.notFound('Animal sans propriétaire trouvé');
+        throw ApiError.notFound('Animal without owner found');
       }
 
       return {
@@ -45,7 +45,7 @@ export class WeightAnalyticsService {
     } catch (error: unknown) {
       this.handleError(
         error as Error,
-        "Erreur lors de la recherche du propriétaire avec l'animal le plus lourd",
+        'Error while searching for the owner with the heaviest animal',
       );
     }
   }
@@ -61,7 +61,7 @@ export class WeightAnalyticsService {
         .getOne();
 
       if (!result) {
-        throw ApiError.notFound('Aucun propriétaire avec des animaux trouvé');
+        throw ApiError.notFound('No owner with animals found');
       }
 
       const totalWeight =
@@ -77,7 +77,7 @@ export class WeightAnalyticsService {
     } catch (error: unknown) {
       this.handleError(
         error as Error,
-        "Erreur lors de la recherche du propriétaire avec le groupe d'animaux le plus lourd",
+        'Error while searching for the owner with the heaviest group of animals',
       );
     }
   }

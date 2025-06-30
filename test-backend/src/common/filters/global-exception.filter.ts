@@ -27,9 +27,9 @@ export class GlobalExceptionFilter implements ExceptionFilter {
       });
     }
 
-    // Gestion des autres types d'erreurs
-    console.error('Exception non gérée:', exception);
-    throw new GraphQLError('Une erreur interne est survenue', {
+    // Handling other types of errors
+    console.error('Unhandled exception:', exception);
+    throw new GraphQLError('An internal error occurred', {
       extensions: {
         code: 'INTERNAL_ERROR',
         status: 500,
