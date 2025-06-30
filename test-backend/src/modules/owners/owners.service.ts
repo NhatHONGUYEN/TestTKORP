@@ -18,18 +18,14 @@ export class OwnersService {
     private ownersRepository: Repository<Owner>,
   ) {}
 
-  private handleError(error: Error, message: string): never {
-    throw ApiError.databaseError(message, { error: error.message });
-  }
-
   async create(input: CreateOwnerInput): Promise<Owner> {
     try {
       const newOwner = this.ownersRepository.create(input);
       return await this.ownersRepository.save(newOwner);
     } catch (error: unknown) {
-      this.handleError(
-        error as Error,
+      throw ApiError.databaseError(
         'Erreur lors de la création du propriétaire',
+        { error: (error as Error).message },
       );
     }
   }
@@ -44,9 +40,9 @@ export class OwnersService {
         { createdAt: 'DESC' },
       );
     } catch (error: unknown) {
-      this.handleError(
-        error as Error,
+      throw ApiError.databaseError(
         'Erreur lors de la récupération des propriétaires',
+        { error: (error as Error).message },
       );
     }
   }
@@ -62,9 +58,9 @@ export class OwnersService {
       }
       return existingOwner;
     } catch (error: unknown) {
-      this.handleError(
-        error as Error,
+      throw ApiError.databaseError(
         'Erreur lors de la récupération du propriétaire',
+        { error: (error as Error).message },
       );
     }
   }
@@ -75,9 +71,9 @@ export class OwnersService {
       Object.assign(ownerToUpdate, input);
       return await this.ownersRepository.save(ownerToUpdate);
     } catch (error: unknown) {
-      this.handleError(
-        error as Error,
+      throw ApiError.databaseError(
         'Erreur lors de la mise à jour du propriétaire',
+        { error: (error as Error).message },
       );
     }
   }
@@ -87,9 +83,9 @@ export class OwnersService {
       const result = await this.ownersRepository.delete(id);
       return (result.affected ?? 0) > 0;
     } catch (error: unknown) {
-      this.handleError(
-        error as Error,
+      throw ApiError.databaseError(
         'Erreur lors de la suppression du propriétaire',
+        { error: (error as Error).message },
       );
     }
   }
@@ -105,7 +101,7 @@ export class OwnersService {
         .getOne();
 
       if (!result) {
-        throw ApiError.notFound('Aucun propriétaire trouvé');
+        throw ApiError.notFound('Aucun propriétaire');
       }
 
       return {
@@ -113,9 +109,9 @@ export class OwnersService {
         animalCount: result.animals?.length ?? 0,
       };
     } catch (error: unknown) {
-      this.handleError(
-        error as Error,
+      throw ApiError.databaseError(
         "Erreur lors de la recherche du propriétaire avec le plus d'animaux",
+        { error: (error as Error).message },
       );
     }
   }
@@ -140,9 +136,9 @@ export class OwnersService {
         catCount: result.animals?.length ?? 0,
       };
     } catch (error: unknown) {
-      this.handleError(
-        error as Error,
+      throw ApiError.databaseError(
         'Erreur lors de la recherche du propriétaire avec le plus de chats',
+        { error: (error as Error).message },
       );
     }
   }

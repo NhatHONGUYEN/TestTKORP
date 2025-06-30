@@ -22,17 +22,13 @@ export class AnimalsService {
     private ownersRepository: Repository<Owner>,
   ) {}
 
-  private handleError(error: Error, message: string): never {
-    throw ApiError.databaseError(message, { error: error.message });
-  }
-
   async create(input: CreateAnimalInput): Promise<Animal> {
     try {
       const owner = await this.ownersRepository.findOne({
         where: { id: input.ownerId },
       });
       if (!owner) {
-        throw ApiError.notFound(`Owner #${input.ownerId} not found`);
+        throw ApiError.notFound('Owner', input.ownerId);
       }
 
       const newAnimal = this.animalsRepository.create({
@@ -42,10 +38,9 @@ export class AnimalsService {
       });
       return await this.animalsRepository.save(newAnimal);
     } catch (error: unknown) {
-      this.handleError(
-        error as Error,
-        "Erreur lors de la création de l'animal",
-      );
+      throw ApiError.databaseError("Erreur lors de la création de l'animal", {
+        error: (error as Error).message,
+      });
     }
   }
 
@@ -59,9 +54,11 @@ export class AnimalsService {
         { createdAt: 'DESC' },
       );
     } catch (error: unknown) {
-      this.handleError(
-        error as Error,
+      throw ApiError.databaseError(
         'Erreur lors de la récupération des animaux',
+        {
+          error: (error as Error).message,
+        },
       );
     }
   }
@@ -73,13 +70,15 @@ export class AnimalsService {
         relations: ['owner'],
       });
       if (!existingAnimal) {
-        throw ApiError.notFound(`Animal #${id} not found`);
+        throw ApiError.notFound('Animal', id);
       }
       return existingAnimal;
     } catch (error: unknown) {
-      this.handleError(
-        error as Error,
+      throw ApiError.databaseError(
         "Erreur lors de la récupération de l'animal",
+        {
+          error: (error as Error).message,
+        },
       );
     }
   }
@@ -93,7 +92,7 @@ export class AnimalsService {
           where: { id: input.ownerId },
         });
         if (!newOwner) {
-          throw ApiError.notFound(`Owner #${input.ownerId} not found`);
+          throw ApiError.notFound('Owner', input.ownerId);
         }
         animalToUpdate.owner = newOwner;
       }
@@ -101,9 +100,11 @@ export class AnimalsService {
       Object.assign(animalToUpdate, input);
       return await this.animalsRepository.save(animalToUpdate);
     } catch (error: unknown) {
-      this.handleError(
-        error as Error,
+      throw ApiError.databaseError(
         "Erreur lors de la mise à jour de l'animal",
+        {
+          error: (error as Error).message,
+        },
       );
     }
   }
@@ -113,9 +114,11 @@ export class AnimalsService {
       const result = await this.animalsRepository.delete(id);
       return (result.affected ?? 0) > 0;
     } catch (error: unknown) {
-      this.handleError(
-        error as Error,
+      throw ApiError.databaseError(
         "Erreur lors de la suppression de l'animal",
+        {
+          error: (error as Error).message,
+        },
       );
     }
   }
@@ -127,13 +130,15 @@ export class AnimalsService {
         order: { dateOfBirth: 'ASC' },
       });
       if (!oldestAnimal) {
-        throw ApiError.notFound('Aucun animal trouvé');
+        throw ApiError.notFound('Animal');
       }
       return oldestAnimal;
     } catch (error: unknown) {
-      this.handleError(
-        error as Error,
+      throw ApiError.databaseError(
         'Erreur lors de la recherche du plus vieil animal',
+        {
+          error: (error as Error).message,
+        },
       );
     }
   }
@@ -157,9 +162,11 @@ export class AnimalsService {
         count: parseInt(result.count, 10),
       };
     } catch (error: unknown) {
-      this.handleError(
-        error as Error,
+      throw ApiError.databaseError(
         "Erreur lors de la recherche de l'espèce la plus commune",
+        {
+          error: (error as Error).message,
+        },
       );
     }
   }

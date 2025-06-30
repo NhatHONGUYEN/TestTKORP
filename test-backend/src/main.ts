@@ -16,46 +16,15 @@ async function bootstrap() {
       // Supprime les propriétés non décorées
       whitelist: true,
 
-      // Rejette les requêtes avec des propriétés non autorisées
-      forbidNonWhitelisted: true,
-
-      // Options de transformation avancées
-      transformOptions: {
-        enableImplicitConversion: true,
-        exposeDefaultValues: true,
-      },
-
-      // Factory personnalisée pour les erreurs de validation
+      // On garde juste ça pour les erreurs de validation
       exceptionFactory: (errors) => {
-        const details = errors.reduce((acc, error) => {
-          const field = error.property;
-          const constraints = error.constraints;
-
-          if (constraints) {
-            // Prendre le premier message d'erreur disponible
-            acc[field] = Object.values(constraints)[0];
+        const simpleErrors = {};
+        errors.forEach((error) => {
+          if (error.constraints) {
+            simpleErrors[error.property] = Object.values(error.constraints)[0];
           }
-
-          // Gérer les erreurs imbriquées
-          if (error.children && error.children.length > 0) {
-            const nestedErrors = error.children.reduce((nestedAcc, child) => {
-              if (child.constraints) {
-                nestedAcc[`${field}.${child.property}`] = Object.values(
-                  child.constraints,
-                )[0];
-              }
-              return nestedAcc;
-            }, {});
-            Object.assign(acc, nestedErrors);
-          }
-
-          return acc;
-        }, {});
-
-        return ApiError.validationError(
-          'Erreur de validation des données',
-          details,
-        );
+        });
+        return ApiError.validationError('Erreur de validation', simpleErrors);
       },
 
       // Valider même les objets vides
