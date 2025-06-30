@@ -9,7 +9,7 @@ import {
   OwnerDetailAvatar,
   OwnerDetailInfoCard,
   OwnerAnimalsSection,
-} from "@/features/owners";
+} from "@/features/owners/components/owner-detail";
 import { BackButton } from "@/components/common";
 
 export default function OwnerDetailPage({

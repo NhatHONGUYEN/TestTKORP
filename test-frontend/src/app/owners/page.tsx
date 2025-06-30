@@ -1,6 +1,7 @@
 "use client";
 
-import { OwnersHeader, OwnersListSection } from "@/features/owners/components";
+import OwnersHeader from "@/features/owners/components/owners/OwnersHeader";
+import OwnersListSection from "@/features/owners/components/owners/OwnersListSection";
 
 export default function OwnersPage() {
   return (

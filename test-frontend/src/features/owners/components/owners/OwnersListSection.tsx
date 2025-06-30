@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useGetOwners } from "@/hooks/api/owners/useGetOwners";
 import { Pagination } from "@/components/common/Pagination";
-import { OwnerCard } from "../owner-card";
+import OwnerCard from "./owner-card/OwnerCard";
 
 export default function OwnersListSection() {
   const [currentPage, setCurrentPage] = useState(1);

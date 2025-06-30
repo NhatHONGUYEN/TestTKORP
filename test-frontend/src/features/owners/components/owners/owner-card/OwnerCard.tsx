@@ -4,7 +4,7 @@ import { Mail, PawPrint, Heart } from "lucide-react";
 import { getOwnerAvatar } from "@/lib/avatars";
 import { Owner } from "@/types/owner.type";
 
-interface OwnerCardProps {
+export interface OwnerCardProps {
   owner: Owner;
 }
 
