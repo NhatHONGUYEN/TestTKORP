@@ -4,6 +4,7 @@ import { useGetAnimals } from "@/hooks/api/animals/useGetAnimals";
 import { Pagination } from "@/components/common/Pagination";
 import { useState } from "react";
 import Link from "next/link";
+import { Heart, PawPrint, Scale, Palette, User } from "lucide-react";
 
 export default function AnimalsPage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -11,40 +12,94 @@ export default function AnimalsPage() {
     page: currentPage,
   });
 
-  if (isLoading) return <div>Chargement...</div>;
-  if (error) return <div>Erreur: {error.message}</div>;
+  if (isLoading)
+    return (
+      <div className="container mx-auto px-4 py-32 flex items-center justify-center">
+        <div className="text-xl text-muted-foreground">Chargement...</div>
+      </div>
+    );
+
+  if (error)
+    return (
+      <div className="container mx-auto px-4 py-32 flex items-center justify-center">
+        <div className="text-xl text-red-500">Erreur: {error.message}</div>
+      </div>
+    );
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Liste des Animaux</h1>
+    <section className="py-32">
+      <div className="container mx-auto px-4 flex flex-col items-start text-left">
+        <p className="semibold text-primary">Nos compagnons</p>
+        <h1 className="my-6 text-2xl font-bold text-pretty lg:text-4xl">
+          Découvrez nos animaux
+        </h1>
+        <p className="mb-8 max-w-3xl text-muted-foreground lg:text-xl">
+          Explorez notre collection d&apos;animaux adorables, chacun avec sa
+          propre personnalité et ses caractéristiques uniques. Trouvez votre
+          compagnon idéal parmi notre sélection diversifiée.
+        </p>
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="container mx-auto px-4 mt-16 grid gap-x-12 gap-y-8 lg:grid-cols-2">
         {animals.map((animal) => (
           <Link
             href={`/animals/${animal.id}`}
             key={animal.id}
-            className="block bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+            className="flex flex-col sm:flex-row group hover:bg-accent/50 p-4 rounded-lg transition-all duration-200"
           >
-            <h2 className="text-xl font-semibold">{animal.name}</h2>
-            <p className="text-gray-600">
-              {animal.species} - {animal.breed}
-            </p>
-            <p className="text-gray-600">Couleur: {animal.color}</p>
-            <p className="text-gray-600">Poids: {animal.weight} kg</p>
-            <p className="text-gray-600">
-              Propriétaire: {animal.owner.firstName} {animal.owner.lastName}
-            </p>
+            <div className="mb-4 aspect-square w-full shrink-0 overflow-clip bg-accent sm:mr-5 sm:mb-0 sm:size-48 rounded-lg flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+              {/* Avatar placeholder avec patte */}
+              <PawPrint className="size-16 text-primary/60" />
+            </div>
+
+            <div className="flex flex-1 flex-col items-start">
+              <h2 className="w-full text-left font-semibold text-lg group-hover:text-primary transition-colors">
+                {animal.name}
+              </h2>
+              <p className="w-full text-left text-muted-foreground font-medium">
+                {animal.species} • {animal.breed}
+              </p>
+
+              <div className="w-full py-3 space-y-2">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Palette className="size-4" />
+                  <span>Couleur: {animal.color}</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Scale className="size-4" />
+                  <span>Poids: {animal.weight} kg</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <User className="size-4" />
+                  <span>
+                    Propriétaire: {animal.owner.firstName}{" "}
+                    {animal.owner.lastName}
+                  </span>
+                </div>
+              </div>
+
+              <div className="my-2 flex items-start gap-4">
+                <div className="p-1 rounded-full hover:bg-primary/10 transition-colors">
+                  <Heart className="size-4 text-muted-foreground hover:text-red-500 transition-colors" />
+                </div>
+                <div className="p-1 rounded-full hover:bg-primary/10 transition-colors">
+                  <PawPrint className="size-4 text-muted-foreground hover:text-primary transition-colors" />
+                </div>
+              </div>
+            </div>
           </Link>
         ))}
       </div>
 
       {meta && (
-        <Pagination
-          currentPage={meta.currentPage}
-          totalPages={meta.totalPages}
-          onPageChange={setCurrentPage}
-        />
+        <div className="container mx-auto px-4 mt-16">
+          <Pagination
+            currentPage={meta.currentPage}
+            totalPages={meta.totalPages}
+            onPageChange={setCurrentPage}
+          />
+        </div>
       )}
-    </div>
+    </section>
   );
 }
