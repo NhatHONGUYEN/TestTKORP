@@ -3,9 +3,11 @@
 import { useGetOwnerById } from "@/hooks/api/owners/useGetOwnerById";
 import { notFound } from "next/navigation";
 import { use } from "react";
-import { User, Mail, Phone, PawPrint, Heart, ArrowLeft } from "lucide-react";
+import { Mail, Phone, PawPrint, Heart, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { getOwnerAvatar } from "@/lib/avatars";
 
 export default function OwnerDetailPage({
   params,
@@ -48,8 +50,14 @@ export default function OwnerDetailPage({
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Avatar */}
           <div className="lg:w-1/3">
-            <div className="aspect-square w-full bg-accent rounded-lg flex items-center justify-center">
-              <User className="size-24 text-primary/60" />
+            <div className="aspect-square w-full rounded-lg overflow-hidden">
+              <Image
+                src={getOwnerAvatar(owner.id)}
+                alt={`${owner.firstName} ${owner.lastName}`}
+                width={400}
+                height={400}
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 

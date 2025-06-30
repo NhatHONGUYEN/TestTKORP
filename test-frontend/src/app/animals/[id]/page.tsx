@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { getAnimalAvatar, getOwnerAvatar } from "@/lib/avatars";
 
 export default function AnimalDetailPage({
   params,
@@ -57,8 +59,14 @@ export default function AnimalDetailPage({
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Avatar */}
           <div className="lg:w-1/3">
-            <div className="aspect-square w-full bg-accent rounded-lg flex items-center justify-center">
-              <PawPrint className="size-24 text-primary/60" />
+            <div className="aspect-square w-full rounded-lg overflow-hidden">
+              <Image
+                src={getAnimalAvatar(animal.id)}
+                alt={animal.name}
+                width={400}
+                height={400}
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
@@ -132,8 +140,14 @@ export default function AnimalDetailPage({
                 className="block group hover:bg-accent/50 p-4 rounded-lg transition-all duration-200 border border-border/50 hover:border-primary/20"
               >
                 <div className="flex items-center gap-4">
-                  <div className="size-16 bg-accent rounded-lg flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                    <User className="size-8 text-primary/60" />
+                  <div className="size-16 rounded-lg overflow-hidden">
+                    <Image
+                      src={getOwnerAvatar(animal.owner.id)}
+                      alt={`${animal.owner.firstName} ${animal.owner.lastName}`}
+                      width={64}
+                      height={64}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg group-hover:text-primary transition-colors">

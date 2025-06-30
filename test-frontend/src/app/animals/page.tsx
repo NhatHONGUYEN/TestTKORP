@@ -4,7 +4,9 @@ import { useGetAnimals } from "@/hooks/api/animals/useGetAnimals";
 import { Pagination } from "@/components/common/Pagination";
 import { useState } from "react";
 import Link from "next/link";
-import { PawPrint, Scale, Palette, User } from "lucide-react";
+import { Scale, Palette, User } from "lucide-react";
+import Image from "next/image";
+import { getAnimalAvatar } from "@/lib/avatars";
 
 export default function AnimalsPage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -51,9 +53,14 @@ export default function AnimalsPage() {
             key={animal.id}
             className="flex flex-col sm:flex-row group hover:bg-accent/50 p-4 rounded-lg transition-all duration-200"
           >
-            <div className="mb-4 aspect-square w-full shrink-0 overflow-clip bg-accent sm:mr-5 sm:mb-0 sm:size-48 rounded-lg flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-              {/* Avatar placeholder avec patte */}
-              <PawPrint className="size-16 text-primary/60" />
+            <div className="mb-4 aspect-square w-full shrink-0 overflow-clip sm:mr-5 sm:mb-0 sm:size-48 rounded-lg">
+              <Image
+                src={getAnimalAvatar(animal.id)}
+                alt={animal.name}
+                width={192}
+                height={192}
+                className="w-full h-full object-cover"
+              />
             </div>
 
             <div className="flex flex-1 flex-col items-start">
