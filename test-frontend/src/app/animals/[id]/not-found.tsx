@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function AnimalNotFound() {
   return (
     <section className="min-h-[82vh] flex items-center mt-[8vh]">
-      <div className="container mx-auto px-4 text-center max-w-2xl">
+      <div className="container mx-auto px-4 text-center max-w-5xl">
         {/* Image du chien perdu */}
         <div className="mb-8 relative">
           <div className="size-32 mx-auto relative">

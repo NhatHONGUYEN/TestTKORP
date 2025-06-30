@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, PawPrint, Users } from "lucide-react";
 import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
@@ -7,27 +7,15 @@ import Image from "next/image";
 import { HeroProps } from "./hero.types";
 
 export default function Hero({
-  badge = "🐾 PetKeeper",
-  heading = "Gérez vos animaux facilement",
-  description = "Plateforme de gestion pour propriétaires d'animaux et leurs compagnons.",
-  buttons = {
-    primary: {
-      text: "Voir les animaux",
-      url: "/animals",
-    },
-    secondary: {
-      text: "Voir les propriétaires",
-      url: "/owners",
-    },
-  },
-  image = {
-    src: "/images/HeroPicture.png",
-    alt: "Interface de gestion des animaux de compagnie",
-  },
+  badge,
+  heading,
+  description,
+  buttons,
+  image,
 }: HeroProps) {
   return (
     <section className="min-h-[82vh] flex items-center mt-[8vh]">
-      <div className="container max-w-7xl mx-auto">
+      <div className="container max-w-5xl mx-auto">
         <div className="grid items-center gap-8 lg:grid-cols-2">
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
             {badge && (
@@ -45,14 +33,23 @@ export default function Hero({
             <div className="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start">
               {buttons.primary && (
                 <Button asChild className="w-full sm:w-auto">
-                  <Link href={buttons.primary.url}>{buttons.primary.text}</Link>
+                  <Link
+                    href={buttons.primary.url}
+                    className="flex items-center gap-2"
+                  >
+                    <PawPrint className="size-4" />
+                    {buttons.primary.text}
+                  </Link>
                 </Button>
               )}
               {buttons.secondary && (
                 <Button asChild variant="outline" className="w-full sm:w-auto">
-                  <Link href={buttons.secondary.url}>
+                  <Link
+                    href={buttons.secondary.url}
+                    className="flex items-center gap-2"
+                  >
+                    <Users className="size-4" />
                     {buttons.secondary.text}
-                    <ArrowRight className="size-4" />
                   </Link>
                 </Button>
               )}

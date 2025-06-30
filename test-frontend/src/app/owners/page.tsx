@@ -5,7 +5,7 @@ import OwnersListSection from "@/features/owners/components/owners/OwnersListSec
 
 export default function OwnersPage() {
   return (
-    <section className="py-32 max-w-7xl mx-auto">
+    <section className="py-32 max-w-5xl mx-auto">
       <OwnersHeader />
       <OwnersListSection />
     </section>

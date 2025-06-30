@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function AnimalsLoading() {
   return (
-    <section className="py-32 max-w-7xl mx-auto">
+    <section className="py-32 max-w-5xl mx-auto">
       <div className="container mx-auto flex flex-col items-start text-left">
         <Skeleton className="h-6 w-32 mb-2" />
         <Skeleton className="h-12 w-96 mb-4" />

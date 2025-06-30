@@ -1,18 +1,18 @@
 export interface HeroProps {
-  badge?: string;
-  heading?: string;
-  description?: string;
-  buttons?: {
-    primary?: {
+  badge: string;
+  heading: string;
+  description: string;
+  buttons: {
+    primary: {
       text: string;
       url: string;
     };
-    secondary?: {
+    secondary: {
       text: string;
       url: string;
     };
   };
-  image?: {
+  image: {
     src: string;
     alt: string;
   };

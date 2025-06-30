@@ -6,4 +6,5 @@ export interface NavItem {
 export interface LogoConfig {
   url: string;
   title: string;
+  icon?: string; // Optional Lucide icon name
 }
