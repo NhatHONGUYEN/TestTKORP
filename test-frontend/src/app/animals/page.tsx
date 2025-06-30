@@ -4,7 +4,7 @@ import { useGetAnimals } from "@/hooks/api/animals/useGetAnimals";
 import { Pagination } from "@/components/common/Pagination";
 import { useState } from "react";
 import Link from "next/link";
-import { Heart, PawPrint, Scale, Palette, User } from "lucide-react";
+import { PawPrint, Scale, Palette, User } from "lucide-react";
 
 export default function AnimalsPage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,8 +27,8 @@ export default function AnimalsPage() {
     );
 
   return (
-    <section className="py-32">
-      <div className="container mx-auto px-4 flex flex-col items-start text-left">
+    <section className="py-32 max-w-7xl mx-auto">
+      <div className="container mx-auto  flex flex-col items-start text-left">
         <p className="semibold text-primary">Nos compagnons</p>
         <h1 className="my-6 text-2xl font-bold text-pretty lg:text-4xl">
           Découvrez nos animaux
@@ -40,7 +40,7 @@ export default function AnimalsPage() {
         </p>
       </div>
 
-      <div className="container mx-auto px-4 mt-16 grid gap-x-12 gap-y-8 lg:grid-cols-2">
+      <div className="container mx-auto  mt-16 grid gap-x-12 gap-y-8 lg:grid-cols-2">
         {animals.map((animal) => (
           <Link
             href={`/animals/${animal.id}`}
@@ -75,15 +75,6 @@ export default function AnimalsPage() {
                     Propriétaire: {animal.owner.firstName}{" "}
                     {animal.owner.lastName}
                   </span>
-                </div>
-              </div>
-
-              <div className="my-2 flex items-start gap-4">
-                <div className="p-1 rounded-full hover:bg-primary/10 transition-colors">
-                  <Heart className="size-4 text-muted-foreground hover:text-red-500 transition-colors" />
-                </div>
-                <div className="p-1 rounded-full hover:bg-primary/10 transition-colors">
-                  <PawPrint className="size-4 text-muted-foreground hover:text-primary transition-colors" />
                 </div>
               </div>
             </div>
