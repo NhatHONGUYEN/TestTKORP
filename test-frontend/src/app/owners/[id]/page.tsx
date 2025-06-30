@@ -12,10 +12,13 @@ export default function OwnerDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const resolvedParams = use(params);
-  const { owner, error } = useGetOwnerById(parseInt(resolvedParams.id));
+  const { owner, isLoading, error } = useGetOwnerById(
+    parseInt(resolvedParams.id)
+  );
 
   if (error) throw error;
-  if (!owner) return notFound();
+  if (!isLoading && !owner) notFound();
+  if (!owner) return null; // Pendant le chargement
 
   return (
     <section className="py-32 max-w-4xl mx-auto">

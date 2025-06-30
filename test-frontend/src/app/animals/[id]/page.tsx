@@ -22,10 +22,13 @@ export default function AnimalDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const resolvedParams = use(params);
-  const { animal, error } = useGetAnimalById(parseInt(resolvedParams.id));
+  const { animal, isLoading, error } = useGetAnimalById(
+    parseInt(resolvedParams.id)
+  );
 
   if (error) throw error;
-  if (!animal) return notFound();
+  if (!isLoading && !animal) notFound();
+  if (!animal) return null; // Pendant le chargement
 
   return (
     <section className="py-32 max-w-4xl mx-auto">
