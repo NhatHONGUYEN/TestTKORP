@@ -31,9 +31,9 @@ export const Header = () => {
   const [activeItem, setActiveItem] = useState(NAV_ITEMS[0].name);
 
   return (
-    <header className="bg-background border-b border-border h-[8vh] fixed w-full top-0 z-50">
-      <nav className="h-full mx-auto max-w-7xl">
-        <div className="flex h-full items-center justify-between">
+    <header className="h-[8vh] fixed bg-background w-full top-0 z-50">
+      <nav className="h-full">
+        <div className="flex h-full mx-auto max-w-7xl items-center justify-between">
           {/* Logo et nom de l'entreprise */}
           <Link
             href={NAV_LOGO.url}
@@ -45,9 +45,12 @@ export const Header = () => {
             </span>
           </Link>
 
-          {/* Navigation principale - Desktop */}
-          <NavigationMenu className="hidden md:block">
-            <NavigationMenuList className="rounded-4xl flex items-center gap-6 px-8 py-3 relative">
+          {/* Spacer pour pousser la navigation à droite */}
+          <div className="flex-1"></div>
+
+          {/* Navigation principale - Desktop à droite */}
+          <NavigationMenu className="hidden lg:block">
+            <NavigationMenuList className="flex items-center gap-6">
               {NAV_ITEMS.map((item) => (
                 <React.Fragment key={item.name}>
                   <NavigationMenuItem>
@@ -72,7 +75,7 @@ export const Header = () => {
           </NavigationMenu>
 
           {/* Menu mobile */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 ml-auto">
             <MobileNav activeItem={activeItem} setActiveItem={setActiveItem} />
           </div>
         </div>
@@ -110,7 +113,7 @@ const MobileNav = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="block md:hidden">
+    <div className="block lg:hidden">
       <Popover open={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger asChild>
           <button className="p-2 rounded-md hover:bg-muted">
@@ -120,7 +123,7 @@ const MobileNav = ({
 
         <PopoverContent
           align="end"
-          className="relative -left-4 -top-4 block w-screen max-w-md overflow-hidden rounded-xl p-0 md:hidden"
+          className="relative -left-4 -top-4 block w-screen max-w-md overflow-hidden rounded-xl p-0 lg:hidden"
         >
           <ul className="bg-background text-foreground w-full py-4">
             {NAV_ITEMS.map((navItem, idx) => (
