@@ -8,33 +8,47 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-sm">
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 justify-between items-center">
+    <header className="bg-background border-b border-border h-[8vh] fixed w-full top-0 z-50">
+      <nav className="h-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-full justify-between items-center">
           {/* Logo et nom de l'entreprise */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <span className="text-xl font-bold text-gray-900">PetKeeper</span>
+              <span className="text-2xl font-bold text-primary">PetKeeper</span>
             </Link>
           </div>
 
           {/* Navigation principale - Desktop */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-gray-900">
+            <Link
+              href="/"
+              className="text-foreground hover:text-primary transition-colors"
+            >
               Accueil
             </Link>
-            <Link href="/owners" className="text-gray-700 hover:text-gray-900">
+            <Link
+              href="/owners"
+              className="text-foreground hover:text-secondary transition-colors"
+            >
               Propriétaires
             </Link>
-            <Link href="/animals" className="text-gray-700 hover:text-gray-900">
+            <Link
+              href="/animals"
+              className="text-foreground hover:text-primary transition-colors"
+            >
               Animaux
             </Link>
           </div>
 
-          {/* Bouton de connexion */}
+          {/* Bouton de recherche */}
           <div className="hidden md:flex items-center">
             <Link href="/">
-              <Button variant="outline">RECHERCHER</Button>
+              <Button
+                variant="outline"
+                className="bg-background hover:bg-accent text-primary hover:text-accent-foreground"
+              >
+                RECHERCHER
+              </Button>
             </Link>
           </div>
 
@@ -42,7 +56,7 @@ export const Header = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-md text-gray-700 hover:text-gray-900"
+              className="p-2 rounded-md text-primary hover:bg-muted"
             >
               <svg
                 className="h-6 w-6"
@@ -65,29 +79,29 @@ export const Header = () => {
 
         {/* Menu mobile */}
         {isMenuOpen && (
-          <div className="md:hidden">
+          <div className="md:hidden bg-background border border-border shadow-lg rounded-b-lg">
             <div className="px-2 pt-2 pb-3 space-y-1">
               <Link
-                href="/produits"
-                className="block px-3 py-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                href="/"
+                className="block px-3 py-2 rounded-md text-foreground hover:bg-muted hover:text-primary"
               >
                 Accueil
               </Link>
               <Link
-                href="/services"
-                className="block px-3 py-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                href="/owners"
+                className="block px-3 py-2 rounded-md text-foreground hover:bg-muted hover:text-secondary"
               >
                 Propriétaires
               </Link>
               <Link
-                href="/contact"
-                className="block px-3 py-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                href="/animals"
+                className="block px-3 py-2 rounded-md text-foreground hover:bg-muted hover:text-primary"
               >
                 Animaux
               </Link>
-              <button className="w-full mt-4 px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700">
-                Se connecter
-              </button>
+              <Button className="w-full mt-4 bg-primary text-primary-foreground hover:bg-primary/90">
+                RECHERCHER
+              </Button>
             </div>
           </div>
         )}

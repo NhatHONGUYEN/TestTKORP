@@ -1,23 +1,19 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
-    <div className="flex flex-col bg-gray-100">
-      <main className="flex-grow container mx-auto px-4 py-16 text-center">
-        <h2 className="text-4xl font-bold mb-4">Bienvenue sur PetKeeper</h2>
-        <p className="text-lg text-gray-700 mb-8">
-          Gérez facilement vos propriétaires et leurs animaux.
-        </p>
-        <div className="flex justify-center space-x-4">
-          <Link href="/owners">
-            <Button>Voir les propriétaires</Button>
-          </Link>
-          <Link href="/animals">
-            <Button>Voir les animaux</Button>
-          </Link>
-        </div>
-      </main>
-    </div>
+    <Hero
+      badge="🐾 PetKeeper"
+      heading="Gérez vos animaux facilement"
+      description="Plateforme de gestion pour propriétaires d'animaux et leurs compagnons."
+      buttons={{
+        primary: { text: "Voir les propriétaires", url: "/owners" },
+        secondary: { text: "Voir les animaux", url: "/animals" },
+      }}
+      image={{
+        src: "/images/HeroPicture.png",
+        alt: "Animaux de compagnie",
+      }}
+    />
   );
 }
