@@ -1,6 +1,5 @@
 import { ArrowUpRight, PawPrint, Users } from "lucide-react";
 import Link from "next/link";
-
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -14,7 +13,7 @@ export default function Hero({
   image,
 }: HeroProps) {
   return (
-    <section className="min-h-[82vh] flex items-center mt-[8vh]">
+    <section className="h-[76vh] flex items-center">
       <div className="container max-w-5xl mx-auto">
         <div className="grid items-center gap-8 lg:grid-cols-2">
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
