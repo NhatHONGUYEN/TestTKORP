@@ -53,7 +53,7 @@ export default function AnimalsPage() {
             key={animal.id}
             className="flex flex-col sm:flex-row group hover:bg-accent/50 p-4 rounded-lg transition-all duration-200"
           >
-            <div className="mb-4 aspect-square w-full shrink-0 overflow-clip sm:mr-5 sm:mb-0 sm:size-48 rounded-lg">
+            <div className="mb-4 aspect-square w-full shrink-0 overflow-clip sm:mr-5 sm:mb-0 sm:size-48 rounded-lg transition-all duration-300 group-hover:scale-105">
               <Image
                 src={getAnimalAvatar(animal.id)}
                 alt={animal.name}
