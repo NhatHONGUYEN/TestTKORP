@@ -26,9 +26,9 @@ export default function AnimalDetailPage({
     parseInt(resolvedParams.id)
   );
 
+  if (isLoading) return <div>Loading...</div>; // Déclenche loading.tsx
   if (error) throw error;
-  if (!isLoading && !animal) notFound();
-  if (!animal) return null; // Pendant le chargement
+  if (!animal) notFound();
 
   return (
     <section className="py-32 max-w-4xl mx-auto">

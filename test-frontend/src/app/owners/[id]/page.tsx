@@ -16,9 +16,9 @@ export default function OwnerDetailPage({
     parseInt(resolvedParams.id)
   );
 
+  if (isLoading) return <div>Loading...</div>; // Déclenche loading.tsx
   if (error) throw error;
-  if (!isLoading && !owner) notFound();
-  if (!owner) return null; // Pendant le chargement
+  if (!owner) notFound();
 
   return (
     <section className="py-32 max-w-4xl mx-auto">
