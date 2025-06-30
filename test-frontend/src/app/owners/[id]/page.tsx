@@ -3,11 +3,14 @@
 import { useGetOwnerById } from "@/hooks/api/owners/useGetOwnerById";
 import { notFound } from "next/navigation";
 import { use } from "react";
-import { Mail, Phone, PawPrint, Heart, ArrowLeft } from "lucide-react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import { getOwnerAvatar } from "@/lib/avatars";
+import { Mail, Phone } from "lucide-react";
+import {
+  OwnerDetailHeader,
+  OwnerDetailAvatar,
+  OwnerDetailInfoCard,
+  OwnerAnimalsSection,
+} from "@/features/owners";
+import { BackButton } from "@/components/common";
 
 export default function OwnerDetailPage({
   params,
@@ -27,96 +30,40 @@ export default function OwnerDetailPage({
     <section className="py-32 max-w-4xl mx-auto">
       <div className="container mx-auto px-4">
         {/* Bouton retour */}
-        <Button asChild className="mb-8">
-          <Link href="/owners" className="inline-flex items-center gap-2">
-            <ArrowLeft className="size-4" />
-            Retour aux propriétaires
-          </Link>
-        </Button>
+        <BackButton href="/owners">Retour aux propriétaires</BackButton>
 
         {/* En-tête */}
-        <div className="mb-12">
-          <p className="semibold text-primary">Profil du propriétaire</p>
-          <h1 className="my-6 text-2xl font-bold text-pretty lg:text-4xl">
-            {owner.firstName} {owner.lastName}
-          </h1>
-          <p className="text-muted-foreground lg:text-xl">
-            Propriétaire de {owner.animals.length} animal
-            {owner.animals.length > 1 ? "s" : ""}
-          </p>
-        </div>
+        <OwnerDetailHeader owner={owner} />
 
         {/* Contenu principal */}
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Avatar */}
-          <div className="lg:w-1/3">
-            <div className="aspect-square w-full rounded-lg overflow-hidden">
-              <Image
-                src={getOwnerAvatar(owner.id)}
-                alt={`${owner.firstName} ${owner.lastName}`}
-                width={400}
-                height={400}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+          <OwnerDetailAvatar
+            ownerId={owner.id}
+            ownerName={`${owner.firstName} ${owner.lastName}`}
+          />
 
           {/* Informations à droite */}
           <div className="lg:w-2/3 space-y-8">
             {/* Informations de contact */}
             <div className="space-y-4">
-              <div className="flex items-center gap-3 p-3 bg-background/50 rounded-lg border border-border/50">
-                <Mail className="size-5 text-primary" />
-                <div>
-                  <p className="font-medium">Email</p>
-                  <p className="text-sm text-muted-foreground">{owner.email}</p>
-                </div>
-              </div>
+              <OwnerDetailInfoCard
+                icon={Mail}
+                title="Email"
+                value={owner.email}
+              />
 
               {owner.phoneNumber && (
-                <div className="flex items-center gap-3 p-3 bg-background/50 rounded-lg border border-border/50">
-                  <Phone className="size-5 text-primary" />
-                  <div>
-                    <p className="font-medium">Téléphone</p>
-                    <p className="text-sm text-muted-foreground">
-                      {owner.phoneNumber}
-                    </p>
-                  </div>
-                </div>
+                <OwnerDetailInfoCard
+                  icon={Phone}
+                  title="Téléphone"
+                  value={owner.phoneNumber}
+                />
               )}
             </div>
 
             {/* Animaux */}
-            <div>
-              <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                <PawPrint className="size-5 text-primary" />
-                Animaux ({owner.animals.length})
-              </h2>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {owner.animals.map((animal) => (
-                  <Link
-                    key={animal.id}
-                    href={`/animals/${animal.id}`}
-                    className="group hover:bg-accent/50 p-4 rounded-lg transition-all duration-200 border border-border/50 hover:border-primary/20"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="size-12 bg-accent rounded-lg flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                        <Heart className="size-6 text-red-500" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold group-hover:text-primary transition-colors">
-                          {animal.name}
-                        </h3>
-                        <p className="text-sm text-muted-foreground">
-                          {animal.species} • {animal.breed}
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
+            <OwnerAnimalsSection owner={owner} />
           </div>
         </div>
       </div>
