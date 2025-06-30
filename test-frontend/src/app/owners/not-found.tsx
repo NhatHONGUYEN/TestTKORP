@@ -1,12 +1,30 @@
 import Link from "next/link";
-import { User, ArrowLeft, Home } from "lucide-react";
+import { ArrowLeft, Home } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 
 export default function OwnersNotFound() {
   return (
-    <section className="py-32 max-w-4xl mx-auto">
-      <div className="container mx-auto px-4 text-center">
+    <section className="min-h-[82vh] flex items-center mt-[8vh]">
+      <div className="container mx-auto px-4 text-center max-w-2xl">
         <div className="flex flex-col items-center justify-center">
-          <User className="size-24 text-muted-foreground/30 mb-8" />
+          {/* Image de la personne perdue */}
+          <div className="mb-8 relative">
+            <div className="size-32 mx-auto relative">
+              <Image
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face"
+                alt="Personne qui cherche"
+                width={128}
+                height={128}
+                quality={100}
+                className="size-32 rounded-full object-cover border-4 border-gray-200"
+              />
+              <Badge className="absolute -top-2 -right-2 bg-orange-500 hover:bg-orange-600 text-white">
+                Introuvable
+              </Badge>
+            </div>
+          </div>
 
           <h1 className="text-4xl font-bold mb-4">Propriétaire introuvable</h1>
           <p className="text-muted-foreground text-lg mb-8 max-w-md">
@@ -15,20 +33,19 @@ export default function OwnersNotFound() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/owners"
-              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
-            >
-              <ArrowLeft className="size-4" />
-              Retour aux propriétaires
-            </Link>
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 border border-border px-6 py-3 rounded-lg hover:bg-accent transition-colors"
-            >
-              <Home className="size-4" />
-              Accueil
-            </Link>
+            <Button asChild>
+              <Link href="/owners">
+                <ArrowLeft className="size-4 mr-2" />
+                Retour aux propriétaires
+              </Link>
+            </Button>
+
+            <Button variant="outline" asChild>
+              <Link href="/">
+                <Home className="size-4 mr-2" />
+                Accueil
+              </Link>
+            </Button>
           </div>
         </div>
       </div>
