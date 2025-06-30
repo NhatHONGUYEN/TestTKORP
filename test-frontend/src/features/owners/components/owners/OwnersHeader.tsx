@@ -1,6 +1,6 @@
 export default function OwnersHeader() {
   return (
-    <div className="container mx-auto flex flex-col items-start text-left">
+    <div className="container px-6 mx-auto flex flex-col items-start text-left">
       <p className="semibold text-primary">Notre communauté</p>
       <h1 className="my-6 text-2xl font-bold text-pretty lg:text-4xl">
         Découvrez nos propriétaires

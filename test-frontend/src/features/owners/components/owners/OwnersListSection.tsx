@@ -30,7 +30,7 @@ export default function OwnersListSection() {
 
   return (
     <>
-      <div className="container mx-auto px-4 mt-16 grid gap-x-12 gap-y-8 lg:grid-cols-2">
+      <div className="container px-6 mx-auto  mt-16 grid gap-x-12 gap-y-8 lg:grid-cols-2">
         {owners.map((owner) => (
           <OwnerCard key={owner.id} owner={owner} />
         ))}

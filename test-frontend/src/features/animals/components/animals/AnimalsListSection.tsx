@@ -31,7 +31,7 @@ export default function AnimalsListSection() {
 
   return (
     <>
-      <div className="container mx-auto mt-16 grid gap-x-12 gap-y-8 lg:grid-cols-2">
+      <div className="container  mx-auto mt-16 grid gap-x-12 gap-y-8 lg:grid-cols-2">
         {animals.map((animal) => (
           <AnimalCard key={animal.id} animal={animal} />
         ))}

@@ -1,5 +1,3 @@
-"use client";
-
 import { AnimalsHeader, AnimalsListSection } from "@/features/animals";
 
 export default function AnimalsPage() {
