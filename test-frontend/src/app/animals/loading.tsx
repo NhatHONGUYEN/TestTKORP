@@ -9,7 +9,7 @@ export default function AnimalsLoading() {
         <Skeleton className="h-6 w-full max-w-3xl" />
       </div>
 
-      {/* Skeleton des cartes */}
+      {/* Cards skeleton */}
       <div className="container mx-auto mt-16 grid gap-x-12 gap-y-8 lg:grid-cols-2">
         {[...Array(6)].map((_, i) => (
           <div key={i} className="flex flex-col sm:flex-row p-4 rounded-lg">

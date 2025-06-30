@@ -5,7 +5,7 @@ export default function OwnerDetailLoading() {
   return (
     <section className="py-32 max-w-4xl mx-auto">
       <div className="container mx-auto px-4">
-        {/* Bouton retour skeleton */}
+        {/* Back button skeleton */}
         <div className="inline-flex items-center gap-2 mb-8">
           <ArrowLeft className="size-4 text-muted-foreground" />
           <Skeleton className="h-4 w-40" />
@@ -48,7 +48,7 @@ export default function OwnerDetailLoading() {
               </div>
             </div>
 
-            {/* Animaux skeleton */}
+            {/* Animals skeleton */}
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <PawPrint className="size-5 text-primary" />

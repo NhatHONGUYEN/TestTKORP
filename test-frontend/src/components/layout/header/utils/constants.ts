@@ -6,7 +6,7 @@ export const NAV_LOGO: LogoConfig = {
 };
 
 export const NAV_ITEMS: NavItem[] = [
-  { name: "Accueil", link: "/" },
+  { name: "Home", link: "/" },
   { name: "Owners", link: "/owners" },
   { name: "Animals", link: "/animals" },
 ];

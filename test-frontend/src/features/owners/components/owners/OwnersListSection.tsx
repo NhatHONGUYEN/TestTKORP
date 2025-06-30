@@ -23,7 +23,7 @@ export default function OwnersListSection() {
   if (error) {
     return (
       <div className="container mx-auto px-4 py-16 flex items-center justify-center">
-        <div className="text-xl text-red-500">Erreur: {error.message}</div>
+        <div className="text-xl text-red-500">Error: {error.message}</div>
       </div>
     );
   }

@@ -43,7 +43,7 @@ export default function OwnerNotFound() {
           <Button variant="outline" asChild>
             <Link href="/">
               <Home className="size-4 mr-2" />
-              Accueil
+              Home
             </Link>
           </Button>
         </div>

@@ -18,14 +18,14 @@ export default function AnimalsListSection() {
   if (isLoading)
     return (
       <div className="container mx-auto px-4 py-32 flex items-center justify-center">
-        <div className="text-xl text-muted-foreground">Chargement...</div>
+        <div className="text-xl text-muted-foreground">Loading...</div>
       </div>
     );
 
   if (error)
     return (
       <div className="container mx-auto px-4 py-32 flex items-center justify-center">
-        <div className="text-xl text-red-500">Erreur: {error.message}</div>
+        <div className="text-xl text-red-500">Error: {error.message}</div>
       </div>
     );
 

@@ -9,7 +9,7 @@ export default function OwnersLoading() {
         <Skeleton className="h-6 w-full max-w-3xl" />
       </div>
 
-      {/* Skeleton des cartes de propriétaires */}
+      {/* Owner cards skeleton */}
       <div className="container mx-auto px-4 mt-16 grid gap-x-12 gap-y-8 lg:grid-cols-2">
         {[...Array(6)].map((_, i) => (
           <div key={i} className="flex flex-col sm:flex-row p-4 rounded-lg">
@@ -29,7 +29,7 @@ export default function OwnersLoading() {
         ))}
       </div>
 
-      {/* Skeleton pagination */}
+      {/* Pagination skeleton */}
       <div className="container mx-auto px-4 mt-16 flex justify-center">
         <div className="flex items-center gap-2">
           <Skeleton className="h-10 w-20" />

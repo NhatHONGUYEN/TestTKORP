@@ -13,7 +13,7 @@ export default function OwnerAnimalsSection({
     <div>
       <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
         <PawPrint className="size-5 text-primary" />
-        Animaux ({owner.animals.length})
+        Animals ({owner.animals.length})
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

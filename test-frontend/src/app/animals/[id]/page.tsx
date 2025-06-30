@@ -38,7 +38,7 @@ export default function AnimalDetailPage({
   return (
     <section className="py-32 max-w-4xl mx-auto">
       <div className="container mx-auto px-4">
-        {/* Bouton retour */}
+        {/* Back button */}
         <BackButton href="/animals">Back to animals</BackButton>
 
         {/* En-tête */}
