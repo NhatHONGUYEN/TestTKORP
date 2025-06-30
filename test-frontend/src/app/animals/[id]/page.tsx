@@ -22,24 +22,9 @@ export default function AnimalDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const resolvedParams = use(params);
-  const { animal, isLoading, error } = useGetAnimalById(
-    parseInt(resolvedParams.id)
-  );
+  const { animal, error } = useGetAnimalById(parseInt(resolvedParams.id));
 
-  if (isLoading)
-    return (
-      <div className="container mx-auto px-4 py-32 flex items-center justify-center">
-        <div className="text-xl text-muted-foreground">Chargement...</div>
-      </div>
-    );
-
-  if (error)
-    return (
-      <div className="container mx-auto px-4 py-32 flex items-center justify-center">
-        <div className="text-xl text-red-500">Erreur: {error.message}</div>
-      </div>
-    );
-
+  if (error) throw error;
   if (!animal) return notFound();
 
   return (
