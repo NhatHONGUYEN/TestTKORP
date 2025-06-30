@@ -10,8 +10,8 @@ export default function OwnersNotFound() {
 
           <h1 className="text-4xl font-bold mb-4">Propriétaire introuvable</h1>
           <p className="text-muted-foreground text-lg mb-8 max-w-md">
-            Désolé, le propriétaire que vous recherchez n'existe pas ou a été
-            supprimé de notre base de données.
+            Désolé, le propriétaire que vous recherchez n&apos;existe pas ou a
+            été supprimé de notre base de données.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
