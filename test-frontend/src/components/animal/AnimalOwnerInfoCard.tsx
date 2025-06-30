@@ -3,7 +3,7 @@ import Image from "next/image";
 import { User, Mail } from "lucide-react";
 import { getOwnerAvatar } from "@/lib/avatars";
 
-interface OwnerDetailInfoCardProps {
+interface AnimalOwnerInfoCardProps {
   owner: {
     id: number;
     firstName: string;
@@ -12,9 +12,9 @@ interface OwnerDetailInfoCardProps {
   };
 }
 
-export default function OwnerDetailInfoCard({
+export default function AnimalOwnerInfoCard({
   owner,
-}: OwnerDetailInfoCardProps) {
+}: AnimalOwnerInfoCardProps) {
   return (
     <div>
       <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">

@@ -11,8 +11,8 @@ import {
   AnimalDetailAvatar,
   AnimalDetailInfoCard,
   AnimalDetailGeneralInfo,
+  AnimalOwnerInfoCard,
 } from "@/components/animal";
-import { OwnerDetailInfoCard } from "@/components/owner";
 import { BackButton } from "@/components/common";
 
 export default function AnimalDetailPage({
@@ -70,7 +70,7 @@ export default function AnimalDetailPage({
             <AnimalDetailGeneralInfo animal={animal} />
 
             {/* Propriétaire */}
-            <OwnerDetailInfoCard owner={animal.owner} />
+            <AnimalOwnerInfoCard owner={animal.owner} />
           </div>
         </div>
       </div>
