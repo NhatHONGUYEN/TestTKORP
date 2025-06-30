@@ -10,22 +10,22 @@ export class UpdateOwnerInput extends PartialType(CreateOwnerInput) {
   @IsPositive()
   id: number;
 
-  // ==================== PRÉNOM (OPTIONNEL) ====================
+  // ==================== FIRST NAME (OPTIONAL) ====================
   @Field({ nullable: true })
   @IsOptional()
   firstName?: string;
 
-  // ==================== NOM (OPTIONNEL) ====================
+  // ==================== LAST NAME (OPTIONAL) ====================
   @Field({ nullable: true })
   @IsOptional()
   lastName?: string;
 
-  // ==================== EMAIL (OPTIONNEL) ====================
+  // ==================== EMAIL (OPTIONAL) ====================
   @Field({ nullable: true })
   @IsOptional()
   email?: string;
 
-  // ==================== TÉLÉPHONE (OPTIONNEL) ====================
+  // ==================== PHONE NUMBER (OPTIONAL) ====================
   @Field({ nullable: true })
   @IsOptional()
   phoneNumber?: string;
