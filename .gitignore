@@ -1,0 +1,136 @@
+# 🔒 Environment Variables & Secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# 📦 Dependencies
+node_modules/
+*/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# 🚀 Build Outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+.vuepress/dist
+.serverless/
+
+# 📊 Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# 🧪 Testing
+coverage/
+*.lcov
+.nyc_output/
+.coverage/
+test-results/
+playwright-report/
+
+# 🔧 Runtime & Cache
+.cache/
+.parcel-cache/
+.npm/
+.eslintcache
+.stylelintcache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# 📱 Next.js
+.next/
+out/
+next-env.d.ts
+
+# 🏗️ TypeScript
+*.tsbuildinfo
+.tsbuildinfo
+
+# 🗄️ Database
+*.sqlite
+*.sqlite3
+*.db
+database.sqlite
+database.db
+
+# 🐳 Docker
+.dockerignore
+docker-compose.override.yml
+Dockerfile.prod
+
+# 🔧 IDE & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 🖥️ OS Generated
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# 🔒 Security & Keys
+*.pem
+*.key
+*.crt
+*.cert
+.ssh/
+secrets/
+
+# 📦 Package Managers
+.pnpm-debug.log*
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# 🧹 Temporary Files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# 📊 Reports & Analytics
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+.lighthouseci/
+
+# 🔧 Local Configuration
+.env.example.local
+config.local.js
+config.local.json
+
+# 🚫 Backup Files
+*.bak
+*.backup
+*~
+
+# 📝 Documentation Build
+docs/build/
+.docusaurus/
+
+# 🎯 Specific to this project
+uploads/
+public/uploads/
+storage/ 

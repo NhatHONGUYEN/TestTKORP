@@ -1,35 +1,35 @@
-# 🐾 PetKeeper - Pet Management Platform
+# 🐾 PetKeeper - Plateforme de Gestion d'Animaux
 
-A modern full-stack web application for managing pets and their owners, built with **Next.js**, **NestJS**, and **GraphQL**.
+Application web full-stack moderne pour la gestion d'animaux de compagnie et de leurs propriétaires, construite avec **Next.js**, **NestJS**, et **GraphQL**.
 
 ![PetKeeper Interface](test-frontend/public/images/HeroPicture.png)
 
-## 🚀 Features
+## 🚀 Fonctionnalités
 
-### 🎯 Core Features
+### 🎯 Fonctionnalités Principales
 
-- **Pet Management**: Create, view, update, and delete pet profiles
-- **Owner Management**: Manage pet owner information and contacts
-- **Relationship Tracking**: Link pets to their owners with full relationship management
-- **Advanced Search & Filtering**: Find pets and owners quickly
-- **Responsive Design**: Beautiful UI that works on all devices
+- **Gestion d'Animaux** : CRUD complet pour les profils d'animaux
+- **Gestion de Propriétaires** : Gestion des informations et contacts des propriétaires
+- **Relations** : Liaison entre animaux et propriétaires avec gestion complète des relations
+- **Recherche & Filtrage Avancés** : Trouvez rapidement animaux et propriétaires
+- **Design Responsive** : Interface magnifique qui fonctionne sur tous les appareils
 
-### 📊 Analytics & Statistics
+### 📊 Analytics & Statistiques
 
-- **Oldest Pet**: Find the oldest pet in the database
-- **Most Common Species**: Discover the most popular pet species
-- **Owner with Most Pets**: Identify owners with the largest number of pets
-- **Heaviest Pet Analytics**: Track weight statistics and heaviest pets
-- **Cat Owner Statistics**: Specialized analytics for cat owners
+- **Animal le plus âgé** : Recherche dans toute la base de données
+- **Espèce la plus commune** : Découvrez les espèces d'animaux les plus populaires
+- **Propriétaire avec le plus d'animaux** : Identifiez les propriétaires avec le plus grand nombre d'animaux
+- **Analytics de poids** : Suivi des statistiques de poids et animaux les plus lourds
+- **Statistiques spécialisées** : Analytics spécialisées pour les propriétaires de chats
 
-### 🔧 Technical Features
+### 🔧 Fonctionnalités Techniques
 
-- **GraphQL API**: Modern, efficient data fetching
-- **Pagination**: Handle large datasets efficiently
-- **Type Safety**: Full TypeScript implementation
-- **Error Handling**: Comprehensive error management
-- **Docker Support**: Containerized deployment
-- **Modern UI Components**: Built with Tailwind CSS and shadcn/ui
+- **API GraphQL** : Récupération de données moderne et efficace
+- **Pagination** : Gestion efficace des grands datasets
+- **Type Safety** : Implémentation TypeScript complète
+- **Gestion d'erreurs** : Système de gestion d'erreurs complet
+- **Support Docker** : Déploiement containerisé
+- **Composants UI Modernes** : Construits avec Tailwind CSS et shadcn/ui
 
 ## 🏗️ Architecture
 
@@ -38,22 +38,22 @@ A modern full-stack web application for managing pets and their owners, built wi
 ```
 test-frontend/
 ├── src/
-│   ├── app/                    # App Router pages
-│   │   ├── animals/           # Pet management pages
-│   │   ├── owners/            # Owner management pages
-│   │   └── globals.css        # Global styles
-│   ├── components/            # Reusable UI components
-│   │   ├── ui/               # shadcn/ui components
-│   │   ├── common/           # Common components
-│   │   └── layout/           # Layout components
-│   ├── features/             # Feature-specific components
-│   │   ├── animals/          # Pet-related components
-│   │   ├── owners/           # Owner-related components
-│   │   └── home/             # Homepage components
-│   ├── graphql/              # GraphQL queries
-│   ├── hooks/                # Custom React hooks
-│   ├── lib/                  # Utility functions
-│   └── types/                # TypeScript type definitions
+│   ├── app/                    # Pages App Router
+│   │   ├── animals/           # Pages de gestion des animaux
+│   │   ├── owners/            # Pages de gestion des propriétaires
+│   │   └── globals.css        # Styles globaux
+│   ├── components/            # Composants UI réutilisables
+│   │   ├── ui/               # Composants shadcn/ui
+│   │   ├── common/           # Composants communs
+│   │   └── layout/           # Composants de layout
+│   ├── features/             # Composants spécifiques aux fonctionnalités
+│   │   ├── animals/          # Composants liés aux animaux
+│   │   ├── owners/           # Composants liés aux propriétaires
+│   │   └── home/             # Composants de la page d'accueil
+│   ├── graphql/              # Requêtes GraphQL
+│   ├── hooks/                # Hooks React personnalisés
+│   ├── lib/                  # Fonctions utilitaires
+│   └── types/                # Définitions TypeScript
 ```
 
 ### Backend (NestJS)
@@ -61,103 +61,125 @@ test-frontend/
 ```
 test-backend/
 ├── src/
-│   ├── modules/              # Feature modules
-│   │   ├── animals/          # Pet management
-│   │   └── owners/           # Owner management
-│   ├── common/               # Shared utilities
-│   │   ├── components/       # Shared components
-│   │   ├── exceptions/       # Error handling
-│   │   ├── filters/          # Exception filters
-│   │   ├── graphql/          # GraphQL schemas
-│   │   └── services/         # Shared services
-│   └── main.ts               # Application entry point
+│   ├── modules/              # Modules fonctionnels
+│   │   ├── animals/          # Gestion des animaux
+│   │   └── owners/           # Gestion des propriétaires
+│   ├── common/               # Utilitaires partagés
+│   │   ├── components/       # Composants partagés
+│   │   ├── exceptions/       # Gestion d'erreurs
+│   │   ├── filters/          # Filtres d'exceptions
+│   │   ├── graphql/          # Schémas GraphQL
+│   │   └── services/         # Services partagés
+│   └── main.ts               # Point d'entrée de l'application
 ```
 
-## 🛠️ Tech Stack
+## 🛠️ Stack Technique
 
 ### Frontend
 
-- **Framework**: Next.js 15 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: shadcn/ui
-- **GraphQL Client**: Apollo Client
-- **Icons**: Lucide React
-- **Date Handling**: date-fns
+- **Framework** : Next.js 15 (App Router)
+- **Langage** : TypeScript
+- **Styles** : Tailwind CSS
+- **Composants UI** : shadcn/ui avec thème orange personnalisé
+- **Client GraphQL** : Apollo Client
+- **Icônes** : Lucide React
+- **Gestion des dates** : date-fns
+- **Polices** : Famille Geist
 
 ### Backend
 
-- **Framework**: NestJS
-- **Language**: TypeScript
-- **Database**: SQLite (with TypeORM)
-- **API**: GraphQL
-- **Validation**: class-validator
-- **Documentation**: Auto-generated GraphQL schema
+- **Framework** : NestJS (11.x)
+- **Langage** : TypeScript (5.x)
+- **Base de données** : MySQL (8.x) avec TypeORM
+- **API** : GraphQL avec Apollo Server
+- **Validation** : class-validator & class-transformer
+- **Documentation** : Schéma GraphQL auto-généré
 
-### DevOps
+### DevOps & Outils
 
-- **Containerization**: Docker & Docker Compose
-- **Linting**: ESLint
-- **Package Manager**: npm
+- **Containerisation** : Docker & Docker Compose
+- **Linting** : ESLint avec configuration stricte
+- **Tests** : Jest pour backend et frontend
+- **Gestionnaire de packages** : npm
 
-## 🚀 Quick Start
+## 🚀 Démarrage Rapide
 
-### Prerequisites
+### Prérequis
 
 - Node.js 18+
-- Docker & Docker Compose (optional)
+- MySQL 8.x
+- Docker & Docker Compose (optionnel)
 
-### Option 1: Docker (Recommended)
+### Option 1 : Docker (Recommandé)
 
 ```bash
-# Clone the repository
+# Cloner le repository
 git clone <repository-url>
 cd TestTKORP
 
-# Start the application
+# Démarrer l'application
 docker-compose up -d
 
-# Access the applications
+# Accéder aux applications
 # Frontend: http://localhost:3000
 # Backend GraphQL Playground: http://localhost:4000/graphql
 ```
 
-### Option 2: Manual Setup
+### Option 2 : Configuration Manuelle
 
-#### Backend Setup
+#### Configuration Backend
 
 ```bash
 cd test-backend
 
-# Install dependencies
+# Installer les dépendances
 npm install
 
-# Start the development server
+# Configurer MySQL
+# Créer une base de données 'petkeeper' dans MySQL
+
+# Démarrer le serveur de développement
 npm run start:dev
 
-# The GraphQL API will be available at http://localhost:4000/graphql
+# L'API GraphQL sera disponible sur http://localhost:4000/graphql
 ```
 
-#### Frontend Setup
+#### Configuration Frontend
 
 ```bash
 cd test-frontend
 
-# Install dependencies
+# Installer les dépendances
 npm install
 
-# Start the development server
+# Démarrer le serveur de développement
 npm run dev
 
-# The application will be available at http://localhost:3000
+# L'application sera disponible sur http://localhost:3000
 ```
 
-## 📊 GraphQL API
+## 🎨 Système de Design
 
-### Key Queries
+### Thème Orange Personnalisé
+
+- **Couleur Principale** : Orange (#f97316)
+- **Générateur utilisé** : [ui.jln.dev](https://ui.jln.dev/) pour les couleurs shadcn/ui
+- **Typographie** : Famille de polices Geist
+- **Design** : Moderne, épuré, responsive
+
+### Couleurs du Thème
+
+- **Primary** : `hsl(22.93, 92.59%, 52.35%)` - Orange principal
+- **Secondary** : `hsl(34.05, 100%, 85.49%)` - Orange clair
+- **Destructive** : `hsl(10.16, 77.87%, 53.92%)` - Rouge d'erreur
+- **Ring** : `hsl(24.8, 79.79%, 63.14%)` - Focus ring
+
+## 📊 API GraphQL
+
+### Requêtes Principales
 
 ```graphql
-# Get all animals with pagination
+# Récupérer tous les animaux avec pagination
 query GetAnimals($page: Int, $limit: Int) {
   animals(page: $page, limit: $limit) {
     items {
@@ -178,11 +200,12 @@ query GetAnimals($page: Int, $limit: Int) {
       totalItems
       totalPages
       currentPage
+      itemsPerPage
     }
   }
 }
 
-# Get all owners with their animals
+# Récupérer tous les propriétaires avec leurs animaux
 query GetOwners($page: Int, $limit: Int) {
   owners(page: $page, limit: $limit) {
     items {
@@ -206,10 +229,10 @@ query GetOwners($page: Int, $limit: Int) {
 }
 ```
 
-### Statistics Queries
+### Requêtes de Statistiques
 
 ```graphql
-# Get the oldest animal
+# Animal le plus âgé
 query GetOldestAnimal {
   oldestAnimal {
     id
@@ -223,11 +246,23 @@ query GetOldestAnimal {
   }
 }
 
-# Get the most common species
+# Espèce la plus commune
 query GetMostCommonSpecies {
   mostCommonSpecies {
     species
     count
+  }
+}
+
+# Propriétaire avec le plus d'animaux
+query GetOwnerWithMostAnimals {
+  ownerWithMostAnimals {
+    owner {
+      id
+      firstName
+      lastName
+    }
+    animalCount
   }
 }
 ```
@@ -235,7 +270,7 @@ query GetMostCommonSpecies {
 ### Mutations
 
 ```graphql
-# Create a new animal
+# Créer un nouvel animal
 mutation CreateAnimal($input: CreateAnimalInput!) {
   createAnimal(input: $input) {
     id
@@ -248,7 +283,7 @@ mutation CreateAnimal($input: CreateAnimalInput!) {
   }
 }
 
-# Create a new owner
+# Créer un nouveau propriétaire
 mutation CreateOwner($input: CreateOwnerInput!) {
   createOwner(input: $input) {
     id
@@ -258,106 +293,269 @@ mutation CreateOwner($input: CreateOwnerInput!) {
     phoneNumber
   }
 }
+
+# Mettre à jour un animal
+mutation UpdateAnimal($id: Int!, $input: UpdateAnimalInput!) {
+  updateAnimal(id: $id, input: $input) {
+    id
+    name
+    species
+    breed
+    color
+    weight
+  }
+}
 ```
 
-## 🎨 UI Components
+## 🎯 Composants UI & UX
+
+### Composants Principaux
+
+#### 🐾 Gestion d'Animaux
+
+- **AnimalCard** : Cartes d'animaux avec avatars générés dynamiquement
+- **AnimalDetailHeader** : En-têtes des pages de détail d'animaux
+- **AnimalDetailInfoCard** : Cartes d'information (couleur, poids, etc.)
+- **AnimalOwnerInfoCard** : Informations du propriétaire associé
+
+#### 👥 Gestion de Propriétaires
+
+- **OwnerCard** : Cartes de propriétaires avec nombre d'animaux
+- **OwnerDetailHeader** : En-têtes des pages de détail de propriétaires
+- **OwnerAnimalsSection** : Section listant les animaux du propriétaire
+
+#### 🏠 Layout & Navigation
+
+- **Header** : Navigation responsive avec logo et menu hamburger
+- **Footer** : Pied de page avec informations de copyright
+- **CircleBackground** : Fond décoratif avec cercles animés
+- **BackButton** : Bouton de retour avec navigation contextuelle
+
+#### ⚡ États & Interactions
+
+- **Loading States** : Composants skeleton pour le chargement
+- **Error Handling** : Pages 404 personnalisées par section
+- **Pagination** : Navigation efficace avec métadonnées
+- **Hover Effects** : Animations et transitions fluides
 
 ### Design System
 
-- **Colors**: Custom orange theme with consistent color palette
-- **Typography**: Modern font stack with Geist font family
-- **Components**: Reusable components built with Tailwind CSS
-- **Animations**: Smooth transitions and hover effects
-- **Responsive**: Mobile-first design approach
+- **Mobile First** : Approche responsive mobile d'abord
+- **Consistent Spacing** : Échelle de spacing Tailwind cohérente
+- **Type Safety** : Tous les composants typés strictement
+- **Accessibility** : Composants accessibles avec Radix UI
 
-### Key Components
+## 🔍 Fonctionnalités Avancées
 
-- **Animal Cards**: Display pet information with avatars
-- **Owner Cards**: Show owner details with pet counts
-- **Detail Pages**: Comprehensive information views
-- **Navigation**: Responsive header with mobile menu
-- **Pagination**: Efficient data navigation
-- **Loading States**: Skeleton components for better UX
+### Gestion d'Animaux
 
-## 🔍 Key Features Deep Dive
+- Opérations CRUD complètes pour les animaux
+- Génération d'avatars dynamiques basée sur l'ID de l'animal
+- Profils détaillés d'animaux avec informations du propriétaire
+- Suivi des espèces et races
+- Gestion du poids et de l'âge
 
-### Pet Management
+### Gestion de Propriétaires
 
-- Complete CRUD operations for pets
-- Dynamic avatar generation based on pet ID
-- Detailed pet profiles with owner information
-- Species and breed tracking
-- Weight and age management
-
-### Owner Management
-
-- Full owner profile management
-- Contact information tracking
-- Relationship with multiple pets
-- Owner-specific analytics
+- Gestion complète des profils de propriétaires
+- Suivi des informations de contact
+- Relations avec plusieurs animaux
+- Analytics spécifiques aux propriétaires
 
 ### Analytics Dashboard
 
-- Real-time statistics calculation
-- Advanced database queries for insights
-- Weight-based analytics
-- Species distribution analysis
+- Calcul de statistiques en temps réel
+- Requêtes de base de données avancées pour les insights
+- Analytics basées sur le poids
+- Analyse de distribution des espèces
 
-## 🧪 Testing
+### Configuration Apollo Client
 
-```bash
-# Backend tests
-cd test-backend
-npm run test
-npm run test:e2e
+```typescript
+// src/config/ApolloProvider.tsx
+const client = new ApolloClient({
+  uri: "http://localhost:4000/graphql",
+  cache: new InMemoryCache(),
+});
 
-# Frontend tests
-cd test-frontend
-npm run test
+// Provider wrapper pour l'application
+export function ApolloProvider({ children }: { children: React.ReactNode }) {
+  return <ApolloProvider client={client}>{children}</ApolloProvider>;
+}
 ```
 
-## 📦 Deployment
+## 🔧 Configuration
 
-### Production Build
+### Variables d'Environnement Backend
+
+```env
+# Base de données MySQL
+DATABASE_TYPE=mysql
+DATABASE_HOST=localhost
+DATABASE_PORT=3306
+DATABASE_USERNAME=root
+DATABASE_PASSWORD=your_password
+DATABASE_NAME=petkeeper
+
+# GraphQL
+GRAPHQL_PLAYGROUND=true
+GRAPHQL_DEBUG=true
+
+# Application
+PORT=4000
+NODE_ENV=development
+```
+
+### Fichiers de Configuration
+
+#### Backend
+
+- `nest-cli.json` - Configuration NestJS CLI
+- `tsconfig.json` - Configuration TypeScript stricte
+- `eslint.config.mjs` - Règles ESLint
+
+#### Frontend
+
+- `next.config.ts` - Configuration Next.js et optimisations
+- `tailwind.config.ts` - Thème personnalisé et classes utilitaires
+- `components.json` - Configuration shadcn/ui et chemins
+- `tsconfig.json` - Configuration TypeScript stricte
+
+## 🧪 Tests
+
+### Backend
+
+```bash
+cd test-backend
+
+# Tests unitaires
+npm run test
+
+# Tests end-to-end
+npm run test:e2e
+
+# Couverture de code
+npm run test:cov
+```
+
+### Frontend
+
+```bash
+cd test-frontend
+
+# Linting
+npm run lint
+
+# Vérification des types
+npm run type-check
+```
+
+## 🐛 Dépannage
+
+### Problèmes Courants
+
+1. **Connexion GraphQL échouée**
+
+   ```bash
+   # Vérifier que le backend est démarré
+   cd test-backend && npm run start:dev
+   # Vérifier l'URL: http://localhost:4000/graphql
+   ```
+
+2. **Connexion MySQL échouée**
+
+   ```bash
+   # Vérifier que MySQL est démarré
+   sudo service mysql start
+   # Vérifier les credentials dans les variables d'environnement
+   ```
+
+3. **Erreurs de Build TypeScript**
+
+   ```bash
+   # Vérifier les types
+   npm run type-check
+   # Nettoyer le cache Next.js
+   rm -rf .next && npm run dev
+   ```
+
+4. **Port déjà utilisé**
+   ```bash
+   # Backend: changer le port
+   PORT=4001 npm run start:dev
+   # Frontend: utiliser un autre port
+   npm run dev -- -p 3001
+   ```
+
+### Mode Debug
+
+```bash
+# Backend avec logs détaillés
+DEBUG=* npm run start:dev
+
+# Frontend avec debug Apollo
+APOLLO_CLIENT_DEBUG=true npm run dev
+```
+
+## 📦 Commandes Utiles
+
+### Développement
 
 ```bash
 # Backend
 cd test-backend
-npm run build
-npm run start:prod
+npm run start:dev          # Mode watch avec rechargement automatique
+npm run start:debug        # Mode debug avec inspection
 
 # Frontend
 cd test-frontend
-npm run build
-npm start
+npm run dev                # Serveur de développement
+npm run build              # Build de production
 ```
 
-### Docker Production
+### Qualité de Code
 
 ```bash
-docker-compose -f docker-compose.prod.yml up -d
+# Backend
+npm run lint               # Linting avec correction automatique
+npm run format             # Formatage avec Prettier
+
+# Frontend
+npm run lint               # ESLint
+npm run type-check         # Vérification TypeScript
 ```
 
-## 🤝 Contributing
+## 🤝 Contribution
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+1. **Fork** le repository
+2. **Créer** une branche feature (`git checkout -b feature/amazing-feature`)
+3. **Commiter** les changements (`git commit -m 'Add amazing feature'`)
+4. **Push** sur la branche (`git push origin feature/amazing-feature`)
+5. **Ouvrir** une Pull Request
+
+### Standards de Code
+
+- **TypeScript First** : Tous les composants typés strictement
+- **Conventions NestJS** : Suivre les bonnes pratiques NestJS
+- **App Router** : Utiliser les conventions Next.js 13+
+- **Tests** : Ajouter des tests pour les nouvelles fonctionnalités
+- **Documentation** : Documenter les APIs GraphQL
+
+## 🎨 Design & Inspiration
+
+- **Moodboard Figma** : [Lien vers le moodboard](https://www.figma.com/design/zZoXLW3Qa6d0HwfQtlY9nS/PetKEEPER?node-id=0-1&t=DuPl06BAUK0FaZjx-1)
+- **Générateur de thème** : [ui.jln.dev](https://ui.jln.dev/) pour les couleurs shadcn/ui
+- **Design System** : Thème orange cohérent avec composants réutilisables
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
-## 🙏 Acknowledgments
+## 🙏 Remerciements
 
-- **Next.js** team for the amazing React framework
-- **NestJS** team for the powerful Node.js framework
-- **shadcn/ui** for the beautiful UI components
-- **Tailwind CSS** for the utility-first CSS framework
-- **Apollo GraphQL** for the excellent GraphQL implementation
-
----
-
-**Built with ❤️ for pet lovers everywhere** 🐕🐱🐹
+- **Next.js Team** - Framework React extraordinaire
+- **NestJS Team** - Framework Node.js puissant
+- **shadcn/ui** - Composants UI magnifiques
+- **Tailwind CSS** - Framework CSS utility-first
+- **Apollo GraphQL** - Implémentation GraphQL excellente
+- **TypeORM** - ORM TypeScript robuste

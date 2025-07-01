@@ -4,12 +4,12 @@ services:
   mysql:
     image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: test_crud
-      MYSQL_USER: MySQL80
-      MYSQL_PASSWORD: NestJs_2025!
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
-      - "3306:3306"
+      - "${MYSQL_PORT}:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     networks:
@@ -24,16 +24,16 @@ services:
       context: ./test-backend
       dockerfile: Dockerfile
     ports:
-      - "4000:4000"
+      - "${BACKEND_PORT}:4000"
     volumes:
       - ./test-backend:/app
       - /app/node_modules
     environment:
-      - DB_HOST=mysql
-      - DB_PORT=3306
-      - DB_USERNAME=MySQL80
-      - DB_PASSWORD=NestJs_2025!
-      - DB_DATABASE=test_crud
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_DATABASE=${DB_DATABASE}
     depends_on:
       mysql:
         condition: service_healthy
@@ -45,7 +45,7 @@ services:
       context: ./test-frontend
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "${FRONTEND_PORT}:3000"
     volumes:
       - ./test-frontend:/app
       - /app/node_modules
