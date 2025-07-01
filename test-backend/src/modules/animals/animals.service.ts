@@ -22,6 +22,10 @@ export class AnimalsService {
     private ownersRepository: Repository<Owner>,
   ) {}
 
+  // ===================================
+  // CREATE - Création d'un animal
+  // ===================================
+
   async create(input: CreateAnimalInput): Promise<Animal> {
     try {
       const owner = await this.ownersRepository.findOne({
@@ -43,6 +47,10 @@ export class AnimalsService {
       });
     }
   }
+
+  // ===================================
+  // READ - Lecture des animaux
+  // ===================================
 
   async findAll(page: number = 1, limit: number = 10) {
     try {
@@ -77,6 +85,10 @@ export class AnimalsService {
     }
   }
 
+  // ===================================
+  // UPDATE - Mise à jour d'un animal
+  // ===================================
+
   async update(id: number, input: UpdateAnimalInput): Promise<Animal> {
     try {
       const animalToUpdate = await this.findById(id);
@@ -100,6 +112,10 @@ export class AnimalsService {
     }
   }
 
+  // ===================================
+  // DELETE - Suppression d'un animal
+  // ===================================
+
   async remove(id: number): Promise<boolean> {
     try {
       const result = await this.animalsRepository.delete(id);
@@ -110,6 +126,10 @@ export class AnimalsService {
       });
     }
   }
+
+  // ===================================
+  // STATISTIQUES - Méthodes d'analyse
+  // ===================================
 
   async findOldestAnimal(): Promise<Animal> {
     try {

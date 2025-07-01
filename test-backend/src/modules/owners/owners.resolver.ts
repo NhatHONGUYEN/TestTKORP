@@ -23,10 +23,18 @@ class PaginatedOwner extends Paginated(Owner) {}
 export class OwnersResolver {
   constructor(private readonly ownersService: OwnersService) {}
 
+  // ===================================
+  // CREATE - Création d'un propriétaire
+  // ===================================
+
   @Mutation(() => Owner)
   async createOwner(@Args('input') input: CreateOwnerInput): Promise<Owner> {
     return await this.ownersService.create(input);
   }
+
+  // ===================================
+  // READ - Lecture des propriétaires
+  // ===================================
 
   @Query(() => PaginatedOwner)
   async owners(
@@ -43,6 +51,10 @@ export class OwnersResolver {
     return await this.ownersService.findById(id);
   }
 
+  // ===================================
+  // UPDATE - Mise à jour d'un propriétaire
+  // ===================================
+
   @Mutation(() => Owner)
   async updateOwner(
     @Args('id', { type: () => Int }) id: number,
@@ -51,12 +63,20 @@ export class OwnersResolver {
     return await this.ownersService.update(id, input);
   }
 
+  // ===================================
+  // DELETE - Suppression d'un propriétaire
+  // ===================================
+
   @Mutation(() => Boolean)
   async removeOwner(
     @Args('id', { type: () => Int }) id: number,
   ): Promise<boolean> {
     return await this.ownersService.remove(id);
   }
+
+  // ===================================
+  // STATISTIQUES - Queries d'analyse
+  // ===================================
 
   @Query(() => OwnerAnimalsCount)
   async ownerWithMostAnimals(): Promise<OwnerAnimalsCount> {

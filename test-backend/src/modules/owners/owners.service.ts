@@ -18,6 +18,10 @@ export class OwnersService {
     private ownersRepository: Repository<Owner>,
   ) {}
 
+  // ===================================
+  // CREATE - Création d'un propriétaire
+  // ===================================
+
   async create(input: CreateOwnerInput): Promise<Owner> {
     try {
       const newOwner = this.ownersRepository.create(input);
@@ -28,6 +32,10 @@ export class OwnersService {
       });
     }
   }
+
+  // ===================================
+  // READ - Lecture des propriétaires
+  // ===================================
 
   async findAll(page: number = 1, limit: number = 10) {
     try {
@@ -65,6 +73,10 @@ export class OwnersService {
     }
   }
 
+  // ===================================
+  // UPDATE - Mise à jour d'un propriétaire
+  // ===================================
+
   async update(id: number, input: UpdateOwnerInput): Promise<Owner> {
     try {
       const ownerToUpdate = await this.findById(id);
@@ -77,6 +89,10 @@ export class OwnersService {
     }
   }
 
+  // ===================================
+  // DELETE - Suppression d'un propriétaire
+  // ===================================
+
   async remove(id: number): Promise<boolean> {
     try {
       const result = await this.ownersRepository.delete(id);
@@ -87,6 +103,10 @@ export class OwnersService {
       });
     }
   }
+
+  // ===================================
+  // STATISTIQUES - Méthodes d'analyse
+  // ===================================
 
   async findOwnerWithMostAnimals(): Promise<OwnerAnimalsCount> {
     try {

@@ -19,10 +19,18 @@ class PaginatedAnimal extends Paginated(Animal) {}
 export class AnimalsResolver {
   constructor(private readonly animalsService: AnimalsService) {}
 
+  // ===================================
+  // CREATE - Création d'un animal
+  // ===================================
+
   @Mutation(() => Animal)
   async createAnimal(@Args('input') input: CreateAnimalInput): Promise<Animal> {
     return await this.animalsService.create(input);
   }
+
+  // ===================================
+  // READ - Lecture des animaux
+  // ===================================
 
   @Query(() => PaginatedAnimal)
   async animals(
@@ -39,6 +47,10 @@ export class AnimalsResolver {
     return await this.animalsService.findById(id);
   }
 
+  // ===================================
+  // UPDATE - Mise à jour d'un animal
+  // ===================================
+
   @Mutation(() => Animal)
   async updateAnimal(
     @Args('id', { type: () => Int }) id: number,
@@ -46,6 +58,10 @@ export class AnimalsResolver {
   ): Promise<Animal> {
     return await this.animalsService.update(id, input);
   }
+
+  // ===================================
+  // DELETE - Suppression d'un animal
+  // ===================================
 
   @Mutation(() => Boolean)
   async removeAnimal(
