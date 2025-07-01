@@ -13,14 +13,14 @@ export default function OwnerNotFound() {
           <div className="size-32 mx-auto relative">
             <Image
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face"
-              alt="Personne qui cherche"
+              alt="Lost person"
               width={128}
               height={128}
               quality={100}
               className="size-32 rounded-full object-cover border-4 border-gray-200"
             />
             <Badge className="absolute -top-2 -right-2 bg-orange-500 hover:bg-orange-600 text-white">
-              Introuvable
+              Not Found
             </Badge>
           </div>
         </div>
@@ -36,7 +36,7 @@ export default function OwnerNotFound() {
           <Button asChild>
             <Link href="/owners">
               <ArrowLeft className="size-4 mr-2" />
-              Retour aux propriétaires
+              Back to owners
             </Link>
           </Button>
 
