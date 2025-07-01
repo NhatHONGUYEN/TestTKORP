@@ -165,28 +165,3 @@
     font-weight: 700;
   }
 }
-
-/* Animations pour les cartes d'animaux */
-@keyframes paw-bounce {
-  0%,
-  20%,
-  53%,
-  80%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-  40%,
-  43% {
-    transform: translate3d(0, -8px, 0);
-  }
-  70% {
-    transform: translate3d(0, -4px, 0);
-  }
-  90% {
-    transform: translate3d(0, -2px, 0);
-  }
-}
-
-.paw-bounce:hover {
-  animation: paw-bounce 1s ease-in-out;
-}
