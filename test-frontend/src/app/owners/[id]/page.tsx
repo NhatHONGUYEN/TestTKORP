@@ -12,22 +12,15 @@ import {
 } from "@/features/owners/components/owner-detail";
 import { BackButton } from "@/components/common";
 
-export default function OwnerDetailPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const resolvedParams = use(params);
-  const id = parseInt(resolvedParams.id);
+// Import the loading component
+import OwnerDetailLoading from "./loading";
 
-  // Vérifier si l'ID est valide (nombre entre 1 et 1000)
-  if (isNaN(id) || id < 1 || id > 1000) {
-    notFound();
-  }
-
+function OwnerDetailContent({ id }: { id: number }) {
   const { owner, isLoading, error } = useGetOwnerById(id);
 
-  if (isLoading) return <div>Loading...</div>; // Déclenche loading.tsx
+  if (isLoading) {
+    return <OwnerDetailLoading />;
+  }
   if (error) throw error;
   if (!owner) notFound();
 
@@ -61,7 +54,7 @@ export default function OwnerDetailPage({
               {owner.phoneNumber && (
                 <OwnerDetailInfoCard
                   icon={Phone}
-                  title="Téléphone"
+                  title="Phone"
                   value={owner.phoneNumber}
                 />
               )}
@@ -74,4 +67,20 @@ export default function OwnerDetailPage({
       </div>
     </section>
   );
+}
+
+export default function OwnerDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const resolvedParams = use(params);
+  const id = parseInt(resolvedParams.id);
+
+  // Vérifier si l'ID est valide (nombre entre 1 et 1000)
+  if (isNaN(id) || id < 1 || id > 1000) {
+    notFound();
+  }
+
+  return <OwnerDetailContent id={id} />;
 }

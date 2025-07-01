@@ -16,22 +16,15 @@ import {
   AnimalOwnerInfoCard,
 } from "@/features/animals/components/animal-detail";
 
-export default function AnimalDetailPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const resolvedParams = use(params);
-  const id = parseInt(resolvedParams.id);
+// Import the loading component
+import AnimalDetailLoading from "./loading";
 
-  // Vérifier si l'ID est valide (nombre entre 1 et 1000)
-  if (isNaN(id) || id < 1 || id > 1000) {
-    notFound();
-  }
-
+function AnimalDetailContent({ id }: { id: number }) {
   const { animal, isLoading, error } = useGetAnimalById(id);
 
-  if (isLoading) return <div>Loading...</div>; // Déclenche loading.tsx
+  if (isLoading) {
+    return <AnimalDetailLoading />;
+  }
   if (error) throw error;
   if (!animal) notFound();
 
@@ -51,7 +44,6 @@ export default function AnimalDetailPage({
 
           {/* Right information */}
           <div className="lg:w-2/3 space-y-8">
-            {/* Right information */}
             {/* Basic information */}
             <div className="space-y-4">
               <AnimalDetailInfoCard
@@ -83,4 +75,20 @@ export default function AnimalDetailPage({
       </div>
     </section>
   );
+}
+
+export default function AnimalDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const resolvedParams = use(params);
+  const id = parseInt(resolvedParams.id);
+
+  // Vérifier si l'ID est valide (nombre entre 1 et 1000)
+  if (isNaN(id) || id < 1 || id > 1000) {
+    notFound();
+  }
+
+  return <AnimalDetailContent id={id} />;
 }

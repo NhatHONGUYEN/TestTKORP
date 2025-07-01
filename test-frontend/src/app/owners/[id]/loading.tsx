@@ -11,14 +11,14 @@ export default function OwnerDetailLoading() {
           <Skeleton className="h-4 w-40" />
         </div>
 
-        {/* En-tête skeleton */}
+        {/* Header skeleton */}
         <div className="mb-12">
           <Skeleton className="h-4 w-32 mb-2" />
           <Skeleton className="h-10 w-64 mb-4" />
           <Skeleton className="h-6 w-48" />
         </div>
 
-        {/* Contenu principal */}
+        {/* Main content */}
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Avatar skeleton */}
           <div className="lg:w-1/3">

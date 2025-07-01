@@ -5,9 +5,12 @@ import { useGetOwners } from "@/hooks/api/owners/useGetOwners";
 import { Pagination } from "@/components/common/Pagination";
 import OwnerCard from "./owner-card/OwnerCard";
 
+// Import the loading component
+import OwnersLoading from "@/app/owners/loading";
+
 export default function OwnersListSection() {
   const [currentPage, setCurrentPage] = useState(1);
-  const { owners, meta, error, refetch } = useGetOwners({
+  const { owners, meta, isLoading, error, refetch } = useGetOwners({
     page: currentPage,
   });
 
@@ -19,6 +22,10 @@ export default function OwnersListSection() {
       console.error("❌ Page change error:", err);
     }
   };
+
+  if (isLoading) {
+    return <OwnersLoading />;
+  }
 
   if (error) {
     return (

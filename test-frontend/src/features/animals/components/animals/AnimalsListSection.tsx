@@ -5,6 +5,9 @@ import { Pagination } from "@/components/common/Pagination";
 import AnimalCard from "@/features/animals/components/animals/animals-card/AnimalCard";
 import { useState } from "react";
 
+// Import the loading component
+import AnimalsLoading from "@/app/animals/loading";
+
 export default function AnimalsListSection() {
   const [currentPage, setCurrentPage] = useState(1);
   const { animals, meta, isLoading, error } = useGetAnimals({
@@ -15,12 +18,9 @@ export default function AnimalsListSection() {
     setCurrentPage(page);
   };
 
-  if (isLoading)
-    return (
-      <div className="container mx-auto px-4 py-32 flex items-center justify-center">
-        <div className="text-xl text-muted-foreground">Loading...</div>
-      </div>
-    );
+  if (isLoading) {
+    return <AnimalsLoading />;
+  }
 
   if (error)
     return (
