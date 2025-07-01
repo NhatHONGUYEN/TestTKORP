@@ -4,7 +4,11 @@ export default function Home() {
   return (
     <Hero
       badge="PetKeeper"
-      heading="Manage your pets easily"
+      heading={
+        <>
+          Manage your pets <span className="text-orange-500">easily</span>
+        </>
+      }
       description="Management platform for pet owners and their companions."
       buttons={{
         primary: {

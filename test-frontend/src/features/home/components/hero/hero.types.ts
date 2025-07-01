@@ -1,6 +1,8 @@
+import { ReactNode } from "react";
+
 export interface HeroProps {
   badge: string;
-  heading: string;
+  heading: string | ReactNode;
   description: string;
   buttons: {
     primary: {

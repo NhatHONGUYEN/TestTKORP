@@ -23,7 +23,7 @@ export default function Hero({
                 <ArrowUpRight className="ml-2 size-4" />
               </Badge>
             )}
-            <h1 className="my-6 text-pretty text-4xl font-bold lg:text-6xl">
+            <h1 className="my-6 text-pretty text-4xl font-bold lg:text-6xl leading-tight">
               {heading}
             </h1>
             <p className="text-muted-foreground mb-8 max-w-xl lg:text-xl">

@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header/Header";
+import Footer from "@/components/layout/Footer";
 import { Providers } from "@/config/ApolloProvider";
 import { CircleBackground } from "@/components/common";
+// import { ScreenSize } from "@/components/common/ScreenSize";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -31,10 +33,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="antialiased" suppressHydrationWarning={true}>
+      <body
+        className="antialiased min-h-screen flex flex-col"
+        suppressHydrationWarning={true}
+      >
         <Providers>
+          {/* <ScreenSize /> */}
           <Header />
-          <CircleBackground>{children}</CircleBackground>
+          <div className="flex-1">
+            <CircleBackground>{children}</CircleBackground>
+          </div>
+          <Footer />
         </Providers>
       </body>
     </html>
