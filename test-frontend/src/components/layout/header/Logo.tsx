@@ -9,10 +9,14 @@ interface LogoProps {
 
 export default function Logo({ config, onLogoClick }: LogoProps) {
   return (
-    <Link href={config.url} className="flex items-center" onClick={onLogoClick}>
-      <div className="flex items-center gap-1">
-        <PawPrint className="h-6 w-6 text-primary" />
-        <span className="text-2xl font-bold text-primary tracking-tighter">
+    <Link
+      href={config.url}
+      className="flex items-center touch-manipulation"
+      onClick={onLogoClick}
+    >
+      <div className="flex items-center gap-1 sm:gap-2">
+        <PawPrint className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+        <span className="text-xl sm:text-2xl font-bold text-primary tracking-tighter">
           {config.title}
         </span>
       </div>

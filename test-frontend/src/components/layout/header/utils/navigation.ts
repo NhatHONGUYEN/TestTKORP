@@ -22,10 +22,10 @@ export const getNavItemClasses = (isActive: boolean): string => {
  */
 export const getMobileNavItemClasses = (isActive: boolean): string => {
   const baseClasses =
-    "text-foreground flex items-center border-l-[3px] px-6 py-4 text-sm font-medium transition-all duration-75";
+    "text-foreground flex items-center border-l-[3px] px-6 py-5 text-base font-medium transition-all duration-75 touch-manipulation min-h-[48px]";
   return `${baseClasses} ${
     isActive
-      ? "border-primary text-foreground"
-      : "text-muted-foreground hover:text-foreground border-transparent"
+      ? "border-primary text-foreground bg-primary/5"
+      : "text-muted-foreground hover:text-foreground hover:bg-muted/50 border-transparent"
   }`;
 };

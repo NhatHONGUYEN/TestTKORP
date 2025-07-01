@@ -24,16 +24,16 @@ export default function MobileNav({ items }: MobileNavProps) {
     <div className="block lg:hidden">
       <Popover open={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger asChild>
-          <button className="p-2 rounded-md hover:bg-muted">
+          <button className="p-3 rounded-md hover:bg-muted transition-colors touch-manipulation">
             <AnimatedHamburger isOpen={isOpen} />
           </button>
         </PopoverTrigger>
 
         <PopoverContent
           align="end"
-          className="relative -left-4 -top-4 block w-screen max-w-md overflow-hidden rounded-xl p-0 lg:hidden"
+          className="relative -right-4 top-2 block w-screen max-w-xs overflow-hidden rounded-xl p-0 lg:hidden shadow-lg border"
         >
-          <ul className="bg-background text-foreground w-full py-4">
+          <ul className="bg-background text-foreground w-full py-2">
             {items.map((navItem, idx) => {
               const isActive = isActiveNavItem(pathname, navItem.link);
 
