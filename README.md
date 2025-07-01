@@ -4,6 +4,10 @@ Application web full-stack moderne pour la gestion d'animaux de compagnie et de 
 
 ![PetKeeper Interface](test-frontend/public/images/HeroPicture.png)
 
+## 🎥 Démonstration
+
+**[▶️ Voir la démonstration complète](./test-frontend/public/video/PetKeeper.mp4)** _(7.5MB)_
+
 ## 🚀 Installation Rapide
 
 1. **Cloner le repository**
