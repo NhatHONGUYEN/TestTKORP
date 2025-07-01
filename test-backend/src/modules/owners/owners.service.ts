@@ -113,9 +113,8 @@ export class OwnersService {
       const result = await this.ownersRepository
         .createQueryBuilder('owner')
         .leftJoinAndSelect('owner.animals', 'animals')
-        .addSelect('COUNT(animals.id)', 'animalCount')
         .groupBy('owner.id')
-        .orderBy('animalCount', 'DESC')
+        .orderBy('COUNT(animals.id)', 'DESC')
         .getOne();
 
       if (!result) {

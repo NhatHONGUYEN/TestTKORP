@@ -167,7 +167,7 @@ export class AnimalsService {
 
       return {
         species: result.species,
-        count: parseInt(result.count, 10),
+        count: parseInt(result.count, 10), // Conversion string → number (SQL COUNT retourne une string)
       };
     } catch (error: unknown) {
       throw ApiError.databaseError(
