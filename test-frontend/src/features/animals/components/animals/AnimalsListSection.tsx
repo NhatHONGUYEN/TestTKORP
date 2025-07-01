@@ -16,6 +16,8 @@ export default function AnimalsListSection() {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+    // Remonter en haut de la page
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   if (isLoading) {

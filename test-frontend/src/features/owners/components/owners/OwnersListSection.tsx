@@ -16,6 +16,8 @@ export default function OwnersListSection() {
 
   const handlePageChange = async (page: number) => {
     setCurrentPage(page);
+    // Remonter en haut de la page
+    window.scrollTo({ top: 0, behavior: "smooth" });
     try {
       await refetch({ page, limit: 10 });
     } catch (err) {
