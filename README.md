@@ -6,7 +6,7 @@ Application web full-stack moderne pour la gestion d'animaux de compagnie et de 
 
 ## 🎥 Démonstration
 
-**[▶️ Voir la démonstration complète](./test-frontend/public/video/PetKeeper.mp4)** _(7.5MB)_
+![Demo PetKeeper](./test-frontend/public/video/PetKeeper.gif)
 
 ## 🚀 Installation Rapide
 
