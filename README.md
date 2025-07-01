@@ -4,7 +4,68 @@ Application web full-stack moderne pour la gestion d'animaux de compagnie et de 
 
 ![PetKeeper Interface](test-frontend/public/images/HeroPicture.png)
 
-## 🚀 Fonctionnalités
+## 🚀 Installation Rapide
+
+1. **Cloner le repository**
+
+   ```bash
+   git clone <repository-url>
+   cd TestTKORP
+   ```
+
+2. **Créer le fichier .env**
+
+   ```bash
+   cp .env.example .env
+   # Ou créer manuellement avec les valeurs ci-dessous
+   ```
+
+   **Contenu du fichier .env :**
+
+   ```env
+   # 🗄️ MySQL Database Configuration
+   MYSQL_ROOT_PASSWORD=YOUR_MYSQL_ROOT_PASSWORD
+   MYSQL_DATABASE=YOUR_MYSQL_DATABASE
+   MYSQL_USER=YOUR_MYSQL_USER
+   MYSQL_PASSWORD=YOUR_MYSQL_PASSWORD
+
+   # 🔌 Backend Environment Variables
+   DB_HOST=YOUR_DB_HOST
+   DB_PORT=YOUR_DB_PORT
+   DB_USERNAME=YOUR_DB_USERNAME
+   DB_PASSWORD=YOUR_DB_PASSWORD
+   DB_DATABASE=YOUR_DB_DATABASE
+
+   # 🚀 Application Ports
+   BACKEND_PORT=YOUR_BACKEND_PORT
+   FRONTEND_PORT=YOUR_FRONTEND_PORT
+   MYSQL_PORT=YOUR_MYSQL_PORT
+
+   # 🔧 Node Environment
+   NODE_ENV=YOUR_NODE_ENV
+   ```
+
+   **Exemple de valeurs par défaut :**
+
+   # 🔧 Node Environment
+
+   NODE_ENV=development
+
+   ```
+
+   ```
+
+3. **Lancer l'application**
+
+   ```bash
+   docker-compose up -d
+   ```
+
+4. **Accéder aux applications**
+   - Frontend: http://localhost:3000
+   - Backend GraphQL: http://localhost:4000/graphql
+
+## 🎯 Fonctionnalités
 
 ### 🎯 Fonctionnalités Principales
 
@@ -98,65 +159,7 @@ test-backend/
 ### DevOps & Outils
 
 - **Containerisation** : Docker & Docker Compose
-- **Linting** : ESLint avec configuration stricte
-- **Tests** : Jest pour backend et frontend
 - **Gestionnaire de packages** : npm
-
-## 🚀 Démarrage Rapide
-
-### Prérequis
-
-- Node.js 18+
-- MySQL 8.x
-- Docker & Docker Compose (optionnel)
-
-### Option 1 : Docker (Recommandé)
-
-```bash
-# Cloner le repository
-git clone <repository-url>
-cd TestTKORP
-
-# Démarrer l'application
-docker-compose up -d
-
-# Accéder aux applications
-# Frontend: http://localhost:3000
-# Backend GraphQL Playground: http://localhost:4000/graphql
-```
-
-### Option 2 : Configuration Manuelle
-
-#### Configuration Backend
-
-```bash
-cd test-backend
-
-# Installer les dépendances
-npm install
-
-# Configurer MySQL
-# Créer une base de données 'petkeeper' dans MySQL
-
-# Démarrer le serveur de développement
-npm run start:dev
-
-# L'API GraphQL sera disponible sur http://localhost:4000/graphql
-```
-
-#### Configuration Frontend
-
-```bash
-cd test-frontend
-
-# Installer les dépendances
-npm install
-
-# Démarrer le serveur de développement
-npm run dev
-
-# L'application sera disponible sur http://localhost:3000
-```
 
 ## 🎨 Système de Design
 
