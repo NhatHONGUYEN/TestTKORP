@@ -1,81 +1,8 @@
 "use client";
 
-import { useGetAnimalById } from "@/hooks/api/animals/useGetAnimalById";
 import { notFound } from "next/navigation";
 import { use } from "react";
-import { format } from "date-fns";
-import { fr } from "date-fns/locale";
-import { Palette, Scale, Calendar } from "lucide-react";
-
-import { BackButton } from "@/components/common";
-import {
-  AnimalDetailHeader,
-  AnimalDetailAvatar,
-  AnimalDetailInfoCard,
-  AnimalDetailGeneralInfo,
-  AnimalOwnerInfoCard,
-} from "@/features/animals/components/animal-detail";
-
-// Import the loading component
-import AnimalDetailLoading from "./loading";
-
-function AnimalDetailContent({ id }: { id: number }) {
-  const { animal, isLoading, error } = useGetAnimalById(id);
-
-  if (isLoading) {
-    return <AnimalDetailLoading />;
-  }
-  if (error) throw error;
-  if (!animal) notFound();
-
-  return (
-    <section className="py-32 max-w-4xl mx-auto">
-      <div className="container mx-auto px-4">
-        {/* Back button */}
-        <BackButton href="/animals">Back to animals</BackButton>
-
-        {/* En-tête */}
-        <AnimalDetailHeader animal={animal} />
-
-        {/* Contenu principal */}
-        <div className="flex flex-col lg:flex-row gap-12">
-          {/* Avatar */}
-          <AnimalDetailAvatar animalId={animal.id} animalName={animal.name} />
-
-          {/* Right information */}
-          <div className="lg:w-2/3 space-y-8">
-            {/* Basic information */}
-            <div className="space-y-4">
-              <AnimalDetailInfoCard
-                icon={Palette}
-                title="Color"
-                value={animal.color}
-              />
-              <AnimalDetailInfoCard
-                icon={Scale}
-                title="Weight"
-                value={`${animal.weight} kg`}
-              />
-              <AnimalDetailInfoCard
-                icon={Calendar}
-                title="Birth date"
-                value={format(new Date(animal.dateOfBirth), "dd MMMM yyyy", {
-                  locale: fr,
-                })}
-              />
-            </div>
-
-            {/* General information */}
-            <AnimalDetailGeneralInfo animal={animal} />
-
-            {/* Propriétaire */}
-            <AnimalOwnerInfoCard owner={animal.owner} />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+import { AnimalDetailContent } from "@/features/animals/components/animal-detail";
 
 export default function AnimalDetailPage({
   params,
