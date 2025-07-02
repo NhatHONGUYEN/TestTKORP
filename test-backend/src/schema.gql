@@ -36,6 +36,11 @@ type PaginationMeta {
   currentPage: Int!
 }
 
+type SpeciesCount {
+  species: String!
+  count: Int!
+}
+
 type OwnerAnimalsCount {
   owner: Owner!
   animalCount: Int!
@@ -73,6 +78,8 @@ type Query {
   ownerWithMostCats: OwnerCatsCount!
   animals(page: Int! = 1, limit: Int! = 10): PaginatedAnimal!
   findAnimalById(id: Int!): Animal!
+  oldestAnimal: Animal!
+  mostCommonSpecies: SpeciesCount!
   ownerWithHeaviestAnimal: OwnerHeaviestAnimal!
   ownerWithHeaviestAnimalsGroup: OwnerAnimalsWeight!
 }

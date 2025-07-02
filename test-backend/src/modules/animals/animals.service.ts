@@ -133,14 +133,17 @@ export class AnimalsService {
 
   async findOldestAnimal(): Promise<Animal> {
     try {
-      const oldestAnimal = await this.animalsRepository.findOne({
+      const oldestAnimal = await this.animalsRepository.find({
         relations: ['owner'],
         order: { dateOfBirth: 'ASC' },
+        take: 1,
       });
-      if (!oldestAnimal) {
-        throw ApiError.notFound('Animal');
+
+      if (!oldestAnimal || oldestAnimal.length === 0) {
+        throw ApiError.notFound('No animals found');
       }
-      return oldestAnimal;
+
+      return oldestAnimal[0];
     } catch (error: unknown) {
       throw ApiError.databaseError(
         'Error while searching for the oldest animal',

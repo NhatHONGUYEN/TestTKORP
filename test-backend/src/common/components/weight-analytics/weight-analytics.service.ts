@@ -9,6 +9,11 @@ import {
   OwnerHeaviestAnimal,
 } from 'src/common/graphql/statistics.graphql';
 
+interface OwnerAnimalsWeightRaw {
+  ownerId: number;
+  totalWeight: string;
+}
+
 @Injectable()
 export class WeightAnalyticsService {
   constructor(
@@ -52,27 +57,33 @@ export class WeightAnalyticsService {
 
   async findOwnerWithHeaviestAnimalsGroup(): Promise<OwnerAnimalsWeight> {
     try {
+      // Étape 1: Trouver l'ID du propriétaire avec le poids total le plus élevé
       const result = await this.ownersRepository
         .createQueryBuilder('owner')
-        .leftJoinAndSelect('owner.animals', 'animals')
+        .leftJoin('owner.animals', 'animals')
+        .select('owner.id', 'ownerId')
         .addSelect('SUM(animals.weight)', 'totalWeight')
         .groupBy('owner.id')
         .orderBy('totalWeight', 'DESC')
-        .getOne();
+        .getRawOne<OwnerAnimalsWeightRaw>();
 
       if (!result) {
         throw ApiError.notFound('No owner with animals found');
       }
 
-      const totalWeight =
-        result.animals?.reduce(
-          (sum, animal) => sum + (animal.weight ?? 0),
-          0,
-        ) ?? 0;
+      // Étape 2: Récupérer le propriétaire complet avec ses animaux
+      const owner = await this.ownersRepository.findOne({
+        where: { id: result.ownerId },
+        relations: ['animals'],
+      });
+
+      if (!owner) {
+        throw ApiError.notFound('Owner not found');
+      }
 
       return {
-        owner: result,
-        totalWeight,
+        owner,
+        totalWeight: parseFloat(result.totalWeight),
       };
     } catch (error: unknown) {
       this.handleError(

@@ -11,6 +11,7 @@ import { Animal } from './entities/animal.entity';
 import { CreateAnimalInput } from './dto/create-animal.input';
 import { UpdateAnimalInput } from './dto/update-animal.input';
 import { Paginated } from 'src/common/graphql/pagination.graphql';
+import { SpeciesCount } from 'src/common/graphql/statistics.graphql';
 
 @ObjectType()
 class PaginatedAnimal extends Paginated(Animal) {}
@@ -45,6 +46,16 @@ export class AnimalsResolver {
     @Args('id', { type: () => Int }) id: number,
   ): Promise<Animal> {
     return await this.animalsService.findById(id);
+  }
+
+  @Query(() => Animal)
+  async oldestAnimal(): Promise<Animal> {
+    return await this.animalsService.findOldestAnimal();
+  }
+
+  @Query(() => SpeciesCount)
+  async mostCommonSpecies(): Promise<SpeciesCount> {
+    return await this.animalsService.findMostCommonSpecies();
   }
 
   // ===================================

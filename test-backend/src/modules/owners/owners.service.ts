@@ -11,6 +11,16 @@ import {
   OwnerCatsCount,
 } from 'src/common/graphql/statistics.graphql';
 
+interface OwnerAnimalsCountRaw {
+  ownerId: number;
+  animalCount: string;
+}
+
+interface OwnerCatsCountRaw {
+  ownerId: number;
+  catCount: string;
+}
+
 @Injectable()
 export class OwnersService {
   constructor(
@@ -110,20 +120,33 @@ export class OwnersService {
 
   async findOwnerWithMostAnimals(): Promise<OwnerAnimalsCount> {
     try {
+      // Étape 1: Trouver l'ID du propriétaire avec le plus d'animaux
       const result = await this.ownersRepository
         .createQueryBuilder('owner')
-        .leftJoinAndSelect('owner.animals', 'animals')
+        .leftJoin('owner.animals', 'animals')
+        .select('owner.id', 'ownerId')
+        .addSelect('COUNT(animals.id)', 'animalCount')
         .groupBy('owner.id')
-        .orderBy('COUNT(animals.id)', 'DESC')
-        .getOne();
+        .orderBy('animalCount', 'DESC')
+        .getRawOne<OwnerAnimalsCountRaw>();
 
       if (!result) {
         throw ApiError.notFound('No owner found');
       }
 
+      // Étape 2: Récupérer le propriétaire complet avec ses animaux
+      const owner = await this.ownersRepository.findOne({
+        where: { id: result.ownerId },
+        relations: ['animals'],
+      });
+
+      if (!owner) {
+        throw ApiError.notFound('Owner not found');
+      }
+
       return {
-        owner: result,
-        animalCount: result.animals?.length ?? 0,
+        owner,
+        animalCount: parseInt(result.animalCount, 10),
       };
     } catch (error: unknown) {
       throw ApiError.databaseError(
@@ -135,22 +158,34 @@ export class OwnersService {
 
   async findOwnerWithMostCats(): Promise<OwnerCatsCount> {
     try {
+      // Étape 1: Trouver l'ID du propriétaire avec le plus de chats
       const result = await this.ownersRepository
         .createQueryBuilder('owner')
-        .leftJoinAndSelect('owner.animals', 'animals')
-        .where('animals.species = :species', { species: 'Chat' })
+        .leftJoin('owner.animals', 'animals')
+        .where('animals.species = :species', { species: 'Cat' })
+        .select('owner.id', 'ownerId')
         .addSelect('COUNT(animals.id)', 'catCount')
         .groupBy('owner.id')
         .orderBy('catCount', 'DESC')
-        .getOne();
+        .getRawOne<OwnerCatsCountRaw>();
 
       if (!result) {
         throw ApiError.notFound('No cat owner found');
       }
 
+      // Étape 2: Récupérer le propriétaire complet avec ses animaux
+      const owner = await this.ownersRepository.findOne({
+        where: { id: result.ownerId },
+        relations: ['animals'],
+      });
+
+      if (!owner) {
+        throw ApiError.notFound('Owner not found');
+      }
+
       return {
-        owner: result,
-        catCount: result.animals?.length ?? 0,
+        owner,
+        catCount: parseInt(result.catCount, 10),
       };
     } catch (error: unknown) {
       throw ApiError.databaseError(
