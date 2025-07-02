@@ -238,8 +238,13 @@ query GetOwners($page: Int, $limit: Int) {
 
 ### Requêtes de Statistiques
 
+---
+
+#### 🐰 **Animal le plus âgé**
+
+**📝 Requête GraphQL :**
+
 ```graphql
-# Animal le plus âgé
 query GetOldestAnimal {
   oldestAnimal {
     id
@@ -252,16 +257,62 @@ query GetOldestAnimal {
     }
   }
 }
+```
 
-# Espèce la plus commune
+**📊 Résultat :**
+
+```json
+{
+  "data": {
+    "oldestAnimal": {
+      "id": 934,
+      "name": "Rocky",
+      "species": "Rabbit",
+      "dateOfBirth": "2009-09-21",
+      "owner": {
+        "firstName": "Emma",
+        "lastName": "Johnson"
+      }
+    }
+  }
+}
+```
+
+---
+
+#### 🐦 **Espèce la plus commune**
+
+**📝 Requête GraphQL :**
+
+```graphql
 query GetMostCommonSpecies {
   mostCommonSpecies {
     species
     count
   }
 }
+```
 
-# Propriétaire avec le plus d'animaux
+**📊 Résultat :**
+
+```json
+{
+  "data": {
+    "mostCommonSpecies": {
+      "species": "Bird",
+      "count": 179
+    }
+  }
+}
+```
+
+---
+
+#### 👥 **Propriétaire avec le plus d'animaux**
+
+**📝 Requête GraphQL :**
+
+```graphql
 query GetOwnerWithMostAnimals {
   ownerWithMostAnimals {
     owner {
@@ -270,6 +321,141 @@ query GetOwnerWithMostAnimals {
       lastName
     }
     animalCount
+  }
+}
+```
+
+**📊 Résultat :**
+
+```json
+{
+  "data": {
+    "ownerWithMostAnimals": {
+      "owner": {
+        "id": 18,
+        "firstName": "Sophia",
+        "lastName": "Brown"
+      },
+      "animalCount": 6
+    }
+  }
+}
+```
+
+---
+
+#### 🐱 **Propriétaire avec le plus de chats**
+
+**📝 Requête GraphQL :**
+
+```graphql
+query GetOwnerWithMostCats {
+  ownerWithMostCats {
+    owner {
+      id
+      firstName
+      lastName
+    }
+    catCount
+  }
+}
+```
+
+**📊 Résultat :**
+
+```json
+{
+  "data": {
+    "ownerWithMostCats": {
+      "owner": {
+        "id": 268,
+        "firstName": "Sarah",
+        "lastName": "White"
+      },
+      "catCount": 4
+    }
+  }
+}
+```
+
+---
+
+#### ⚖️ **Propriétaire avec l'animal le plus lourd**
+
+**📝 Requête GraphQL :**
+
+```graphql
+query GetOwnerWithHeaviestAnimal {
+  ownerWithHeaviestAnimal {
+    owner {
+      id
+      firstName
+      lastName
+    }
+    animal {
+      id
+      name
+      weight
+      species
+    }
+  }
+}
+```
+
+**📊 Résultat :**
+
+```json
+{
+  "data": {
+    "ownerWithHeaviestAnimal": {
+      "owner": {
+        "id": 209,
+        "firstName": "Emma",
+        "lastName": "Smith"
+      },
+      "animal": {
+        "id": 821,
+        "name": "Chloe",
+        "weight": 49937,
+        "species": "Dog"
+      }
+    }
+  }
+}
+```
+
+---
+
+#### 📊 **Propriétaire avec le groupe d'animaux le plus lourd**
+
+**📝 Requête GraphQL :**
+
+```graphql
+query GetOwnerWithHeaviestAnimalsGroup {
+  ownerWithHeaviestAnimalsGroup {
+    owner {
+      id
+      firstName
+      lastName
+    }
+    totalWeight
+  }
+}
+```
+
+**📊 Résultat :**
+
+```json
+{
+  "data": {
+    "ownerWithHeaviestAnimalsGroup": {
+      "owner": {
+        "id": 18,
+        "firstName": "Sophia",
+        "lastName": "Brown"
+      },
+      "totalWeight": 172152
+    }
   }
 }
 ```
@@ -427,8 +613,6 @@ NODE_ENV=development
 - `tailwind.config.ts` - Thème personnalisé et classes utilitaires
 - `components.json` - Configuration shadcn/ui et chemins
 - `tsconfig.json` - Configuration TypeScript stricte
-
-## 🧪 Tests
 
 ### Backend
 
